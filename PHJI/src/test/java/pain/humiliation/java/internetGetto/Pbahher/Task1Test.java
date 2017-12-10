@@ -8,18 +8,18 @@ public class Task1Test {
     static Task1 task1 = new Task1();
 
     @Test
-    public void FirstTask() { task1.FirstTask(); }
+    public void firstTask() { task1.firstTask(); }
 
     @Test
-    public void DelenieOstatok() { task1.DelenieOstatok(); }
+    public void felenieOstatok() { task1.delenieOstatok(); }
 
     @Test
-    public void SummaDvuhChisel() { task1.SummaDvuhChisel(); }
+    public void summaDvuhChisel() { task1.summaDvuhChisel(); }
 
     @Test
-    public void Okruglenie() { task1.Okruglenie(); }
+    public void okruglenie() { task1.okruglenie(); }
 
     @Test
-    public void SummaTrehChisel() { task1.SummaTrehChisel(); }
+    public void summaTrehChisel() { task1.summaTrehChisel(); }
 
 }
