@@ -8,7 +8,7 @@ public class Task1Test {
     static Task1 task1 = new Task1();
 
     @Test
-    public  void FirstTask() { task1.FirstTask(); }
+    public void FirstTask() { task1.FirstTask(); }
 
     @Test
     public void DelenieOstatok() { task1.DelenieOstatok(); }
@@ -18,5 +18,8 @@ public class Task1Test {
 
     @Test
     public void Okruglenie() { task1.Okruglenie(); }
+
+    @Test
+    public void SummaTrehChisel() { task1.SummaTrehChisel(); }
 
 }
