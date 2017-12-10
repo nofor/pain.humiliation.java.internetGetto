@@ -1,12 +1,11 @@
 package pain.humiliation.java.internetGetto.PetroKozak.task1;
 
-import java.util.OptionalInt;
 
 public class Task2 {
     public static void main (String [] args){
         countWithRest(21,8);
         countAmountOfFigures(123,3);
-       roundTheDouble(3.3);
+       roundTheDouble(3.7);
 
     }
 
