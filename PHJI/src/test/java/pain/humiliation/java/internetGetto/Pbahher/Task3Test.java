@@ -1,6 +1,7 @@
 package pain.humiliation.java.internetGetto.Pbahher;
 
 import org.junit.Test;
+import org.omg.CORBA.StringHolder;
 import pain.humiliation.java.internetGetto.Pbahher.task1.Task3;
 
 /**
@@ -13,5 +14,10 @@ public class Task3Test {
     @Test
     public void stringTest() {
         System.out.println(task3.threeLines("How ","to ","play "));
+    }
+
+    @Test
+    public void deleteLetters() {
+        System.out.println(task3.deletingLetters("deleted"));
     }
 }
