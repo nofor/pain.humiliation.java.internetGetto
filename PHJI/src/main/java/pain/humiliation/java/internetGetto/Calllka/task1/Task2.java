@@ -11,33 +11,80 @@ package pain.humiliation.java.internetGetto.Calllka.task1;
 
 public class Task2 {
 
-    public String workWithString(boolean choose, String ... args){
-
+    public String concatenationStringWithStringBuilder(String a, String b, String c){
         StringBuilder sb = new StringBuilder();
-        String outString;
 
-        for(String temp : args){
-            sb.append(temp);
-        }
+        sb.append(a);
+        sb.append(b);
+        sb.append(c);
 
-        if(choose){
-            outString = sb.toString();
-        } else {
-            outString = sb.reverse().toString();
-        }
-
-        return outString;
+        return sb.toString();
     }
 
-    public String deleteSymbol(String sentence, String ... args){
+    public String reverseStringWithStringBuilder(String a, String b, String c){
+        StringBuilder sb = new StringBuilder();
 
+        sb.append(concatenationStringWithStringBuilder(a, b, c));
+        sb.reverse();
+
+        return sb.toString();
+    }
+
+    public String deleteSymbol(String sentence, String... args) {
         String abc = sentence;
 
-        for(String temp : args){
+        for (String temp : args) {
             abc = abc.replace(temp, "");
         }
 
         return abc;
+    }
+
+    public String reverseString(String a, String b, String c) {
+
+        char[] mass = concatenationStringWithStringBuilder(a,b,c).toCharArray();
+
+        for (int i = mass.length - 1, j = 0; i > j; i--, j++) {
+            char temp;
+
+            temp = mass[j];
+            mass[j] = mass[i];
+            mass[i] = temp;
+        }
+
+        return mass.toString();
+    }
+
+    public String myDeleteSymbol(String sentence, String... deleteSymbol) {
+        char[] massDeleteSymbol = concatenationTemp(deleteSymbol).toCharArray();
+        String result = "";
+        boolean flag = true;
+
+        for (char massSentence : sentence.toCharArray()) {
+            for (int j = 0; j < deleteSymbol.length; j++) {
+
+                flag = massSentence != massDeleteSymbol[j];
+                if (!flag) break;
+            }
+
+            if (flag)
+                result += massSentence;
+        }
+
+        return result;
+    }
+
+    private String concatenationTemp(String... word) {
+
+        String sentence = word[0];
+
+        for (int i = 1; i < word.length; i++) {
+
+            sentence += word[i];
+
+        }
+
+        return sentence;
     }
 
 }

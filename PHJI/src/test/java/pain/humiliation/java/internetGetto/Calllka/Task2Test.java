@@ -8,10 +8,12 @@ public class Task2Test {
     private Task2 task2 = new Task2();
 
     @Test
-    public void workWithStringTest(){
-        System.out.println(task2.workWithString(true,"1","2","3","1","2","3"));
-        System.out.println(task2.workWithString(false,"1","2","3","1","2","3"));
-        System.out.println(task2.deleteSymbol("delete some symbol","d","l","e"," ", "m", "1"));
+    public void mainTest(){
+        System.out.println(task2.concatenationStringWithStringBuilder("abc","abc","abc"));
+        System.out.println(task2.reverseStringWithStringBuilder("abc","abc","abc"));
+        System.out.println(task2.reverseString("abc","abc","abc"));
+        System.out.println(task2.deleteSymbol("delete some symbol","d"," ","o"));
+        System.out.println(task2.myDeleteSymbol("delete some symbol","d"," ","o"));
     }
 
 }
