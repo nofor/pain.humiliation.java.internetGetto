@@ -14,10 +14,6 @@ public class Task3Test {
     @Test
     public void stringTest() {
         System.out.println(task3.threeLines("How ","to ","play "));
-    }
-
-    @Test
-    public void deleteLetters() {
         System.out.println(task3.deletingLetters("deleted"));
     }
 }
