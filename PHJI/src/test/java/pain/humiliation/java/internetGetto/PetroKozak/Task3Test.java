@@ -8,7 +8,9 @@ public class Task3Test {
 
     @Test
     public void testTask3(){
-        System.out.println(task3.putTogetherAndReverse("Hello" ,"from", "the","other","side"));
+        System.out.println(task3.putTogether("Don't" ,"Kill", "Me"));
+        System.out.println(task3.reverse("dlrow olleH"));
         System.out.println(task3.symbolDelete("I saw him working hard","s","w","o","h","i"));
+
     }
 }
