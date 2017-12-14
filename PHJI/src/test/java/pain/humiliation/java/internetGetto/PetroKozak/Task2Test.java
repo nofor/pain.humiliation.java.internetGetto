@@ -1,7 +1,7 @@
 package pain.humiliation.java.internetGetto.PetroKozak;
 
 import org.junit.Test;
-import pain.humiliation.java.internetGetto.PetroKozak.task1.Task2;
+import pain.humiliation.java.internetGetto.PetroKozak.task2.Task2;
 
 public class Task2Test {
 

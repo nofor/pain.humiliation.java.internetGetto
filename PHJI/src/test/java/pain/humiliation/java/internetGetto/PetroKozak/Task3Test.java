@@ -1,7 +1,7 @@
 package pain.humiliation.java.internetGetto.PetroKozak;
 
 import org.junit.Test;
-import pain.humiliation.java.internetGetto.PetroKozak.task1.Task3;
+import pain.humiliation.java.internetGetto.PetroKozak.task3.Task3;
 
 public class Task3Test {
     Task3 task3= new Task3();

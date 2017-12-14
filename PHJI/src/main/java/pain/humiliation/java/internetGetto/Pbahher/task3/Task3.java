@@ -1,4 +1,4 @@
-package pain.humiliation.java.internetGetto.Pbahher.task1;
+package pain.humiliation.java.internetGetto.Pbahher.task3;
 
 /**
  * Created by pbahher on 12/13/17.

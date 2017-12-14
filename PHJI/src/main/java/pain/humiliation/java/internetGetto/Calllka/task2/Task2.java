@@ -1,4 +1,4 @@
-package pain.humiliation.java.internetGetto.Calllka.task1;
+package pain.humiliation.java.internetGetto.Calllka.task2;
 
 //todo WTF Only english motherfacker!!!
 /*Создать метод который на вход принимает 3 строки.

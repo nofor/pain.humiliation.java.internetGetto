@@ -1,4 +1,4 @@
-package pain.humiliation.java.internetGetto.PetroKozak.task1;
+package pain.humiliation.java.internetGetto.PetroKozak.task3;
 
 public class Task3 {
 

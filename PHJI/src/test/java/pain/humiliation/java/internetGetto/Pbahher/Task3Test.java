@@ -1,8 +1,7 @@
 package pain.humiliation.java.internetGetto.Pbahher;
 
 import org.junit.Test;
-import org.omg.CORBA.StringHolder;
-import pain.humiliation.java.internetGetto.Pbahher.task1.Task3;
+import pain.humiliation.java.internetGetto.Pbahher.task3.Task3;
 
 /**
  * Created by pbahher on 12/13/17.

@@ -1,7 +1,7 @@
 package pain.humiliation.java.internetGetto.Pbahher;
 
 import org.junit.Test;
-import pain.humiliation.java.internetGetto.Pbahher.task1.Task2;
+import pain.humiliation.java.internetGetto.Pbahher.task2.Task2;
 
 /**
  * Created by pbahher on 12/13/17.

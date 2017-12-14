@@ -1,7 +1,7 @@
 package pain.humiliation.java.internetGetto.Calllka;
 
 import org.junit.Test;
-import pain.humiliation.java.internetGetto.Calllka.task1.Task2;
+import pain.humiliation.java.internetGetto.Calllka.task2.Task2;
 
 public class Task2Test {
 
