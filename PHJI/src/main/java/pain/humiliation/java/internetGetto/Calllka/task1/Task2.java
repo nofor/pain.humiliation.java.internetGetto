@@ -1,6 +1,6 @@
 package pain.humiliation.java.internetGetto.Calllka.task1;
 
-
+//todo WTF Only english motherfacker!!!
 /*Создать метод который на вход принимает 3 строки.
 В этом методе надо сделать 3 операции над входящими строками.
 Операция 1: обьединить их в одну строку.

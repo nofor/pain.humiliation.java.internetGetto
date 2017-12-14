@@ -7,7 +7,7 @@ public class Task3 {
 
     public String threeLines(String a, String b, String c) {
         //todo remove extra space
-        StringBuffer sb = new StringBuffer();
+        StringBuffer sb = new StringBuffer();  //todo remove StringBuffer
 
         sb.append(a).append(b).append(c);  //todo WTF ???
         System.out.println("Specified text: " + sb);
