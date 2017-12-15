@@ -1,11 +1,10 @@
-package pain.humiliation.java.internetGetto.Calllka.taks2;
+package pain.humiliation.java.internetGetto.Calllka.task2;
 
 import org.junit.Test;
-import pain.humiliation.java.internetGetto.Calllka.task2.Task2;
 
 public class Task2Test {
 
-    Task2 task1 = new Task2();
+    private Task2 task1 = new Task2();
 
     @Test
     public void naturalNumberTest(){
