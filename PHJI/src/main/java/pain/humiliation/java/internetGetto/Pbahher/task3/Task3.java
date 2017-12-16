@@ -5,23 +5,28 @@ package pain.humiliation.java.internetGetto.Pbahher.task3;
  */
 public class Task3 {
 
-    public String threeLines(String a, String b, String c) {
-        //todo remove extra space
-        StringBuffer sb = new StringBuffer();  //todo remove StringBuffer
+    public void mainMethod (String a, String b, String c) {
+        String stepbystep = threeLines(a, b, c);
+        stepbystep = reverseThreeLines(stepbystep);
 
-        sb.append(a).append(b).append(c);  //todo WTF ???
-        System.out.println("Specified text: " + sb);
-        sb.reverse();  //todo WTF ???
-
-        return "Inverted text: " + sb;
+        System.out.println(deletingLetters(stepbystep, "o", "n", "l"));
     }
 
-    public String deletingLetters(String a, String ... args) {  //todo Change !!!
-        //todo remove extra space
-        StringBuffer sb = new StringBuffer("superman");
+    public String threeLines(String a, String b, String c) {
+        return new StringBuilder().append(a).append(b).append(c).toString();
+    }
 
-        sb.delete(0, 8);
-        return a;
+    public String reverseThreeLines (String reversing) {
+        return new StringBuilder().append(reversing).reverse().toString();
+    }
+
+    public String deletingLetters(String deletion, String ... args) {
+        String decayingLetters = deletion;
+
+        for (String element : args) {
+            decayingLetters = decayingLetters.replace(element, "");
+        }
+        return decayingLetters;
     }
 }
 

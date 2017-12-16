@@ -11,8 +11,5 @@ public class Task3Test {
     public Task3 task3 = new Task3();
 
     @Test
-    public void stringTest() {
-        System.out.println(task3.threeLines("How ","to ","play "));
-        System.out.println(task3.deletingLetters("deleted"));
-    }
+    public void mainTest() {    task3.mainMethod("Null ", "One ", "Two"); }
 }
