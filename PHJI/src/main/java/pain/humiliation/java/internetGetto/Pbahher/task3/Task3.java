@@ -5,7 +5,7 @@ package pain.humiliation.java.internetGetto.Pbahher.task3;
  */
 public class Task3 {
 
-    public void mainMethod (String a, String b, String c) {
+    public void mainMethod(String a, String b, String c) {
         String stepbystep = threeLines(a, b, c);
         stepbystep = reverseThreeLines(stepbystep);
 
@@ -16,11 +16,11 @@ public class Task3 {
         return new StringBuilder().append(a).append(b).append(c).toString();
     }
 
-    public String reverseThreeLines (String reversing) {
+    public String reverseThreeLines(String reversing) {
         return new StringBuilder().append(reversing).reverse().toString();
     }
 
-    public String deletingLetters(String deletion, String ... args) {
+    public String deletingLetters(String deletion, String... args) {
         String decayingLetters = deletion;
 
         for (String element : args) {
