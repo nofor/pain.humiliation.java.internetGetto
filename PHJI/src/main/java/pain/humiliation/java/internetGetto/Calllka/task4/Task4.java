@@ -10,7 +10,7 @@ package pain.humiliation.java.internetGetto.Calllka.task4;
 8. Don't merge (bad word). At next lessons will merge together.**/
 
 public class Task4 {
-    private String[] mainMassive = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"};
+    private String[] mainMassive = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"};  //todo Dinamic
 
 
     public void runMethod(int x){
