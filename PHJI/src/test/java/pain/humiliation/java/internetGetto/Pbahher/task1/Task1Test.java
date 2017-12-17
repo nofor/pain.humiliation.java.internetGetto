@@ -1,4 +1,4 @@
-package pain.humiliation.java.internetGetto.Pbahher;
+package pain.humiliation.java.internetGetto.Pbahher.task1;
 
 import org.junit.Test;
 import pain.humiliation.java.internetGetto.Pbahher.task1.Task1;

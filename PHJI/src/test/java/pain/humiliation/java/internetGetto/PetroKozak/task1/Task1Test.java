@@ -1,4 +1,4 @@
-package pain.humiliation.java.internetGetto.PetroKozak;
+package pain.humiliation.java.internetGetto.PetroKozak.task1;
 
 import org.junit.Test;
 import pain.humiliation.java.internetGetto.PetroKozak.task1.Task1;
