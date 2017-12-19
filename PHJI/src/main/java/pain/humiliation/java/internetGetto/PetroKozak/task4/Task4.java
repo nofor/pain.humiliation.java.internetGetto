@@ -2,10 +2,10 @@ package pain.humiliation.java.internetGetto.PetroKozak.task4;
 
 public class Task4 {
 
-    public void mainArray(String[] a) {
+    public void mainArray(String[] a, int index) {
         returnArray(a);
         reversedArray(a);
-        deleteElement(a, 1);
+        deleteElement(a, index);
     }
 
     public String returnArray(String[] x) {
@@ -17,7 +17,7 @@ public class Task4 {
 
         System.out.println(y);
 
-        return null;
+        return null;  //todo FIX it.
     }
 
     public String reversedArray(String[] y) {
@@ -29,16 +29,17 @@ public class Task4 {
 
         System.out.println(x);
 
-        return null;
+        return null; //todo FIX it.
     }
 
-    public String deleteElement(String[] z, int x) {
+    public String  deleteElement(String[] z, int x) {
         int a = z.length;
 
         for (int i = 0; i < a; i++) {    // loop for array to find the key of element that we are looking for
             if (i == x)
-                break;
+                break;  //todo WTF ???
         }
+
         for (int k = x; k < a - 1; k++) // moving the elements that are coming after
             z[k] = z[k + 1];
         a--;                            // making array smaller
@@ -47,6 +48,6 @@ public class Task4 {
             System.out.print(z[i].toString() + " ");
         }
 
-        return null;
+        return null;  //todo FIX it.
     }
 }

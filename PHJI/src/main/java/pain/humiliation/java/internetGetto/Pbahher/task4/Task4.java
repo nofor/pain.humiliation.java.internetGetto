@@ -5,7 +5,7 @@ package pain.humiliation.java.internetGetto.Pbahher.task4;
  */
 public class Task4 {
 
-    public void runIterationMethod(String [] incomingArray) {
+    public void runIterationMethod(String [] incomingArray) {  //todo Add index for deleting
         arrayItteration(incomingArray);
 
     }
@@ -20,7 +20,7 @@ public class Task4 {
         System.out.println(a);
     }
 
-    public String [] reverseArray (String [] incomingArray) {
+    public String [] reverseArray (String [] incomingArray) {  //todo why return "String []"
         String a = "";
 
         for (String str : incomingArray) {

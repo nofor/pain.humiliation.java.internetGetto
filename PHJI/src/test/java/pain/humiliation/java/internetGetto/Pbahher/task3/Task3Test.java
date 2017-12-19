@@ -12,4 +12,7 @@ public class Task3Test {
 
     @Test
     public void mainTest() {    task3.mainMethod("Null ", "One ", "Two"); }
+
+    @Test
+    public void mainTest2() {    task3.mainMethod("Null ", "One ", "Two"); }
 }
