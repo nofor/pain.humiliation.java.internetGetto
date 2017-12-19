@@ -10,38 +10,47 @@ package pain.humiliation.java.internetGetto.Calllka.task4;
 8. Don't merge (bad word). At next lessons will merge together.**/
 
 public class Task4 {
-    private static final String[] mainMassive = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"};
+    private String[] mainMassive = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"};  //todo Dinamic
 
-    public void mainMethod(int x){
+
+    public void runMethod(int x){
         outputMassive(mainMassive);
-        System.out.println("\n");
-
         outputReverseMassive(mainMassive);
-        System.out.println("\n");
-
         deleteIndex(mainMassive, x);
     }
 
     private void outputMassive (String[] mass){
-        for (String temp : mass){
-            System.out.print(temp);
+        String temp = "";
+
+        for (String str : mass){
+            temp = temp + str;
         }
+
+        System.out.println(temp);
+
     }
 
     private void outputReverseMassive (String[] mass){
+        String temp = "";
+
         for (int i = mass.length - 1; i >= 0; i--){
-            System.out.print(mass[i]);
+            temp = temp + mass[i];
         }
+
+        System.out.println(temp);
+
     }
 
     private void deleteIndex(String[] mass, int x){
-
-        if(x > mass.length) System.out.println("The index behind array");
+        String temp = "";
 
         for (int i = 0; i < mass.length; i++){
             if(i == x) mass[i] = "_";
 
-            System.out.print(mass[i]);
+            temp = temp + mass[i];
         }
+
+        System.out.println(temp);
+
     }
 }

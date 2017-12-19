@@ -1,7 +1,6 @@
-package pain.humiliation.java.internetGetto.PetroKozak;
+package pain.humiliation.java.internetGetto.PetroKozak.task2;
 
 import org.junit.Test;
-import pain.humiliation.java.internetGetto.PetroKozak.task2.Task2;
 
 public class Task2Test {
 
