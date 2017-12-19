@@ -7,6 +7,8 @@ public class Task4Test {
 
     @Test
     public void setTestMassive() {
-        task4.runMethod(1);
+        String[] massiveForTask = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"};
+
+        task4.runMethod(massiveForTask, 11);
     }
 }
