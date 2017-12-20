@@ -1,7 +1,7 @@
 package pain.humiliation.java.internetGetto.Pbahher.task4;
 
 /**
- * Created by pbahher on 12/16/17.
+ * Created by pbahher on 12/20/17.
  */
 public class Task4 {
 
@@ -33,4 +33,3 @@ public class Task4 {
     }
 
 }
-
