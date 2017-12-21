@@ -9,6 +9,6 @@ public class Task4Test {
     @Test
     public void testTask4(){
         String[] array= {"I ","dont ","want ","to ","be ","killed ","by ","sensei ","with ","ritual ","bonfire "};
-        task4.mainArray(array, 15);
+        task4.mainArray(array, 4);
     }
 }
