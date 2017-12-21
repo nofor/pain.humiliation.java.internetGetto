@@ -1,16 +1,14 @@
 package pain.humiliation.java.internetGetto.Pbahher.task4;
 
-import javax.xml.bind.SchemaOutputResolver;  //todo remove unusefull import
-
 /**
  * Created by pbahher on 12/21/17.
  */
 public class Task4 {
 
-    public void runIterationMethod(String[] incomingArray, int i) {  //todo 1. Add index for deleting 2. Use this method for all 3 methods from above list
+    public void runIterationMethod(String[] incomingArray, int index) {
         arrayItteration(incomingArray);
         reverseArray(incomingArray);
-        indexArrayDelete(incomingArray,  3);
+        indexArrayDelete(incomingArray,  index);
     }
 
     public void arrayItteration(String[] incomingArray) {
@@ -33,7 +31,7 @@ public class Task4 {
         System.out.println(a);
     }
 
-    public void indexArrayDelete(String[] incomingArray, int index) {  //todo 1. make it dinamic.
+    public void indexArrayDelete(String[] incomingArray, int index) {
         String a = "";
 
         for (int i = 0; i <= incomingArray.length; i++) {

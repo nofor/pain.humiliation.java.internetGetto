@@ -1,7 +1,6 @@
 package pain.humiliation.java.internetGetto.Pbahher.task4;
 
 import org.junit.Test;
-import pain.humiliation.java.internetGetto.Pbahher.task4.Task4;  //todo remove unusefull inport
 
 /**
  * Created by pbahher on 12/21/17.
