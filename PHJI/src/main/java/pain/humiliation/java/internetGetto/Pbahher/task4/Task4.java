@@ -7,13 +7,13 @@ import javax.xml.bind.SchemaOutputResolver;  //todo remove unusefull import
  */
 public class Task4 {
 
-    public void runIterationMethod(String [] incomingArray) {  //todo 1. Add index for deleting 2. Use this method for all 3 methods from above list
+    public void runIterationMethod(String[] incomingArray, int i) {  //todo 1. Add index for deleting 2. Use this method for all 3 methods from above list
         arrayItteration(incomingArray);
-
-
+        reverseArray(incomingArray);
+        indexArrayDelete(incomingArray,  3);
     }
 
-    public void arrayItteration (String [] incomingArray) {
+    public void arrayItteration(String[] incomingArray) {
         String a = "";
 
         for (String str : incomingArray) {
@@ -23,24 +23,28 @@ public class Task4 {
         System.out.println(a);
     }
 
-    public void reverseArray (String [] incomingArray) {
+    public void reverseArray(String[] incomingArray) {
         String a = "";
 
-        for (int i = incomingArray.length - 1; i >= 0; i--){
+        for (int i = incomingArray.length - 1; i >= 0; i--) {
             a = a + incomingArray[i];
         }
 
         System.out.println(a);
     }
 
-    public void indexArrayDelete (String [] incomingArray) {  //todo 1. make it dinamic.
+    public void indexArrayDelete(String[] incomingArray, int index) {  //todo 1. make it dinamic.
         String a = "";
-        int b = 11;  //todo remove it, we need dinamic index for deletion
 
         for (int i = 0; i <= incomingArray.length; i++) {
-            if (i == b)
-                break;
-            System.out.print(a + incomingArray[i]);
+            if (i == index) {
+                incomingArray[i] = "_";
+            }
         }
+
+        for (String array : incomingArray) {
+            a = a + array;
+        }
+        System.out.println(a);
     }
 }
