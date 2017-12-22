@@ -19,7 +19,7 @@ public class Taks5Test {
     public void homework3 (){ task5.homework3(); }
 
     @Test
-    public void homework4 (){ task5.homework4(); }
+    public void homework4 () { task5.homework4();}
 
     @Test
     public void homework5 (){ task5.homework5(); }
