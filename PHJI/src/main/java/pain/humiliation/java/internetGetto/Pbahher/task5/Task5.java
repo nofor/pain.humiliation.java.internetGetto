@@ -111,11 +111,11 @@ public class Task5 {
         for (int i = 0; i < a.length; i++) {
             int b = a.length - i - 1;
             if (a[i] != a[b]) {
-                System.out.println("Not polindrom.");
+                System.out.println("Not a palindrome.");
             }
             b--;
         }
-        System.out.println("Polindrom.");
+        System.out.println("Palindrome.");
     }
 
     public void homework8() {
