@@ -4,8 +4,18 @@ import java.util.Arrays;
 
 public class Task5 {
 
-    public void mainTask5(int[] a, int [] palindrome, int indexT3) {
-
+    public void mainTask5(int[] a, int[] palindrome, int indexT3) {
+        task1(a);
+        System.out.println("Task2");
+        task2(a);
+        System.out.println("Task3");
+        task3(a, indexT3);
+        System.out.println("Task4");
+        task4(a);
+        System.out.println("Task5");
+        task5(a);
+        System.out.println("Task6");
+        task6(a);
         System.out.println("Task7");
         task7(palindrome);
         //   task10(a);
@@ -69,18 +79,22 @@ public class Task5 {
         System.out.println(Arrays.toString(t6));
 
     }
-    public void task7(int [] t7){
-        for (int i =0;i<t7.length;i++){
-            if(t7[i]!=t7[t7.length-i-1]) {
+
+    public void task7(int[] t7) {
+        for (int i = 0; i < t7.length; i++) {
+            if (t7[i] != t7[t7.length - i - 1]) {
                 System.out.println("It's not a palindrome");
                 break;
             }
 
-        }System.out.println("It is a palindrome");
+        }
+        System.out.println("It is a palindrome");
     }
-    public void task8(int [] t8){
+
+    public void task8(int[] t8) {
 
     }
+
     // public void task10(int[] t10){
     //    for(int i =1; i<t10.length-1;i++){
     //     int  b = t10[i+1]/2;
@@ -96,9 +110,7 @@ public class Task5 {
                 System.out.println(t11[i]);
             }
         }
-
     }
-
 }
 
 
