@@ -79,17 +79,23 @@ public class Task5 {
     }
 
     public void homework4() {
-        int[] a = {1, 3, 7, 0, 4, 7, 0, 2};
+        int[] a = {1, 3, 7, 0, 4, 7, 0, 2, 7};
         int count = 0;
-        int max = a[0];
 
-        for (int i = 1; i < a.length; i++) {
-            if (a[i] > max) {
-                max = a[i];
+        for (int i = 0; i < a.length; i++) {
+            int b = a[i];
+            int max = i;
+
+            for (int j = 1; j < a.length; j++) {
+                if (a[j] > b) {
+                    b = a[j];
+                    max = j;
+                }
+            }
+            if (i == max) {
                 count++;
             }
         }
-        System.out.println("\n" + max); // Max element
         System.out.println(count); //Amount of ellements
     }
 
