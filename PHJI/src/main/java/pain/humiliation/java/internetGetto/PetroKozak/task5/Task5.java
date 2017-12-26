@@ -1,5 +1,4 @@
 package pain.humiliation.java.internetGetto.PetroKozak.task5;
-
 import java.util.Arrays;
 
 public class Task5 {
@@ -18,7 +17,8 @@ public class Task5 {
         task6(a);
         System.out.println("Task7");
         task7(palindrome);
-        //   task10(a);
+        System.out.println("Task10");
+        task10(a);
         System.out.println("Task16");
         task16(a);
 
@@ -86,7 +86,6 @@ public class Task5 {
                 System.out.println("It's not a palindrome");
                 break;
             }
-
         }
         System.out.println("It is a palindrome");
     }
@@ -95,19 +94,22 @@ public class Task5 {
 
     }
 
-    // public void task10(int[] t10){
-    //    for(int i =1; i<t10.length-1;i++){
-    //     int  b = t10[i+1]/2;
-    //    int c =  t10[i-1]/2;
-    //    t10[i]=c+b;
-    //    System.out.println((double)t10[i]);
-    // }
-//}
-    public void task16(int[] t11) {
+    public void task10(int[] t10) {
+        for (int i = 1; i < t10.length - 1; i++) {
+            t10[i] = (t10[i + 1] + t10[i - 1]) / 2;
+        }
 
-        for (int i = 1; i < t11.length - 1; i++) {
-            if (t11[i] > t11[i + 1] && t11[i] > t11[i - 1]) {
-                System.out.println(t11[i]);
+        for (int i = 0; i < t10.length; i++) {
+            System.out.println(t10[i]);
+        }
+    }
+
+
+    public void task16(int[] t16) {
+
+        for (int i = 1; i < t16.length - 1; i++) {
+            if (t16[i] > t16[i + 1] && t16[i] > t16[i - 1]) {
+                System.out.println(t16[i]);
             }
         }
     }
