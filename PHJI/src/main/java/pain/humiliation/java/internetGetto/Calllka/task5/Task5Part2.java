@@ -48,15 +48,15 @@ public class Task5Part2 {
             firstMassiveDouble[i] = (int) Math.round((Math.random() * 9));
             secondMassiveDouble[i] = (int) Math.round((Math.random() * 9));
 
-            if(firstMassiveDouble[i] == secondMassiveDouble[i]){
+            if (firstMassiveDouble[i] == secondMassiveDouble[i]) {
                 count++;
             }
         }
 
         resultMassive = new int[count];
 
-        for (int i = 0; i < firstMassiveDouble.length; i++){
-            if(firstMassiveDouble[i] == secondMassiveDouble[i]){
+        for (int i = 0; i < firstMassiveDouble.length; i++) {
+            if (firstMassiveDouble[i] == secondMassiveDouble[i]) {
                 resultMassive[resultMassiveLength] = firstMassiveDouble[i];
                 resultMassiveLength++;
             }
@@ -78,15 +78,15 @@ public class Task5Part2 {
             firstMassiveDouble[i] = (int) Math.round((Math.random() * 9));
             secondMassiveDouble[i] = (int) Math.round((Math.random() * 9));
 
-            if(firstMassiveDouble[i] != secondMassiveDouble[i]){
+            if (firstMassiveDouble[i] != secondMassiveDouble[i]) {
                 count = count + 2;
             }
         }
 
         resultMassive = new int[count];
 
-        for (int i = 0; i < firstMassiveDouble.length; i++){
-            if(firstMassiveDouble[i] != secondMassiveDouble[i]){
+        for (int i = 0; i < firstMassiveDouble.length; i++) {
+            if (firstMassiveDouble[i] != secondMassiveDouble[i]) {
                 resultMassive[resultMassiveLength] = firstMassiveDouble[i];
                 resultMassive[resultMassiveLength + 1] = secondMassiveDouble[i];
                 resultMassiveLength = resultMassiveLength + 2;
@@ -98,4 +98,46 @@ public class Task5Part2 {
         }
     }
 
+    public void homework15() {
+        int n = 0;
+        int[] massInteger = new int[100];
+
+        for (int i = 1; n < 100; i++) {
+
+            if (i % 13 == 0 || i % 17 == 0) {
+                massInteger[n] = i;
+                n++;
+            }
+
+        }
+
+        for (int temp : massInteger) {
+            System.out.print(temp + ",");
+        }
+
+        System.out.println();
+
+    }
+
+    public int homework16(int[] massInteger) {
+        int count = 0;
+
+        for (int i = 0; i < massInteger.length; i++) {
+            if (i == 0) {
+                if (massInteger[i] > massInteger[i + 1]) {
+                    count++;
+                }
+            } else if (i == massInteger.length - 1) {
+                if (massInteger[i] > massInteger[i - 1]) {
+                    count++;
+                }
+            } else {
+                if (massInteger[i] > massInteger[i - 1] && massInteger[i] > massInteger[i + 1]) {
+                    count++;
+                }
+            }
+        }
+
+        return count;
+    }
 }
