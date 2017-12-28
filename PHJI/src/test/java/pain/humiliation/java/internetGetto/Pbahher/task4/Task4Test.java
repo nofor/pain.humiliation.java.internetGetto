@@ -1,10 +1,9 @@
 package pain.humiliation.java.internetGetto.Pbahher.task4;
 
 import org.junit.Test;
-import pain.humiliation.java.internetGetto.Pbahher.task4.Task4;
 
 /**
- * Created by pbahher on 12/16/17.
+ * Created by pbahher on 12/21/17.
  */
 public class Task4Test {
 
@@ -13,9 +12,7 @@ public class Task4Test {
     @Test
     public void stringMainMethod() {
         String[] a = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
-        a = task4.reverseArray(a);
 
-        task4.runIterationMethod(a);
+        task4.runIterationMethod(a, 3);
     }
-
 }
