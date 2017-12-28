@@ -39,30 +39,35 @@ package pain.humiliation.java.internetGetto.Pbahher.task5;
 //          local maximum (the element is a local maximum if it does not have neighbors,
 //          greater than he himself).
 
+    //TODO try to name methods by they logic
+    //TODO make all methods dynamic
+    //TODO do it with for each where it needed
 public class Task5 {
 
-    public void homework1() {
+    public void homework1() {  //todo make all methods dynamic
         int[] a = {2, 3, 0, 4, 0, 3, 0, 0};
         int b = 0;
         int count = 0;
 
-        for (int i = 0; i < a.length; i++) {
+        for (int i = 0; i < a.length; i++) {  //todo do it with for each
             if (a[i] == b) {
                 count++;
             }
         }
+        //todo add extra line
         System.out.print(count);
     }
 
     public void homework2() {
         int[] a = {2, 3, 0, 4, 0, 3, 0, 0};
         int b = a[0];
-
+        //todo Where is check if array is not empty ???
         for (int i = 0; i < a.length; i++) {
             if (b < a[i]) {
                 b = a[i];
             }
         }
+        //todo add extra line
         System.out.println(b);
     }
 
@@ -72,13 +77,13 @@ public class Task5 {
 
         for (int i = 0; i < a.length; i++) {
             if (a[i] == x) {
-                System.out.println(i); //First element of occurrence
+                System.out.println(i); //First element of occurrence  //todo write another one method which will be print last specified element
                 break;
             }
         }
     }
 
-    public void homework4() {
+    public void homework4() {  //todo FIX IT.
         int[] a = {1, 3, 7, 0, 4, 7, 0, 2, 7};
         int count = 0;
 
@@ -96,6 +101,7 @@ public class Task5 {
                 count++;
             }
         }
+        //todo add extra line
         System.out.println(count); //Amount of ellements
     }
 
@@ -108,24 +114,26 @@ public class Task5 {
     }
 
     public void homework6() {
-
+        //todo
     }
 
-    public void homework7() {
+    public void homework7() {  //todo fix it with bool variable
         int[] a = {0, 1, 2, 3, 2, 1, 0};
 
         for (int i = 0; i < a.length; i++) {
             int b = a.length - i - 1;
+            //todo add extra line
             if (a[i] != a[b]) {
                 System.out.println("Not a palindrome.");
             }
             b--;
         }
+        //todo add extra line
         System.out.println("Palindrome.");
     }
 
     public void homework8() {
-        int[] a = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] a = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 2, 13};
         int temp = a[a.length - 1];
 
         for (int i = a.length - 1; i > 0; i--) {
@@ -133,18 +141,19 @@ public class Task5 {
         }
 
         a[0] = temp;
-
-        String moveElement = "";
+        //todo remove extra line
+        String moveElement = "";  //todo move it to top of this method
 
         for (int i : a) {
             moveElement = moveElement + i + " ";
         }
+        //todo add extra line
         System.out.println(moveElement);
     }
 
     public void homework9() {
         int[] a = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        int positions = 3;
+        int positions = 5;
 
         for (int i = 0; i < positions; i++) {
             int temp = a[a.length - 1];
@@ -156,11 +165,12 @@ public class Task5 {
             a[0] = temp;
         }
 
-        String moveElements = "";
+        String moveElements = "";  //todo move it to top of this method
 
         for (int i : a) {
             moveElements = moveElements + i + " ";
         }
+        //todo add extra line
         System.out.println(moveElements);
     }
 

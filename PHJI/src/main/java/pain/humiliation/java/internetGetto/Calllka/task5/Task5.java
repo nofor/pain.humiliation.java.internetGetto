@@ -1,5 +1,7 @@
 package pain.humiliation.java.internetGetto.Calllka.task5;
 
+//TODO try to name methods by they logic
+
 public class Task5 {
 
     public int homework1(int[] massInteger) {
@@ -70,11 +72,11 @@ public class Task5 {
             System.out.print(mass);
         }
 
-        System.out.println();
+        System.out.println();  //todo remove
     }
 
     public void homework6(int[] massInteger) {
-
+        //todo remove extra line
         for (int mass : massInteger) {
             System.out.print(mass);
         }
@@ -108,7 +110,7 @@ public class Task5 {
     }
 
     public void homework8(int[] massInteger) {
-
+        //todo remove extra line
         for (int i = 0; i < 1; i++) {
             int temp = massInteger[massInteger.length - 1];
             for (int j = massInteger.length - 1; j > 0; j--) {
@@ -117,14 +119,14 @@ public class Task5 {
             massInteger[0] = temp;
         }
 
-        for (int temp : massInteger) {
+        for (int temp : massInteger) {  //todo make separate method
             System.out.print(temp);
         }
-
+        //todo remove extra line
     }
 
     public void homework9(int[] massInteger, int possition) {
-        System.out.println();
+        System.out.println();  //todo remove
 
         for (int i = 0; i < possition; i++) {
             int temp = massInteger[massInteger.length - 1];
@@ -134,23 +136,23 @@ public class Task5 {
             massInteger[0] = temp;
         }
 
-        for (int temp : massInteger) {
+        for (int temp : massInteger) {  //todo make separate method
             System.out.print(temp);
         }
-
+        //todo remove extra line
     }
 
     public void homework10(int[] massInteger) {
-        System.out.println();
+        System.out.println();  //todo remove
 
         for (int i = 1; i < massInteger.length - 1; i++) {
             massInteger[i] = (massInteger[i - 1] + massInteger[i + 1]) / 2;
         }
 
-        for (int temp : massInteger) {
+        for (int temp : massInteger) {  //todo make separate method
             System.out.print(temp);
         }
-
+        //todo remove extra line
     }
 
 }

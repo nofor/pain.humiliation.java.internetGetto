@@ -1,12 +1,12 @@
 package pain.humiliation.java.internetGetto.Calllka.task5;
 
-public class Task5Part2 {
+public class Task5Part2 {  //todo move it to single class
 
     public void homework11() {
         double[] firstMassiveDouble = new double[9];
         double[] secondMassiveDouble = new double[9];
         double[] resultMassive = new double[firstMassiveDouble.length];
-        System.out.println();
+        System.out.println();  //todo remove
 
         for (int i = 0; i < firstMassiveDouble.length; i++) {
             firstMassiveDouble[i] = Math.round((Math.random() * 9));
@@ -98,17 +98,17 @@ public class Task5Part2 {
         }
     }
 
-    public void homework15() {
+    public void homework15() {  //todo make it dynamic
         int n = 0;
         int[] massInteger = new int[100];
 
-        for (int i = 1; n < 100; i++) {
+        for (int i = 1; n < 100; i++) {  //todo do it with while
 
             if (i % 13 == 0 || i % 17 == 0) {
                 massInteger[n] = i;
                 n++;
             }
-
+        //todo remove extra line
         }
 
         for (int temp : massInteger) {
@@ -116,7 +116,7 @@ public class Task5Part2 {
         }
 
         System.out.println();
-
+        //todo remove extra line
     }
 
     public int homework16(int[] massInteger) {
