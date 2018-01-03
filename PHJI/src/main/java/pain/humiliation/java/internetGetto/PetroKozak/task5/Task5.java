@@ -1,57 +1,38 @@
 package pain.humiliation.java.internetGetto.PetroKozak.task5;
-import java.util.Arrays;
 
 public class Task5 {
 
-    //TODO try to name methods by they logic
-
-
-    public void mainTask5(int[] a, int[] palindrome, int indexT3) {  //todo move to test
-        task1(a);
-        System.out.println("Task2");
-        task2(a);
-        System.out.println("Task3");
-        task3(a, indexT3);
-        System.out.println("Task4");
-        task4(a);
-        System.out.println("Task5");
-        task5(a);
-        System.out.println("Task6");
-        task6(a);
-        System.out.println("Task7");
-        task7(palindrome);
-        System.out.println("Task10");
-        task10(a);
-        System.out.println("Task16");
-        task16(a);
-
-    }
-
-    public void task1(int[] t1) {
+    public void printNullElements(int[] t1) {
         int count = 0;
-        //todo add extra line
-        for (int i = 0; i < t1.length; i++) {  //todo do it with for each
-            if (t1[i] == 0)
+
+        for (int y : t1) {
+            if (t1[y] == 0)
                 count++;
         }
-        //todo add extra line
+
         System.out.println(count);
     }
 
-    public void task2(int[] t2) {
-        int max = t2[0];
-        //todo Where is check if array is not empty ???
-        //todo add extra line
-        for (int i = 0; i < t2.length; i++) { //todo do it with for each
-            if (max < t2[i]) {
-                max = t2[i];
+    public void printMaxElement(int[] t2) {
+        boolean emptiness = false;
+
+        if (t2.length == 0) emptiness = true;
+
+        if (emptiness == true) {
+            System.out.println("This array is empty");
+        } else if (emptiness == false) {
+            int max = 0;
+            for (int y : t2) {
+                if (max < y) {
+                    max = y;
+                }
             }
+
+            System.out.println(max);
         }
-        //todo add extra line
-        System.out.println(max);
     }
 
-    public void task3(int[] t3, int x) {  //todo do it with for each
+    public void printFirstInput(int[] t3, int x) {
         for (int i = 0; i < t3.length; i++) {
             if (t3[i] == x) {
                 System.out.println(i);
@@ -60,70 +41,202 @@ public class Task5 {
         }
     }
 
-    public void task4(int[] t4) {  //todo WRONG !!! FIX IT.
-        int max = 0;
+    public void printAmountOfMaxElements(int[] t4) {
+        int max = t4[0];
         int count = 0;
 
-        for (int i = 0; i < t4.length; i++) {  //todo do it with for each
-            if (max < t4[i]) {
-                max = t4[i];
+        for (int i : t4) {
+            if (max < i) {
+                max = i;
+                count = 1;
+            } else if (max == i) {
                 count++;
             }
         }
-        //todo add extra line
+
         System.out.println(count);
     }
 
-    public void task5(int[] t5) {
+    public void reverseArray(int[] t5) {
         for (int i = t5.length - 1; i >= 0; i--) {
-            System.out.println(t5[i]);  //todo print it in one line
+            System.out.print(t5[i]);
         }
     }
 
-    public void task6(int[] t6) {
-        for (int i = 0; i < t6.length; i++) {
-            System.out.println(t6[i]);
+    public void sortArray(int[] t6) {
+        int length = t6.length;
+        for (int c : t6) {
+            for (int j = 0; j < length - 1; j++) {
+                if (t6[j] > t6[j + 1]) {
+                    int temp = t6[j];
+                    t6[j] = t6[j + 1];
+                    t6[j + 1] = temp;
+                }
+            }
         }
-        //todo print it in one line
-        Arrays.sort(t6);  //todo its cool, but you need to do it yourself
-        System.out.println(Arrays.toString(t6));
+
+        for (int x : t6) {
+            System.out.print(x);
+        }
 
     }
 
-    public void task7(int[] t7) {  //todo FIX it with bool variable
-        for (int i = 0; i < t7.length; i++) {
-            if (t7[i] != t7[t7.length - i - 1]) {
-                System.out.println("It's not a palindrome");
+    public void checkIfPalindrome(int[] t) {
+        boolean match = false;
+
+        for (int i = 0; i < t.length / 2; i++) {
+            if (t[i] == t[t.length - i - 1]) {
+                match = true;
+            } else {
+                match = false;
+            }
+        }
+
+        System.out.println(match);
+    }
+
+    public void moveElementOn1Pos(int[] t8) {
+        for (int j = 0; j < 1; j++) {
+            int firstEl = t8[t8.length - 1];
+            for (int i = t8.length - 1; i > 0; i--) {
+                t8[i] = t8[i - 1];
+            }
+            t8[0] = firstEl;
+        }
+
+        for (int f : t8) {
+            System.out.print(f);
+        }
+    }
+
+    public void moveOnXElemets(int[] t9, int movingNumber) {
+        for (int j = 0; j < movingNumber; j++) {
+            int firstEl = t9[t9.length - 1];
+            for (int i = t9.length - 1; i > 0; i--) {
+                t9[i] = t9[i - 1];
+            }
+            t9[0] = firstEl;
+        }
+        for (int f : t9) {
+            System.out.print(f);
+        }
+    }
+
+    public void replaceWithNeighDividedIn2(double[] t10) {
+        double firstEl = t10[1] / 2;
+        double lastEl = t10[t10.length - 2] / 2;
+        int index = 1;
+        double[] arrayResult = new double[t10.length];
+
+        for (int i = 1; i < t10.length - 1; i++) {
+            arrayResult[index] = (t10[i + 1] + t10[i - 1]) / 2;
+            index++;
+        }
+
+        arrayResult[0] = firstEl;
+        arrayResult[arrayResult.length - 1] = lastEl;
+
+        for (double i : arrayResult) {
+            System.out.print(i + " ");
+        }
+    }
+
+    public void printDifferenceOfTwoEqualArrays(double[] array1, double[] array2) {
+        if (array1.length != array2.length) {
+            System.out.println("Arrays are not equal");
+        } else {
+            double[] resultArray = new double[array1.length];
+            for (int i = 0; i < array1.length; i++) {
+                resultArray[i] = array1[i] - array2[i];
+            }
+
+            for (double x : resultArray) {
+                System.out.println(x + " ");
+            }
+        }
+    }
+
+    public void putArraysTogether(int[] array1, int[] array2) {
+        int[] resultArray = new int[array1.length + array2.length];
+
+        for (int i = 0; i < array1.length; i++) {
+            resultArray[i] = array1[i];
+
+        }
+        for (int j = 0; j < array2.length; j++) {
+            resultArray[array1.length + j] = array2[j];
+        }
+
+        for (int x : resultArray) {
+            System.out.print(x + " ");
+        }
+    }
+
+    public void printOnlyElementsFromBothArrays(int[] array1, int[] array2) {
+        int resultArrayIndex = 0;
+        int resultArrayLength = 0;
+
+        for (int i = 0; i < array1.length; i++) {
+            for (int j = 0; j < array2.length; j++) {
+                if (array1[i] == array2[j]) {
+                    resultArrayLength++;
+                }
+            }
+        }
+
+        int[] resultArray = new int[resultArrayLength];
+
+        for (int i = 0; i < array1.length; i++) {
+            for (int j = 0; j < array2.length; j++) {
+                if (array1[i] == array2[j]) {
+                    resultArray[resultArrayIndex] = array1[i];
+                    resultArrayIndex++;
+                }
+            }
+        }
+
+        for (int x : resultArray) {
+            System.out.print(x + " ");
+        }
+
+    }
+
+    public void printElementsOnlyFromOneArray(int[] array1, int[] array2) {
+
+    }
+
+    public void numbersThatDivideOn13And17() {
+        int count = 0;
+        int[] resultArray = new int[100];
+
+        for (int i = 0; i < 1.0 / 0.0; i++) {
+            if (i % 13 == 0 || i % 17 == 0) {
+                resultArray[count] = i;
+                count++;
+            } else if (count >= 100) {
                 break;
             }
         }
-        System.out.println("It is a palindrome");
-    }
 
-    public void task8(int[] t8) {
-        //todo todo. Use task 4 for this
-    }
-
-    //todo task9
-
-    public void task10(int[] t10) {
-        for (int i = 1; i < t10.length - 1; i++) {  //todo do it for first and last element
-            t10[i] = (t10[i + 1] + t10[i - 1]) / 2;
-        }
-
-        for (int i = 0; i < t10.length; i++) {
-            System.out.println(t10[i]);  //todo print array in one line
+        for (int i : resultArray) {
+            System.out.print(i + " ");
         }
     }
 
+    public void printAmountOfLocalMax(int[] t16) {
+        int localMax = 0;
 
-    public void task16(int[] t16) {
-
-        for (int i = 1; i < t16.length - 1; i++) {  //todo do it for first and last element
-            if (t16[i] > t16[i + 1] && t16[i] > t16[i - 1]) {
-                System.out.println(t16[i]);  //todo print array in one line
+        for (int i = 0; i < t16.length; i++) {
+            if (i == 0 && t16[i] > t16[i + 1]) {
+                localMax++;
+            } else if (i == t16.length - 1 && t16[i] > t16[i - 1]) {
+                localMax++;
+            } else if (t16[i] > t16[i + 1] && t16[i] > t16[i - 1]) {
+                localMax++;
             }
         }
+
+        System.out.println(localMax);
     }
 }
 
