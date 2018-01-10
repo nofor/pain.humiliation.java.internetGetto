@@ -3,7 +3,9 @@ package pain.humiliation.java.internetGetto.Pbahher.task5;
 /**
  * Created by pbahher on 1/10/18.
  */
+
 @SuppressWarnings("Duplicates")
+
 public class Utils {
 
     public static void printDoubleMass(double[] a) {
@@ -16,6 +18,15 @@ public class Utils {
         System.out.println(result);
     }
 
+    public static void printIntMass(int[] a) {
+        String result = "";
+
+        for (int i : a) {
+            result = result + i + ", ";
+        }
+
+        System.out.println(result);
+    }
 
     public static int[] sortMass(int[] a) {
         for (int i = 0; i < a.length; i++) {
@@ -37,15 +48,5 @@ public class Utils {
         }
 
         return a;
-    }
-
-    public static void printIntMass(int[] a) {
-        String result = "";
-
-        for (int i : a) {
-            result = result + i + ", ";
-        }
-
-        System.out.println(result);
     }
 }

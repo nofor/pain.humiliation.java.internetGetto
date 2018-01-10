@@ -1,50 +1,53 @@
 package pain.humiliation.java.internetGetto.Pbahher.task5;
 
 @SuppressWarnings("Duplicates")
+
 /**
  * Created by pbahher on 12/21/17.
  */
 
 
-//      Task 1. Write a program that prints the number of zero elements in a given integer array.
-//      Task 2. Write a program that prints the maximum element of a non-empty array.
-//      Task 3. Write a program (linear search) that defines the last occurrence of a given
-//          integer x in an array of integers that knowingly contains this number.
-//      Task 4. Write a program that prints the number of maximum elements of a nonempty
-//          array in which only one cycle is used.
-//      Task 5. Write a program, print an array, then invert (that is, swap the first element
-//          with the last, the second with the penultimate, etc.), and print again.
-//      Task 6. Write a program that prints an array, then sorts it (that is, rearranges its
-//          elements so that they are arranged in nondestructive order), and prints again.
-//      Task 7. Write a program that determines whether the entered phrase is a palindrome.
-//          A Palindrome is a phrase whose inverting does not change it. In this case all the gaps
-//          in the phrase are ignored.
-//      Task 8. Write a program that cyclically shifts array elements to the right one position,
-//          and prints the result. Cyclic means that the last element of the array becomes the very
-//          first element its element.
-//      Task 9. Write a program that cyclically shifts the elements of the array to the right
-//          by "k" positions, and prints the result.
-//      Task 10. Write a program that replaces all elements of the array, except the extreme ones,
-//          by half the sum neighbors, and prints the result.
-//      Task 11. Write a program that counts two non-empty arrays of integers in the range from
-//          zero to nine decimal representation of two numbers, prints their difference.
-//      Task 12. Write a program that consists of two non-empty non-decreasing arrays of integers,
-//          prints those and only those elements that occur in at least one of the arrays (the union of sets).
-//      Task 13. Write a program that consists of two non-empty non-decreasing arrays of integers,
-//          and prints those and only those elements that occur in both arrays (the intersection of sets).
-//      Task 14. Write a program that consists of two non-empty non-decreasing arrays of integers,
-//          prints those and only those elements that enter only one of the arrays (symmetric
-//          difference of sets).
-//      Task 15. Write a program that writes the first 100 natural numbers to the array,
-//          dividing into 13 or 17, and printing it.
-//      Task 16. Write a program that prints an integer number in an array of integers
-//          local maximum (the element is a local maximum if it does not have neighbors,
-//          greater than he himself).
+/**     Task 1. Write a program that prints the number of zero elements in a given integer array.
+ *       Task 2. Write a program that prints the maximum element of a non-empty array.
+ *       Task 3. Write a program (linear search) that defines the last occurrence of a given
+ *          integer x in an array of integers that knowingly contains this number.
+ *       Task 4. Write a program that prints the number of maximum elements of a nonempty
+ *           array in which only one cycle is used.
+ *       Task 5. Write a program, print an array, then invert (that is, swap the first element
+ *           with the last, the second with the penultimate, etc.), and print again.
+ *       Task 6. Write a program that prints an array, then sorts it (that is, rearranges its
+ *           elements so that they are arranged in nondestructive order), and prints again.
+ *       Task 7. Write a program that determines whether the entered phrase is a palindrome.
+ *           A Palindrome is a phrase whose inverting does not change it. In this case all the gaps
+ *           in the phrase are ignored.
+ *       Task 8. Write a program that cyclically shifts array elements to the right one position,
+ *           and prints the result. Cyclic means that the last element of the array becomes the very
+ *           first element its element.
+ *       Task 9. Write a program that cyclically shifts the elements of the array to the right
+ *           by "k" positions, and prints the result.
+ *       Task 10. Write a program that replaces all elements of the array, except the extreme ones,
+ *           by half the sum neighbors, and prints the result.
+ *       Task 11. Write a program that counts two non-empty arrays of integers in the range from
+ *           zero to nine decimal representation of two numbers, prints their difference.
+ *       Task 12. Write a program that consists of two non-empty non-decreasing arrays of integers,
+ *           prints those and only those elements that occur in at least one of the arrays (the union of sets).
+ *       Task 13. Write a program that consists of two non-empty non-decreasing arrays of integers,
+ *           and prints those and only those elements that occur in both arrays (the intersection of sets).
+ *       Task 14. Write a program that consists of two non-empty non-decreasing arrays of integers,
+ *           prints those and only those elements that enter only one of the arrays (symmetric
+ *           difference of sets).
+ *       Task 15. Write a program that writes the first 100 natural numbers to the array,
+ *           dividing into 13 or 17, and printing it.
+ *       Task 16. Write a program that prints an integer number in an array of integers
+ *           local maximum (the element is a local maximum if it does not have neighbors,
+ *           greater than he himself).
+ */
 
 //TODO try to name methods by they logic //done
 //TODO make all methods dynamic //done
 //TODO do it with for each where it needed //done
-public class Task5 {
+
+class Task5 {
 
     public int printNullElements(int[] a) {
         int count = 0;
@@ -188,7 +191,7 @@ public class Task5 {
     public void differenceOfArrays(int[] a, int[] b) {
         int c[] = new int[9];
 
-        for (int i = 0; i < c.length; i++) {
+        for (int i : c) {
             c[i] = a[i] - b[i];
         }
 
