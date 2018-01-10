@@ -10,51 +10,60 @@ public class Taks5Test {
     public Task5 task5  = new Task5();
 
     @Test
-    public void homework1 (){ task5.homework1(); }
+    public void task1 (){
+        System.out.println(task5.printNullElements(new int[]{2, 3, 0, 6, 4, 0, 1})); }
 
     @Test
-    public void homework2 (){ task5.homework2(); }
+    public void task2 (){
+        System.out.println(task5.maxArrayElement(new int[]{1, 2, 3, 4, 7, 6})); }
 
     @Test
-    public void homework3 (){ task5.homework3(); }
+    public void task3 (){
+        System.out.println(task5.lastSpecifiedElement(new int[]{1, 3, 4, 5, 3, 7, 3, 6}, 3)); }
 
     @Test
-    public void homework4 () { task5.homework4();}
+    public void task4 (){
+            System.out.println(task5.amountMaxElement(new int[]{1, 3, 7, 0, 4, 7, 0, 2, 7})); }
 
     @Test
-    public void homework5 (){ task5.homework5(); }
+    public void task5 (){ task5.arrayInvert(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9}); }
 
     @Test
-    public void homework6 (){ task5.homework6(); }
+    public void task6 (){ task5.arraySorting(new int[]{2, 5, 6, 1, 4, 3, 7}); }
 
     @Test
-    public void homework7 (){ task5.homework7(); }
+    public void task7 (){
+        System.out.println(task5.thisIsPalindrome(new int[]{0, 1, 2, 3, 2, 1, 0})); }
 
     @Test
-    public void homework8 (){ task5.homework8(); }
+    public void task8 (){ task5.positionShiftOnOne(new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}); }
 
     @Test
-    public void homework9 (){ task5.homework9(); }
+    public void task9 (){ task5.positionShiftOnK(new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}); }
 
     @Test
-    public void homework10 (){ task5.homework10(); }
+    public void task10 (){ task5.halfSumm(new double[]{2, 4, 5, 6, 1}); }
 
     @Test
-    public void homework11 (){ task5.homework11(); }
+    public void task11 (){ task5.differenceOfArrays(new int[]{9, 3, 1, 4, 2, 5, 6, 7, 8},
+            new int[]{3, 1, 2, 8, 4, 7, 5, 6, 9}); }
 
     @Test
-    public void homework12 (){ task5.homework12(); }
+    public void task12 (){ task5.unionOfSets(new int[]{1, 2, 3, 4, 5, 11, 20},
+            new int[]{1, 2, 7, 14, 20, 21, 70, 60}); }
 
     @Test
-    public void homework13 (){ task5.homework13(); }
+    public void task13 (){ task5.intersectionOfMany(new int[]{1, 2, 3, 4, 5, 6, 70},
+            new int[]{1, 2, 7, 14, 6, 21, 70, 20}); }
 
     @Test
-    public void homework14 (){ task5.homework14(); }
+    public void task14 (){ task5.symmetricDifferenceOfSets(new int[]{1, 2, 3, 4, 5, 6, 70, 60},
+            new int[]{1, 2, 7, 14, 6, 21, 70, 20}); }
 
     @Test
-    public void homework15 (){ task5.homework15(); }
+    public void task15 (){ task5.divisionOfNumber(); }
 
     @Test
-    public void homework16 (){ task5.homework16(); }
+    public void task16 (){ task5.localMaximum(new int[]{2, 5, 7, 5, 2, 7, 9, 11}); }
 
 }

@@ -1,12 +1,14 @@
 package pain.humiliation.java.internetGetto.Pbahher.task5;
 
+@SuppressWarnings("Duplicates")
 /**
  * Created by pbahher on 12/21/17.
  */
 
+
 //      Task 1. Write a program that prints the number of zero elements in a given integer array.
 //      Task 2. Write a program that prints the maximum element of a non-empty array.
-//      Task 3. Write a program (linear search) that defines the first occurrence of a given
+//      Task 3. Write a program (linear search) that defines the last occurrence of a given
 //          integer x in an array of integers that knowingly contains this number.
 //      Task 4. Write a program that prints the number of maximum elements of a nonempty
 //          array in which only one cycle is used.
@@ -39,121 +41,127 @@ package pain.humiliation.java.internetGetto.Pbahher.task5;
 //          local maximum (the element is a local maximum if it does not have neighbors,
 //          greater than he himself).
 
-    //TODO try to name methods by they logic
-    //TODO make all methods dynamic
-    //TODO do it with for each where it needed
+//TODO try to name methods by they logic //done
+//TODO make all methods dynamic //done
+//TODO do it with for each where it needed //done
 public class Task5 {
 
-    public void homework1() {  //todo make all methods dynamic
-        int[] a = {2, 3, 0, 4, 0, 3, 0, 0};
-        int b = 0;
+    public int printNullElements(int[] a) {
         int count = 0;
 
-        for (int i = 0; i < a.length; i++) {  //todo do it with for each
-            if (a[i] == b) {
-                count++;
-            }
+        for (int i : a) {
+            if (i == 0) count++;
         }
-        //todo add extra line
-        System.out.print(count);
+
+        return count;
     }
 
-    public void homework2() {
-        int[] a = {2, 3, 0, 4, 0, 3, 0, 0};
+    public int maxArrayElement(int[] a) {
         int b = a[0];
-        //todo Where is check if array is not empty ???
-        for (int i = 0; i < a.length; i++) {
-            if (b < a[i]) {
-                b = a[i];
-            }
+
+        for (int i : a) {
+            if (b < i) b = i;
         }
-        //todo add extra line
-        System.out.println(b);
+
+        return b;
     }
 
-    public void homework3() {
-        int[] a = {2, 7, 3, 4, 0, 3, 0, 0};
-        int x = 3;
+    public int lastSpecifiedElement(int[] a, int b) {
+        int x = 0;
 
-        for (int i = 0; i < a.length; i++) {
-            if (a[i] == x) {
-                System.out.println(i); //First element of occurrence  //todo write another one method which will be print last specified element
-                break;
+        for (int i : a) {
+            if (b == a[i]) {
+                x = i;
             }
         }
+        return (x);
     }
 
-    public void homework4() {  //todo FIX IT.
-        int[] a = {1, 3, 7, 0, 4, 7, 0, 2, 7};
+    public int amountMaxElement(int[] a) {
+        int b = a[0];
         int count = 0;
 
-        for (int i = 0; i < a.length; i++) {
-            int b = a[i];
-            int max = i;
-
-            for (int j = 1; j < a.length; j++) {
-                if (a[j] > b) {
-                    b = a[j];
-                    max = j;
-                }
-            }
-            if (i == max) {
+        for (int i : a) {
+            if (i > b) {
+                b = i;
+                count = 1;
+            } else if (i == b) {
                 count++;
             }
         }
-        //todo add extra line
-        System.out.println(count); //Amount of ellements
+
+        return count;
     }
 
-    public void homework5() {
-        int[] a = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    public void arrayInvert(int[] a) {
 
-        for (int i = a.length -1; i >= 0; i--) {
+        for (int i = a.length - 1; i >= 0; i--) {
             System.out.print(a[i]);
         }
     }
 
-    public void homework6() {
-        //todo
-    }
-
-    public void homework7() {  //todo fix it with bool variable
-        int[] a = {0, 1, 2, 3, 2, 1, 0};
+    public void arraySorting(int[] a) {
+        String stringAsArray = "";
 
         for (int i = 0; i < a.length; i++) {
-            int b = a.length - i - 1;
-            //todo add extra line
-            if (a[i] != a[b]) {
-                System.out.println("Not a palindrome.");
+            int min = a[i];
+            int min_i = i;
+
+            for (int j = i + 1; j < a.length; j++) {
+
+                if (a[j] < min) {
+                    min = a[j];
+                    min_i = j;
+                }
             }
-            b--;
+            if (i != min_i) {
+                int tmp = a[i];
+                a[i] = a[min_i];
+                a[min_i] = tmp;
+            }
         }
-        //todo add extra line
-        System.out.println("Palindrome.");
+
+        for (int i : a) {
+            stringAsArray = stringAsArray + i + " ";
+        }
+
+        System.out.println(stringAsArray);
     }
 
-    public void homework8() {
-        int[] a = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 2, 13};
+    public boolean thisIsPalindrome(int[] a) {
+        boolean b = false;
+
+        for (int i = 0; i < a.length / 2; i++) {
+            if (a[i] == a[a.length - i - 1]) {
+                b = true;
+            } else {
+                b = false;
+            }
+        }
+
+        return b;
+    }
+
+    public void positionShiftOnOne(int[] a) {
         int temp = a[a.length - 1];
+        String moveElement = "";
 
         for (int i = a.length - 1; i > 0; i--) {
             a[i] = a[i - 1];
         }
 
         a[0] = temp;
-        //todo remove extra line
-        String moveElement = "";  //todo move it to top of this method
 
         for (int i : a) {
             moveElement = moveElement + i + " ";
         }
-        //todo add extra line
+
         System.out.println(moveElement);
     }
 
-    public void homework9() {
-        int[] a = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    public void positionShiftOnK(int[] a) {
         int positions = 5;
+        String moveElements = "";
 
         for (int i = 0; i < positions; i++) {
             int temp = a[a.length - 1];
@@ -165,41 +173,200 @@ public class Task5 {
             a[0] = temp;
         }
 
-        String moveElements = "";  //todo move it to top of this method
-
         for (int i : a) {
             moveElements = moveElements + i + " ";
         }
-        //todo add extra line
+
         System.out.println(moveElements);
     }
 
-    public void homework10() {
+    public void halfSumm(double[] a) {  //есть вопрос, выводит первое и последнее число как 0
+        double[] b = new double[5];
+
+        for (int i = 1; i < a.length - 1; i++) {
+            if (i - 1 < 0) {
+                b[i] = (a[i + 1] + a[a.length - 1]) / 2;
+            }
+
+            if (i + 1 >= a.length) {
+                b[i] = (a[i - 1] + a[0]) / 2;
+            }
+
+            if (!(i - 1 < 0) && !(i + 1 >= a.length)) {
+                b[i] = (a[i - 1] + a[i + 1]) / 2;
+            }
+        }
+
+        Utils.printDoubleMass(b);
 
     }
 
-    public void homework11() {
+    public void differenceOfArrays(int[] a, int[] b) {
+        int c[] = new int[9];
 
+        for (int i = 0; i < c.length; i++) {
+            c[i] = a[i] - b[i];
+        }
+
+        Utils.printIntMass(c);
     }
 
-    public void homework12() {
+    public void unionOfSets(int[] a, int[] b) {
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < b.length; j++) {
+                if (a[i] == b[j]) {
+                    b[j] = 0;
+                }
+            }
+        }
 
+        int size = a.length;
+
+        for (int i : b) {
+            if (i != 0) {
+                size++;
+            }
+        }
+
+        int c[] = new int[size];
+
+        for (int i = 0; i < a.length; i++) {
+            c[i] = a[i];
+        }
+
+        int index = a.length;
+
+        for (int i = 0; i < b.length; i++) {
+            if (b[i] != 0) {
+                c[index] = b[i];
+                index++;
+            }
+        }
+
+        Utils.printIntMass(Utils.sortMass(c));
     }
 
-    public void homework13() {
+    public void intersectionOfMany(int[] a, int[] b) {
+        int c[];
+        int size = 0;
 
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < b.length; j++) {
+                if (a[i] == b[j]) {
+                    size++;
+                }
+            }
+        }
+
+        c = new int[size];
+        int index = 0;
+
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < b.length; j++) {
+                if (a[i] == b[j]) {
+                    c[index] = b[j];
+                    index++;
+                }
+            }
+        }
+
+        Utils.printIntMass(Utils.sortMass(c));
     }
 
-    public void homework14() {
+    public void symmetricDifferenceOfSets(int[] a, int[] b) {
+        int c[] = new int[a.length + b.length];
 
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < b.length; j++) {
+                if (a[i] == b[j] && a[i] != 0 && b[i] != 0) {
+                    a[i] = b[j] = 0;
+                    break;
+                }
+            }
+        }
+
+        System.arraycopy(a, 0, c, 0, a.length);
+        System.arraycopy(b, 0, c, a.length, b.length);
+
+        int size = 0;
+
+        for (int i = 0; i < c.length; i++) {
+            if (c[i] != 0) {
+                size++;
+            }
+        }
+
+        int d[] = new int[size];
+        size = 0;
+
+        for (int i = 0; i < c.length; i++) {
+            if (c[i] != 0) {
+                d[size] = c[i];
+                size++;
+            }
+        }
+
+        Utils.printIntMass(Utils.sortMass(d));
     }
 
-    public void homework15() {
+    public void divisionOfNumber() {
+        int index = 0;
+        int value = 0;
+        int a[] = new int[100];
 
+        do {
+            if (value % 13 == 0 && value % 17 == 0) {
+                a[index] = value;
+                index++;
+            }
+
+            value++;
+        } while (index < 100);
+
+        Utils.printIntMass(a);
     }
 
-    public void homework16() {
+    public void localMaximum(int[] a) {
+        int[] b = new int[8];
 
+        for (int i = 0; i < a.length; i++) {
+            if (i - 1 < 0) {  //check for the first element
+                if (a[i] > a[a.length - 1] && a[i] > a[i + 1]) {
+                    b[i] = a[i];
+                }
+            }
+
+            if (i + 1 >= a.length) { //check for the last element
+                if (a[i] > a[i - 1] && a[i] > a[0]) {
+                    b[i] = a[i];
+                }
+            }
+
+            if (!(i - 1 < 0) && !(i + 1 >= a.length)) {  //all that is between the first and last element
+                if (a[i] > a[i - 1] && a[i] > a[i + 1]) {
+                    b[i] = a[i];
+                }
+            }
+        }
+
+        int size = 0;
+
+        for (int i = 0; i < b.length; i++) {
+            if (b[i] != 0) {
+                size++;
+            }
+        }
+
+        int c[] = new int[size];
+        int index = 0;
+
+        for (int i = 0; i < b.length; i++) {
+            if (b[i] != 0) {
+                c[index] = b[i];
+                index++;
+            }
+        }
+
+        Utils.printIntMass(c);
     }
-
 }
