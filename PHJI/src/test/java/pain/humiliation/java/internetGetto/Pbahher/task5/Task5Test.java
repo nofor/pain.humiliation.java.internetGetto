@@ -62,26 +62,22 @@ public class Task5Test {
 
     @Test
     public void task11() {
-        task5.differenceOfArrays(new int[]{9, 3, 1, 4, 2, 5, 6, 7, 8},
-                new int[]{3, 1, 2, 8, 4, 7, 5, 6, 9});
+        task5.differenceOfArrays(new int[]{9, 3, 1, 4, 2, 5, 6, 7, 8}, new int[]{3, 1, 2, 8, 4, 7, 5, 6, 9});
     }
 
     @Test
     public void task12() {
-        task5.unionOfSets(new int[]{1, 2, 3, 4, 5, 11, 20},
-                new int[]{1, 2, 7, 14, 20, 21, 70, 60});
+        task5.unionOfSets(new int[]{1, 2, 3, 4, 5, 11, 20}, new int[]{1, 2, 7, 14, 20, 21, 70, 60});
     }
 
     @Test
     public void task13() {
-        task5.intersectionOfMany(new int[]{1, 2, 3, 4, 5, 6, 70},
-                new int[]{1, 2, 7, 14, 6, 21, 70, 20});
+        task5.intersectionOfMany(new int[]{1, 2, 3, 4, 5, 6, 70}, new int[]{1, 2, 7, 14, 6, 21, 70, 20});
     }
 
     @Test
     public void task14() {
-        task5.symmetricDifferenceOfSets(new int[]{1, 2, 3, 4, 5, 6, 70, 60},
-                new int[]{1, 2, 7, 14, 6, 21, 70, 20});
+        task5.symmetricDifferenceOfSets(new int[]{1, 2, 3, 4, 5, 6, 70, 60}, new int[]{1, 2, 7, 14, 6, 21, 70, 20});
     }
 
     @Test

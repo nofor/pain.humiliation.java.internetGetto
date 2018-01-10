@@ -6,8 +6,7 @@ package pain.humiliation.java.internetGetto.Pbahher.task5;
  * Created by pbahher on 12/21/17.
  */
 
-
-/**     Task 1. Write a program that prints the number of zero elements in a given integer array.
+/**      Task 1. Write a program that prints the number of zero elements in a given integer array.
  *       Task 2. Write a program that prints the maximum element of a non-empty array.
  *       Task 3. Write a program (linear search) that defines the last occurrence of a given
  *          integer x in an array of integers that knowingly contains this number.
