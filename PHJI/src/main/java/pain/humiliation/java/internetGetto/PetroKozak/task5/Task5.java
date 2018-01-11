@@ -1,5 +1,7 @@
 package pain.humiliation.java.internetGetto.PetroKozak.task5;
 
+import java.util.Arrays;
+
 public class Task5 {
 
     public void printNullElements(int[] t1) {
@@ -78,7 +80,6 @@ public class Task5 {
         for (int x : t6) {
             System.out.print(x);
         }
-
     }
 
     public void checkIfPalindrome(int[] t) {
@@ -115,8 +116,10 @@ public class Task5 {
             for (int i = t9.length - 1; i > 0; i--) {
                 t9[i] = t9[i - 1];
             }
+
             t9[0] = firstEl;
         }
+
         for (int f : t9) {
             System.out.print(f);
         }
@@ -151,7 +154,7 @@ public class Task5 {
             }
 
             for (double x : resultArray) {
-                System.out.println(x + " ");
+                System.out.print(x + " ");
             }
         }
     }
@@ -198,22 +201,21 @@ public class Task5 {
         for (int x : resultArray) {
             System.out.print(x + " ");
         }
-
     }
 
     public void printElementsOnlyFromOneArray(int[] array1, int[] array2) {
 
     }
 
-    public void numbersThatDivideOn13And17() {
+    public void numbersThatDivideOn13And17(int length) {
         int count = 0;
-        int[] resultArray = new int[100];
+        int[] resultArray = new int[length];
 
         for (int i = 0; i < 1.0 / 0.0; i++) {
             if (i % 13 == 0 || i % 17 == 0) {
                 resultArray[count] = i;
                 count++;
-            } else if (count >= 100) {
+            } else if (count > length-1) {
                 break;
             }
         }

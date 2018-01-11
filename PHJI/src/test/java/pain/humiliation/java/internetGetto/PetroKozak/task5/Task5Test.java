@@ -44,7 +44,7 @@ public class Task5Test {
 
     @Test
     public void task7Test() {
-        int[] d = {1, 2, 3, 4, 5, 4, 3, 2, 1};
+        int[] d = {1, 2, 3, 3, 4, 3, 2, 1};
         task5.checkIfPalindrome(d);
     }
 
@@ -90,14 +90,14 @@ public class Task5Test {
 
     @Test
     public void task14Test() {
-        int[] array1 = {1, 2, 3, 4};
-        int[] array2 = {3, 4, 5, 6, 7, 8};
+        int[] array1 = {1, 2, 4};
+        int[] array2 = {2, 3};
         task5.printElementsOnlyFromOneArray(array1, array2);
     }
 
     @Test
     public void task15Test() {
-        task5.numbersThatDivideOn13And17();
+        task5.numbersThatDivideOn13And17(5);
     }
 
     @Test
