@@ -1,7 +1,5 @@
 package pain.humiliation.java.internetGetto.PetroKozak.task5;
 
-import java.util.Arrays;
-
 public class Task5 {
 
     public void printNullElements(int[] t1) {
