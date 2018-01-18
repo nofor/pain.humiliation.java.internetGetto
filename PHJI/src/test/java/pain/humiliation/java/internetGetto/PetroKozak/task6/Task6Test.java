@@ -10,8 +10,8 @@ import static org.junit.Assert.*;
 
 public class Task6Test {
 
-    private ArrayList<String> list = new ArrayList<>();
-    private ArrayList<String> list2 = new ArrayList<>();
+    private ArrayList<String> list = new ArrayList<String>();
+    private ArrayList<String> list2 = new ArrayList<String>();
 
     @Before
     public void initializer() {
