@@ -80,10 +80,21 @@ public class Task7Test {
     }
 
     @Test
+    public void clearTest2() {
+        collection.clear();
+        assertTrue(collection.size() == 0);
+    }
+
+    @Test
     public void retainAllTest() {
         collection.add("sss");
 
         assertFalse(collection.retainAll(collection));
+    }
+
+    @Test
+    public void retainAllTest2() {
+        assertTrue(collection.retainAll(collection2));
     }
 
     @Test
@@ -92,9 +103,15 @@ public class Task7Test {
     }
 
     @Test
-    public void subListSizeTest(){
+    public void subListTest2() {
+        collection.addAll(collection2.subList(0, 4));
+        assertTrue(collection.containsAll(collection2.subList(0, 4)));
+    }
+
+    @Test
+    public void subListSizeTest() {
         ArrayList<Object> subListArray = new ArrayList<Object>();
-        subListArray.add(collection.subList(2,3));
+        subListArray.add(collection.subList(2, 3));
 
         assertEquals(1, subListArray.size());
     }
@@ -109,6 +126,12 @@ public class Task7Test {
     @Test
     public void cloneTest() {
         assertEquals(collection, collection.clone());
+    }
+
+    @Test
+    public void cloneTest2() {
+        collection = (ArrayList<String>) collection2.clone();
+        assertEquals(collection.size(), collection2.size());
     }
 
     @Test
@@ -137,13 +160,18 @@ public class Task7Test {
     }
 
     @Test
+    public void removeTest2() { //strange that object-removing is boolean,while index-removing isn't.
+        assertTrue(collection.remove("c"));
+    }
+
+    @Test
     public void removeObjTest() {
         assertEquals(true, collection.remove("c"));
         assertEquals(5, collection.size());
     }
 
     @Test
-    public void retainAllSize(){
+    public void retainAllSize() {
         collection.retainAll(collection2);
 
         assertEquals(4, collection.size());
@@ -160,6 +188,12 @@ public class Task7Test {
     public void removeAllTest() {
         assertEquals(true, collection.removeAll(collection2));
         assertEquals(2, collection.size());
+    }
+
+    @Test
+    public void removeAllTest2() {
+        collection.addAll(collection2);
+        assertTrue(collection.removeAll(collection2));
     }
 
     @Test
@@ -195,7 +229,7 @@ public class Task7Test {
 
     @Test
     public void toArrayTest() {
-        String [] elements = collection.toArray(new String[collection.size()]);
+        String[] elements = collection.toArray(new String[collection.size()]);
 
         for (int i = 0; i < elements.length; i++) {
         }
