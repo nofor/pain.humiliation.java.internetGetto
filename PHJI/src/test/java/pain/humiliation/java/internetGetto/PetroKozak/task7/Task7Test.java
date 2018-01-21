@@ -132,19 +132,20 @@ public class Task7Test {
 
     @Test
     public void testIsEmpty() {
-        assertTrue("Collection is not empty", list.isEmpty());
+        assertTrue("Collection is not empty", list.isEmpty());  //todo change
     }
 
     @Test
     public void testIsEmpty2() {
-        assertTrue("Collection is not empty", list.size() == 0);
+        assertTrue("Collection is not empty", list.size() == 0);  //todo change
     }
 
     @Test
     public void testRemoveAll() {
         list.addAll(list2);
         list.removeAll(list2);
-        assertTrue("Collection does not contain the required Object", list.containsAll(list2));
+        //todo add extra line
+        assertTrue("Collection does not contain the required Object", list.containsAll(list2));  //todo change
     }
 
     @Test
@@ -157,7 +158,7 @@ public class Task7Test {
     public void testSetValue() {
         ArrayList<String> testList = (ArrayList<String>) list.clone();
         list.set(3, "blablabla");
-        assertEquals("Collections are not equal, which means that new element was added", testList, list);
+        assertEquals("Collections are not equal, which means that new element was added", testList, list);  //todo change
     }
 
     @Test
@@ -173,24 +174,25 @@ public class Task7Test {
     }
 
     @Test
-    public void testSublist() {
+    public void testSublist() {  //todo think about value of indexes
         list.addAll(list2.subList(2, 4));
         assertTrue(list.containsAll(list2.subList(2, 4)));
     }
 
     @Test
-    public void testIndexOf() { //WTF???
+    public void testIndexOf() { //WTF???  //todo remove it
         assertEquals(1, list.indexOf("hard"));
     }
 
     @Test
-    public void testLastIndexOf() { //WTF???
+    public void testLastIndexOf() { //WTF???  //todo remove it
         assertEquals(3, list.lastIndexOf("hard"));
     }
 
     @Test
-    public void testRemove() {
+    public void testRemove() {  //todo change
         String a = list.get(2);
+        //todo add extra line
         list.remove(2);
         assertEquals(a, list.get(2));
     }
@@ -207,14 +209,15 @@ public class Task7Test {
     }
 
     @Test
-    public void testBehaviourAfterRemove() {
+    public void testBehaviourAfterRemove() {  //todo rename method to format what is method do
         String a = list.get(3);
+        //todo add extra line
         list.remove(2);
         assertEquals(a, list.get(2));
     }
 
     @Test
-    public void testBehaviourAfterAdd() {
+    public void testBehaviourAfterAdd() {  //todo rename method to format what is method do
         list.add("added");
         assertTrue(list.indexOf("added") == list.size() - 1);
     }
@@ -223,7 +226,7 @@ public class Task7Test {
     public void testBehaviourAfterAdd2() {
         int a = list.size();
         list.add("added");
-        int b = list.size();
+        int b = list.size();  //todo remove b variable
         assertTrue(b > a);
     }
 
@@ -235,6 +238,7 @@ public class Task7Test {
             iter.next();
             iter.remove();
         }
+        //todo add extra line
         assertTrue(list.size() == 0);
     }
 
@@ -246,6 +250,7 @@ public class Task7Test {
             iter.next();
             iter.remove();
         }
+        //todo add extra line
         assertTrue(list.isEmpty());
     }
 
@@ -253,12 +258,13 @@ public class Task7Test {
     public void deleteWithIterator3() {
         ListIterator<String> iter = list.listIterator();
         int a = list.size();
+        //todo add extra line
         while (iter.hasNext()) {
             iter.next();
             iter.remove();
         }
 
-        int b = list.size();
+        int b = list.size();  //todo remove b variable
         assertTrue(a > b);
     }
 
@@ -267,7 +273,7 @@ public class Task7Test {
         ListIterator<String> iter = list.listIterator();
 
         while (iter.hasNext()) {
-            iter.next();
+            iter.next();  //todo RITUAL BONFIRE !!!
 
             if (iter.next().equals("hard")) {
                 iter.remove();
@@ -286,7 +292,7 @@ public class Task7Test {
             iter.add("add1");
         }
 
-        assertTrue(list.contains("add1"));
+        assertTrue(list.contains("add1"));  //todo change this method to find count of elements which == "add1"
     }
 
     @Test
@@ -299,9 +305,9 @@ public class Task7Test {
             iter.add("add1");
         }
 
-        int b = list.size();
+        int b = list.size();  //todo remove "b" variable
 
-        assertTrue(b > a);
+        assertTrue(b > a);  //todo make it more informative and logically
     }
 
     @Test
@@ -334,6 +340,7 @@ public class Task7Test {
         assertTrue(a == list.size());
     }
 
+    //todo test it with 100, 1000, 10000 elements
     @Test
     public void testTimeOfAddingInside() {
         long startTimeArrayList = System.nanoTime();
@@ -341,18 +348,19 @@ public class Task7Test {
         list.add(3, "added element");
 
         long spentTimeArrayList = System.nanoTime() - startTimeArrayList;
-
+        //todo remove extra line
         long startTimeLinkedList = System.nanoTime();
 
         linkedlist.add(3, "added element");
 
         long spentTimeLinkedList = System.nanoTime() - startTimeLinkedList;
 
-        System.out.println("Arraylist did add in " + spentTimeArrayList + " millisecs" +
+        System.out.println("Arraylist did add in " + spentTimeArrayList + " millisecs" +  //todo this is nanoseconds
                 "\nLinkedlist did add in " + spentTimeLinkedList + " millisecs");
 
     }
 
+    //todo test it with 100, 1000, 10000 elements
     @Test
     public void testTimeOfDeletion() {
         long startTimeArrayList = System.nanoTime();
@@ -360,18 +368,19 @@ public class Task7Test {
         list.remove(3);
 
         long spentTimeArrayList = System.nanoTime() - startTimeArrayList;
-
+        //todo remove extra line
         long startTimeLinkedList = System.nanoTime();
 
         linkedlist.remove(3);
 
         long spentTimeLinkedList = System.nanoTime() - startTimeLinkedList;
 
-        System.out.println("Arraylist did remove in " + spentTimeArrayList + " millisecs" +
+        System.out.println("Arraylist did remove in " + spentTimeArrayList + " millisecs" +  //todo this is nanoseconds
                 "\nLinkedlist did remove in " + spentTimeLinkedList + " millisecs");
 
     }
 
+    //todo test it with 100, 1000, 10000 elements
     @Test
     public void testTimeOfSearch() {
         long startTimeArrayList = System.nanoTime();
@@ -379,7 +388,7 @@ public class Task7Test {
         list.get(3);
 
         long spentTimeArrayList = System.nanoTime() - startTimeArrayList;
-
+        //todo remove extra line
         long startTimeLinkedList = System.nanoTime();
 
         linkedlist.get(3);
@@ -394,7 +403,7 @@ public class Task7Test {
     @Test
     public void testToArray() {
         Object[] a;
-        a = list.toArray();
+        a = list.toArray();  //todo initialize it above
 
         for (int i = 0; i < list.size(); i++) {
             assertEquals(a[i], list.get(i));
@@ -402,7 +411,7 @@ public class Task7Test {
     }
 
     @Test
-    public void checkIfTheresNull() {
+    public void checkIfTheresNull() {  //todo change
         list.add(null);
 
         for (String i : list) {
@@ -416,7 +425,7 @@ public class Task7Test {
         int count = 0;
 
         while (iter.hasNext()) {
-            iter.next();
+            iter.next();  //todo RITAL BONFIRE !!!!
             if (iter.next().equals("hard"))
                 count++;
         }
@@ -426,11 +435,11 @@ public class Task7Test {
 
     @Test
     public void testMethodEquals() {
-        assertTrue(list.get(1).equals(list.get(3)));
+        assertTrue(list.get(1).equals(list.get(3)));  //todo change it to more accurate, informative and logically
     }
 
     @Test
-    public void testHashcode() {
+    public void testHashcode() {  //todo change it to more accurate, informative and logically
         if (list.get(1).hashCode() == list2.get(1).hashCode()) {
             System.out.println("Elements are equal");
         }
@@ -439,6 +448,8 @@ public class Task7Test {
     @After
     public void cleanGarbage() {
         list.clear();
+        list2.clear();
+        linkedlist.clear();
     }
 
 }

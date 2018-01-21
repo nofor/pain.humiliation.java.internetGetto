@@ -36,7 +36,7 @@ public class Task7Test {
     @Test
     public void testAddElements() {
         mainArrayList.add("temp");
-
+        //todo remove extra line
         assertTrue("temp".equals(mainArrayList.get(mainArrayList.size() - 1)));
     }
 
@@ -48,7 +48,7 @@ public class Task7Test {
     @Test
     public void testAddInCollection() {
         mainArrayList.add(0, "temp");
-
+        //todo remove extra line
         assertFalse("one".equals(mainArrayList.get(0)));
     }
 
@@ -57,29 +57,31 @@ public class Task7Test {
         int mainSize = mainArrayList.size();
 
         mainArrayList.addAll(tempArrayList);
-
+        //todo remove extra line
         assertFalse(mainSize == mainArrayList.size());
     }
 
     @Test
     public void testAddAllPosition() {
         mainArrayList.addAll(tempArrayList);
-
+        //todo remove extra line
         assertTrue(8 == mainArrayList.indexOf("nine"));
     }
 
     @Test
     public void testAddAllElementsInPosition() {
         mainArrayList.addAll(1, tempArrayList);
-
+        //todo remove extra line
         assertNotEquals("Two", mainArrayList.get(1));
+        //todo add check on first element of second collection
     }
 
     @Test
     public void testAddAllElementsInPositionSubList() {
         mainArrayList.addAll(1, tempArrayList);
+        //todo add extra line
         Object[] array = mainArrayList.subList(1, 5).toArray();
-
+        //todo remove extra line
         assertArrayEquals(new Object[]{"seven", "eight", "nine", "one"}, array);
     }
 
@@ -98,14 +100,14 @@ public class Task7Test {
     @Test
     public void testClear() {
         mainArrayList.clear();
-
+        //todo remove extra line
         assertEquals(0, mainArrayList.size());
     }
 
     @Test
     public void testClearTakeElementFromCollection() {
         mainArrayList.clear();
-
+        //todo remove extra line
         assertFalse("one".equals(mainArrayList.contains("one")));
     }
 
@@ -121,29 +123,30 @@ public class Task7Test {
     @Test
     public void testCloneSize() {
         int mainSize = mainArrayList.size();
+        //todo add extra line
         mainArrayList = (ArrayList<Object>) tempArrayList.clone();
-
+        //todo remove extra line
         assertNotEquals(mainSize, mainArrayList);
     }
 
     @Test
     public void testCloneWithGet() {
         mainArrayList = (ArrayList<Object>) tempArrayList.clone();
-
+        //todo remove extra line
         assertNotEquals("one", mainArrayList.get(0));
     }
 
     @Test
     public void testCloneWithArray() {
         mainArrayList = (ArrayList<Object>) tempArrayList.clone();
-
+        //todo remove extra line
         assertArrayEquals(mainArrayList.toArray(), tempArrayList.toArray());
     }
 
     @Test
     public void testCloneAndContains() {
         mainArrayList = (ArrayList<Object>) tempArrayList.clone();
-
+        //todo remove extra line
         assertFalse(mainArrayList.contains("two"));
     }
 
@@ -157,7 +160,7 @@ public class Task7Test {
         assertFalse(mainArrayList.contains(tempArrayList.get(1)));
     }
 
-    @Test
+    @Test  //todo remove copy
     public void testContainsWithGetString() {
         assertTrue(mainArrayList.contains("one"));
     }
@@ -170,7 +173,7 @@ public class Task7Test {
     @Test
     public void testIsEmptyTrue() {
         mainArrayList.clear();
-
+        //todo remove extra line
         assertTrue(mainArrayList.isEmpty());
     }
 
@@ -217,7 +220,7 @@ public class Task7Test {
 
         while (iterator.hasNext()) {
             iterator.next(); //must be called
-
+        //todo remove extra line
             iterator.remove();
         }
 
@@ -225,7 +228,7 @@ public class Task7Test {
     }
 
     @Test
-    public void testListIterator() {
+    public void testListIterator() {  //todo +1 v karmy
         ListIterator iterator = mainArrayList.listIterator();
         int i = mainArrayList.size() - 1;
 
@@ -259,7 +262,7 @@ public class Task7Test {
         int i = 0;
 
         runListIterator(listIterator, i);
-
+        //todo remove extra line
         assertEquals(1, mainArrayList.get(1));
     }
 
@@ -269,7 +272,7 @@ public class Task7Test {
         int i = 0;
 
         runListIterator(listIterator, i);
-
+        //todo remove extra line
         assertFalse(mainArrayList.contains("two"));
     }
 
@@ -286,44 +289,44 @@ public class Task7Test {
     @Test
     public void testSet() {
         mainArrayList.set(0, "1");
-
+        //todo remove extra line
         assertFalse("one".equals(mainArrayList.get(0)));
     }
 
     @Test
     public void testSetSize() {
         mainArrayList.set(0, "1");
-
+        //todo remove extra line
         assertEquals(6, mainArrayList.size());
     }
 
     @Test
-    public void testSetNotSame() {
+    public void testSetNotSame() {  //todo +1 v karmy za not same method
         Object temp = mainArrayList.get(0);
 
         mainArrayList.set(0, "1");
-
+        //todo remove extra line
         assertNotSame(temp, mainArrayList.get(0));
     }
 
     @Test
     public void testRemoveIndex() {
         mainArrayList.remove(1);
-
+        //todo remove extra line
         assertTrue(5 == mainArrayList.size());
     }
 
     @Test
     public void testRemoveIndexGet() {
         mainArrayList.remove(4);
-
+        //todo remove extra line
         assertFalse("five".equals(mainArrayList.get(4)));
     }
 
     @Test
     public void testRemoveIndexContains() {
         mainArrayList.remove(3);
-
+        //todo remove extra line
         assertFalse(mainArrayList.contains("four"));
     }
 
@@ -335,14 +338,14 @@ public class Task7Test {
     @Test
     public void testRemoveObjectGet(){
         mainArrayList.remove("four");
-
+        //todo remove extra line
         assertNotSame("four", mainArrayList.get(3));
     }
 
     @Test
     public void testRemoveObjectContains(){
         mainArrayList.remove("four");
-
+        //todo remove extra line
         assertFalse(mainArrayList.contains("four"));
     }
 
@@ -359,20 +362,20 @@ public class Task7Test {
     @Test
     public void testRemoveAll(){
         mainArrayList.removeAll(mainArrayList);
-
+        //todo remove extra line
         assertEquals(0, mainArrayList.size());
     }
 
     @Test
     public void testRemoveAllSizeWithTempArrayList(){
         mainArrayList.removeAll(tempArrayList);
-
+        //todo remove extra line
         assertNotEquals(6, mainArrayList.size());
     }
 
     @Test
     public void testRemoveALlWithTempArrayList(){
-        Object[] temp;
+        Object[] temp;  //todo initialize it during first use
 
         mainArrayList.removeAll(tempArrayList);
         temp = mainArrayList.toArray();
@@ -382,21 +385,21 @@ public class Task7Test {
 
     @Test
     public void testRetainAllSizeWithSameArrayListSize(){
-        mainArrayList.retainAll(mainArrayList);
-
+        mainArrayList.retainAll(mainArrayList);  //todo do not yse the same collection
+        //todo remove extra line
         assertEquals(6, mainArrayList.size());
     }
 
     @Test
     public void testRetainAllWithTempArrayListSize(){
         mainArrayList.retainAll(tempArrayList);
-
+        //todo remove extra line
         assertEquals(3, mainArrayList.size());
     }
 
     @Test
     public void testRetainAllWithTempArrayListArrayEquals(){
-        Object[] mainArrayBeforeRetain;
+        Object[] mainArrayBeforeRetain;  //todo initialize it during first use
 
         mainArrayList.retainAll(tempArrayList);
         mainArrayBeforeRetain = mainArrayList.toArray();
@@ -406,9 +409,10 @@ public class Task7Test {
 
     @Test
     public void testSubListSize(){
-        ArrayList<Object> subListArray = new ArrayList<Object>();
+        ArrayList<Object> subListArray = new ArrayList<Object>();  //todo test your own collection
+        //todo add extra line
         subListArray.add(mainArrayList.subList(1,4));
-
+        //todo remove extra line
         assertEquals(1, subListArray.size());
     }
 

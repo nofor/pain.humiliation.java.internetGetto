@@ -45,7 +45,7 @@ public class HelpTest {
     @Test
     public void teasAddElementIndex () {
         arrayList.add(4, "motherfucking");
-
+        //todo remove extra line
         assertEquals("motherfucking", arrayList.get(4));
         //assertEquals();
         //assertFalse();
