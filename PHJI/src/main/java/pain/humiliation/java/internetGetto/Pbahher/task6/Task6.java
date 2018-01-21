@@ -1,7 +1,10 @@
 package pain.humiliation.java.internetGetto.Pbahher.task6;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ListIterator;
+
+import static java.util.Arrays.asList;
 
 /**
  * Created by pbahher on 1/16/18.
@@ -21,11 +24,7 @@ public class Task6 {
     }
 
     public void size() {
-        collection.add("a");
-        collection.add("b");
-        collection.add("c");
-        collection.add("d");
-        collection.add("f");
+        List<Integer> collection = asList(1, 2, 3, 4, 5);
 
         collection.size();
 
@@ -33,12 +32,7 @@ public class Task6 {
     }
 
     public void isEmpty() {
-        collection.add("a");
-        collection.add("b");
-        collection.add("c");
-        collection.add("d");
-        collection.add("b");
-        collection.add("f");
+        List<Integer> collection = asList(1, 2, 3, 4, 5);
 
         collection.isEmpty();
 
@@ -46,42 +40,27 @@ public class Task6 {
     }
 
     public void contains() {
-        collection.add("a");
-        collection.add("b");
-        collection.add("c");
-        collection.add("d");
-        collection.add("b");
-        collection.add("f");
+        List<Integer> collection = asList(1, 2, 3, 4, 5);
 
-        collection.contains("g");
+        collection.contains(6);
 
-        System.out.println(collection.contains("g"));
+        System.out.println(collection.contains(6));
     }
 
     public void indexOff() {
-        collection.add("a");
-        collection.add("b");
-        collection.add("c");
-        collection.add("d");
-        collection.add("b");
-        collection.add("f");
+        List<Integer> collection = asList(1, 2, 3, 4, 5);
 
-        collection.indexOf("b");
+        collection.indexOf(6);
 
-        System.out.println(collection.indexOf("b"));
+        System.out.println(collection.indexOf(6));
     }
 
     public void lastIndexOff() {
-        collection.add("a");
-        collection.add("b");
-        collection.add("c");
-        collection.add("d");
-        collection.add("b");
-        collection.add("f");
+        List<Integer> collection = asList(1, 2, 3, 4, 5);
 
-        collection.lastIndexOf("b");
+        collection.lastIndexOf(2);
 
-        System.out.println(collection.lastIndexOf("b"));
+        System.out.println(collection.lastIndexOf(2));
     }
 
     public void clones() {
@@ -90,10 +69,7 @@ public class Task6 {
 
     public void toArray() {
         Object a[] = new String[4];
-        collection.add("a");
-        collection.add("b");
-        collection.add("c");
-        collection.add("d");
+        List<String> collection = asList("a", "b", "c", "d");
 
         collection.toArray(a);
 
@@ -106,11 +82,7 @@ public class Task6 {
 
     public void toArrayT() {
         Object a[] = new String[5];
-        collection.add("a");
-        collection.add("b");
-        collection.add("c");
-        collection.add("d");
-        collection.add("e");
+        List<String> collection = asList("a", "b", "c", "d", "e");
 
         collection.toArray(a);
 
@@ -122,12 +94,7 @@ public class Task6 {
     }
 
     public void get() {
-        collection.add("a");
-        collection.add("b");
-        collection.add("c");
-        collection.add("d");
-        collection.add("e");
-        collection.add("f");
+        List<String> collection = asList("a", "b", "c", "d", "e", "f");
 
         collection.get(2);
 
@@ -135,10 +102,7 @@ public class Task6 {
     }
 
     public void set() {
-        collection.add("a");
-        collection.add("b");
-        collection.add("c");
-        collection.add("d");
+        List<String> collection = asList("a", "b", "c", "d");
 
         collection.set(2, "e");
 
@@ -146,30 +110,20 @@ public class Task6 {
     }
 
     public void add() {
-        collection.add("a");
-        collection.add("b");
-        collection.add("c");
-        collection.add("d");
+        List<String> collection = asList("a", "b", "c", "d");
 
         System.out.println(collection);
     }
 
     public void addPosition() {
-        collection.add("a");
-        collection.add("b");
-        collection.add("c");
-        collection.add("d");
+        List<String> collection = asList("a", "b", "c", "d");
         collection.add(1, "e");
 
         System.out.println(collection);
     }
 
     public void removePosition() {
-        collection.add("a");
-        collection.add("b");
-        collection.add("c");
-        collection.add("d");
-        collection.add("e");
+        List<String> collection = asList("a", "b", "c", "d", "e");
 
         collection.remove(collection.get(2));
 
@@ -177,11 +131,7 @@ public class Task6 {
     }
 
     public void remove() {
-        collection.add("a");
-        collection.add("b");
-        collection.add("c");
-        collection.add("d");
-        collection.add("e");
+        List<String> collection = asList("a", "b", "c", "d", "e", "f");
 
         collection.remove("e");
 
@@ -189,11 +139,7 @@ public class Task6 {
     }
 
     public void clear() {
-        collection.add("a");
-        collection.add("b");
-        collection.add("c");
-        collection.add("d");
-        collection.add("e");
+        List<String> collection = asList("a", "b", "c", "d", "e", "f");
 
         collection.clear();
 
@@ -201,11 +147,8 @@ public class Task6 {
     }
 
     public void addAll() {
-        collection.add("a");
-        collection.add("b");
-        collection.add("c");
-        collection2.add("d");
-        collection2.add("e");
+        List<String> collection = asList("a", "b", "c", "f");
+        List<String> collection2 = asList("d", "e");
 
         collection.addAll(collection2);
 
@@ -214,10 +157,7 @@ public class Task6 {
     }
 
     public void addAllPosition() {
-        collection.add("a");
-        collection.add("b");
-        collection.add("c");
-        collection.add("d");
+        List<String> collection = asList("a", "b", "c", "d");
         collection2.add("e");
 
         collection.addAll(2,collection2);
@@ -226,11 +166,7 @@ public class Task6 {
     }
 
     public void removeRange() {
-        collection.add("a");
-        collection.add("b");
-        collection.add("c");
-        collection.add("d");
-        collection.add("e");
+        List<String> collection = asList("a", "b", "c", "d", "e", "f");
 
         //collection.removeRange(2, 3);
 
@@ -238,11 +174,8 @@ public class Task6 {
     }
 
     public void removeAll() {
-        collection.add("a");
-        collection.add("b");
-        collection2.add("c");
-        collection.add("d");
-        collection2.add("e");
+        List<String> collection = asList("a", "b", "d", "f");
+        List<String> collection2 = asList("c", "e");
 
         collection.removeAll(collection2);
 
@@ -250,11 +183,8 @@ public class Task6 {
     }
 
     public void retainAll() {
-        collection.add("a");
-        collection2.add("a");
-        collection2.add("b");
-        collection.add("c");
-        collection2.add("d");
+        List<String> collection = asList("a", "c", "e", "f");
+        List<String> collection2 = asList("b","d");
 
         System.out.println(collection.retainAll(collection2));
 
@@ -262,12 +192,7 @@ public class Task6 {
     }
 
     public void listIteratorPosition() {
-        collection.add("a");
-        collection.add("b");
-        collection.add("c");
-        collection.add("d");
-        collection.add("e");
-        collection.add("f");
+        List<String> collection = asList("a", "b", "c", "d", "e", "f");
 
         ListIterator<String> listIter = collection.listIterator(3);
 
@@ -278,7 +203,14 @@ public class Task6 {
     }
 
     public void listIterator() {
+        List<String> collection = asList("a", "b", "c", "d", "e", "f");
 
+        ListIterator<String> listIter = collection.listIterator();
+
+        while(listIter.hasNext()) {
+
+            System.out.println(listIter.next());
+        }
     }
 
     public void iterator() {
@@ -286,12 +218,7 @@ public class Task6 {
     }
 
     public void subList() {
-        collection.add("a");
-        collection.add("b");
-        collection.add("c");
-        collection.add("d");
-        collection.add("e");
-        collection.add("f");
+        List<String> collection = asList("a", "b", "c", "d", "e", "f");
 
         collection.subList(2, 4).clear();
 
