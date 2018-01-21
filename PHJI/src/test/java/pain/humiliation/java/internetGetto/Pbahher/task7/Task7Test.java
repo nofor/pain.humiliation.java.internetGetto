@@ -197,6 +197,11 @@ public class Task7Test {
     }
 
     @Test
+    public void ensureCapaTest() {
+        collection.ensureCapacity(0);
+    }
+
+    @Test
     public void isEmptyTest() {
         assertFalse(collection.isEmpty());
     }
