@@ -5,7 +5,7 @@ import java.util.Iterator;
 /**
  * Created by pbahher on 1/23/18.
  */
-public class MyArray<E> implements My<E> {
+public class MyArray<E> implements My<E> {  //todo use next implementation "implements List<E>, RandomAccess, Cloneable, java.io.Serializable"
 
     public E[] values;
 
@@ -14,7 +14,7 @@ public class MyArray<E> implements My<E> {
     }
 
     @Override
-    public boolean add(E e) {
+    public boolean add(E e) {   //todo use only one return statement
         try {
             E[] temp = values;
             values = (E[]) new Object[temp.length + 1];

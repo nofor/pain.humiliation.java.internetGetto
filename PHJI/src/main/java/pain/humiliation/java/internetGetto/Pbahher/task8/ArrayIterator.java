@@ -4,7 +4,7 @@ import java.util.Iterator;
 /**
  * Created by pbahher on 1/23/18.
  */
-public class ArrayIterator<E> implements Iterator<E> {
+public class ArrayIterator<E> implements Iterator<E> {  //todo better to remove it
     private int index = 0;
     private E[] values;
 

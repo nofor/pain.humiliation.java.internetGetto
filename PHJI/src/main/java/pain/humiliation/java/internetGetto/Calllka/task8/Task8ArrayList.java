@@ -2,8 +2,8 @@ package pain.humiliation.java.internetGetto.Calllka.task8;
 
 import java.io.Serializable;
 import java.util.*;
-
-public class Task8ArrayList implements List, RandomAccess, Cloneable, Serializable {
+//todo make flag as local variable
+public class Task8ArrayList implements List, RandomAccess, Cloneable, Serializable {  //todo add generic here. Collection must be generic
     private static int MAIN_CAPACITY = 2;
     private static Object[] mainArray = new Object[MAIN_CAPACITY];
     private int size = 0;
@@ -41,22 +41,24 @@ public class Task8ArrayList implements List, RandomAccess, Cloneable, Serializab
     @Override
     public Object[] toArray() {
         Object[] tempArray = new Object[size()];
+        //todo extra line
         for (int i = 0; i < size(); i++) {
             tempArray[i] = mainArray[i];
         }
+        //todo extra line
         return tempArray;
     }
 
     @Override
     public boolean add(Object o) {
-
+        //todo remove extra line
         try {
             mainArray[size] = o;
             flag = true;
         } catch (IndexOutOfBoundsException ex) {
             increaseArrayCapacity(mainArray, size * 2);
             mainArray[size] = o;
-
+            //todo remove extra line
             flag = true;
         }
 
@@ -66,14 +68,14 @@ public class Task8ArrayList implements List, RandomAccess, Cloneable, Serializab
 
     @Override
     public boolean remove(Object o) {
-        if (contains(o)) {
+        if (contains(o)) {  //todo think why do you need it here
             for (int i = 0; i < size(); i++) {
                 if (mainArray[i].equals(o)) {
                     for (int j = i; j < size() - 1; j++) {
                         mainArray[j] = mainArray[j + 1];
                     }
                     mainArray[size--] = null;
-
+                    //todo remove extra line
                     break;
                 }
             }
@@ -87,7 +89,7 @@ public class Task8ArrayList implements List, RandomAccess, Cloneable, Serializab
     }
 
     @Override
-    public boolean addAll(Collection collection) {
+    public boolean addAll(Collection collection) {  //todo change it
         int sumSizeArray = size + collection.size();
         Object[] collectionArray = collection.toArray();
 
@@ -111,7 +113,7 @@ public class Task8ArrayList implements List, RandomAccess, Cloneable, Serializab
     @Override
     public void clear() {
         for (int i = 0; i < size(); i++) {
-            mainArray[i] = null;
+            mainArray[i] = null;  //todo this must be new empty array
         }
 
         size = 0;
@@ -211,7 +213,7 @@ public class Task8ArrayList implements List, RandomAccess, Cloneable, Serializab
         }
 
         mainArray = tempArray;
-
+        //todo remove extra line
         return mainArray;
     }
 }
