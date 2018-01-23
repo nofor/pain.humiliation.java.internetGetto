@@ -1,11 +1,8 @@
 package pain.humiliation.java.internetGetto.PetroKozak.collectiontask;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
-public class MyCollection implements List {
+public class MyCollection implements List,RandomAccess,Cloneable,java.io.Serializable {
 
     private int size;
 
@@ -36,9 +33,8 @@ public class MyCollection implements List {
 
     @Override
     public boolean add(Object o) {
-        return false;
+        return true;
     }
-
     @Override
     public boolean remove(Object o) {
         return false;
