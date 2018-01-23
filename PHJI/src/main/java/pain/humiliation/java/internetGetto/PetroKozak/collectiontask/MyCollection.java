@@ -2,7 +2,7 @@ package pain.humiliation.java.internetGetto.PetroKozak.collectiontask;
 
 import java.util.*;
 
-public class MyCollection implements List,RandomAccess,Cloneable,java.io.Serializable {
+public class MyCollection <E>implements List<E>,RandomAccess,Cloneable,java.io.Serializable {
 
     private int size;
 
@@ -56,7 +56,7 @@ public class MyCollection implements List,RandomAccess,Cloneable,java.io.Seriali
     }
 
     @Override
-    public Object get(int index) {
+    public E get(int index) {
         return null;
     }
 
@@ -71,7 +71,7 @@ public class MyCollection implements List,RandomAccess,Cloneable,java.io.Seriali
     }
 
     @Override
-    public Object remove(int index) {
+    public E remove(int index) {
         return null;
     }
 
