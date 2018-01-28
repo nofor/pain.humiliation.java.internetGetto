@@ -24,7 +24,7 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
 
     @Override
     public boolean contains(Object o) {
-        return indexOf(o)>=0;
+        return indexOf(o) >= 0;
     }
 
     @Override
@@ -71,6 +71,7 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
                 }
             }
         }
+
         default_array[size() - 1] = null;
         size--;
         return true;
@@ -96,6 +97,27 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
 
     @Override
     public boolean addAll(int index, Collection c) {
+        Object[] array2 = c.toArray();
+        Object[] result = new Object[size() + array2.length];
+        int count = 0;
+        int count2 = size - index;
+
+        for (int i = 0; i < index; i++) {
+            result[i] = default_array[i];
+        }
+        size = size + array2.length;
+
+        for (int j = index + 1; j < array2.length; j++) {
+            result[j] = array2[count];
+            count++;
+        }
+
+        for (int k = array2.length + index; k < size - array2.length + index; k++) {
+            result[k] = default_array[count2];
+            count2++;
+        }
+
+        default_array = result;
         return false;
     }
 
@@ -123,26 +145,20 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
 
     @Override
     public void add(int index, Object element) {
-        try {
-            default_array[size()] = default_array[size() - 1];
+        Object[] result = new Object[size() + 1];
 
-            for (int j = index; j <= size() - 1; j++) {
-                default_array[j + 1] = default_array[j];
-            }
-
-            default_array[index] = element;
-        } catch (IndexOutOfBoundsException ex) {
-            makeCapacityBigger(default_array);
-
-            default_array[size()] = default_array[size() - 1];
-
-            for (int j = index; j <= size() - 1; j++) {
-                default_array[j + 1] = default_array[j];
-            }
-            default_array[index] = element;
+        for (int i = 0; i < index; i++) {
+            result[i] = default_array[i];
         }
 
+        result[index] = element;
         size++;
+
+        for (int j = index + 1; j < size; j++) {
+            result[j] = default_array[j - 1];
+        }
+
+        default_array = result;
     }
 
     @Override
@@ -165,6 +181,7 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
             if (default_array[i].equals(o))
                 return i;
         }
+
         return 0;
     }
 
@@ -174,6 +191,7 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
             if (default_array[i].equals(o))
                 return i;
         }
+
         return -1;
     }
 
@@ -189,7 +207,15 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
 
     @Override
     public List subList(int fromIndex, int toIndex) {
-        return null;
+        Object[] result = new Object[toIndex - fromIndex];
+        int count = 0;
+
+        for (int i = fromIndex; i < toIndex; i++) {
+            result[count] = default_array[i];
+            count++;
+        }
+
+        return Arrays.asList(result);
     }
 
     @Override
@@ -220,22 +246,71 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
         for (Object x : resultArray) {
             System.out.print(x + " ");
         }
+
         return false;
     }
 
     @Override
     public boolean removeAll(Collection c) {
+        Object[] array2 = c.toArray();
+
+        for (int i = 0; i < size(); i++) {
+            for (int k = 0; k < array2.length; k++) {
+                if (default_array[i] == array2[k]) {
+                    remove(indexOf(array2[k]));
+                } else {
+                    continue;
+                }
+            }
+        }
+
         return false;
     }
 
     @Override
     public boolean containsAll(Collection c) {
-        return false;
+        int resultArrayIndex = 0;
+        int resultArrayLength = 0;
+        boolean contain = true;
+        Object[] array2 = c.toArray();
+
+        for (int i = 0; i < default_array.length; i++) {
+            for (int j = 0; j < array2.length; j++) {
+                if (default_array[i] == array2[j]) {
+                    resultArrayLength++;
+                }
+            }
+        }
+
+        Object[] resultArray = new Object[resultArrayLength];
+
+        for (int i = 0; i < default_array.length; i++) {
+            for (int j = 0; j < array2.length; j++) {
+                if (default_array[i] == array2[j]) {
+                    resultArray[resultArrayIndex] = default_array[i];
+                    resultArrayIndex++;
+                }
+            }
+        }
+
+        if (resultArray.length == c.size()) {
+            contain = true;
+        } else {
+            contain = false;
+        }
+
+        return contain;
     }
 
     @Override
     public Object[] toArray(Object[] a) {
-        return new Object[0];
+        Object[] result = new Object[a.length];
+
+        for (int i = 0; i < a.length; i++) {
+            result[i] = a[i];
+        }
+
+        return result;
     }
 
     public Object[] makeCapacityBigger(Object[] o) {

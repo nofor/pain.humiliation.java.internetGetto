@@ -20,6 +20,7 @@ public class Task8Test {
         helpColl.add("1");
         helpColl.add("bbb");
         helpColl.add("ccc");
+        helpColl.add("3");
         helpColl.add("2");
     }
 
@@ -34,11 +35,7 @@ public class Task8Test {
     }
 
     @Test
-    public void testAddAndSet() {
-        myCollection.add("hhh");
-        myCollection.add("ffff");
-        myCollection.add("ghjk");
-        myCollection.add("hjk");
+    public void testSet() {
 
         for (int i = 0; i < myCollection.size(); i++) {
             System.out.print(myCollection.get(i) + " ");
@@ -50,6 +47,11 @@ public class Task8Test {
         for (int i = 0; i < myCollection.size(); i++) {
             System.out.print(myCollection.get(i) + " ");
         }
+    }
+
+    @Test
+    public void testGet(){
+        System.out.println( myCollection.get(3));
     }
 
     @Test
@@ -89,11 +91,12 @@ public class Task8Test {
     }
     @Test
     public void testAddToIndex(){
-        myCollection.add(1,"addedElement");
+        myCollection.add(4,"addedElement");
 
         for (int i = 0; i < myCollection.size(); i++) {
             System.out.print(myCollection.get(i) + " ");
         }
+
     }
 
     @Test
@@ -109,9 +112,45 @@ public class Task8Test {
     public void testRetainAll(){
         myCollection.retainAll(helpColl);
     }
-   @Test
+
+    @Test
     public void testContains(){
        System.out.println( myCollection.contains("bbb"));
-   }
+    }
 
+    @Test
+    public void testContainsAll(){
+        System.out.println( myCollection.containsAll(helpColl));
+    }
+
+    @Test
+    public void testSublist(){
+        System.out.println(myCollection.subList(1,3));
+    }
+
+    @Test
+    public void testRemoveAll(){
+        myCollection.removeAll(helpColl);
+
+        for (int i = 0; i < myCollection.size(); i++) {
+            System.out.print(myCollection.get(i) + " ");
+        }
+    }
+    @Test
+    public void testAddAllToIndex(){
+        myCollection.add(3,helpColl);
+
+        for (int i = 0; i < myCollection.size(); i++) {
+            System.out.print(myCollection.get(i) + " ");
+        }
+    }
+
+    @Test
+    public void testToArray(){
+       Object [] test = myCollection.toArray();
+
+       for(Object x :test){
+           System.out.println(x);
+       }
+    }
 }
