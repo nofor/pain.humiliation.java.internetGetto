@@ -17,6 +17,7 @@ public class Task8Test {
         myCollection.add("ccc");
         myCollection.add("dddd");
 
+
         helpColl.add("1");
         helpColl.add("bbb");
         helpColl.add("ccc");
@@ -41,8 +42,8 @@ public class Task8Test {
             System.out.print(myCollection.get(i) + " ");
         }
 
-        myCollection.set(1, "added");
         System.out.println("\nAfter setting");
+        System.out.println(myCollection.set(1, "added"));
 
         for (int i = 0; i < myCollection.size(); i++) {
             System.out.print(myCollection.get(i) + " ");
@@ -82,8 +83,7 @@ public class Task8Test {
     }
     @Test
     public void testRemoveByIndex(){
-
-        myCollection.remove(0);
+        System.out.println(myCollection.remove(0));
 
         for (int i = 0; i < myCollection.size(); i++) {
             System.out.print(myCollection.get(i) + " ");
@@ -91,7 +91,7 @@ public class Task8Test {
     }
     @Test
     public void testAddToIndex(){
-        myCollection.add(4,"addedElement");
+        myCollection.add(2,"addedElement");
 
         for (int i = 0; i < myCollection.size(); i++) {
             System.out.print(myCollection.get(i) + " ");

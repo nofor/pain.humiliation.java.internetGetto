@@ -134,13 +134,15 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
 
     @Override
     public E set(int index, Object element) {
+        Object previous = default_array[index];
+
         for (int i = 0; i < size; i++) {
             if (i == index) {
                 default_array[i] = element;
             }
         }
 
-        return null;
+        return (E) previous;
     }
 
     @Override
@@ -163,6 +165,8 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
 
     @Override
     public E remove(int index) {
+        Object element = default_array[index];
+
         for (int j = index; j < size() - 1; j++) {
             Object temp = default_array[j + 1];
             default_array[j + 1] = default_array[j];
@@ -172,7 +176,7 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
         default_array[size() - 1] = null;
         size--;
 
-        return null;
+        return (E) element;
     }
 
     @Override
