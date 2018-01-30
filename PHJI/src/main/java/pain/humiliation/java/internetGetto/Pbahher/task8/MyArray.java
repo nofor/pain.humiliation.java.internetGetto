@@ -38,7 +38,19 @@ public class MyArray<E> implements List<E>, RandomAccess, Cloneable, java.io.Ser
 
     @Override
     public boolean contains(Object o) {
-        return false;
+        boolean flag = false;
+
+        Iterator<E> e = iterator();
+        if (o == null) {
+            while (e.hasNext())
+                if (e.next() == null)
+                    flag = true;
+        } else {
+            while   (e.hasNext())
+                if (o.equals(e.next()))
+                    flag = true;
+        }
+        return flag;
     }
 
     @Override
@@ -105,7 +117,13 @@ public class MyArray<E> implements List<E>, RandomAccess, Cloneable, java.io.Ser
 
     @Override
     public void clear() {
-
+        int fromIndex = 0;
+        int toIndex = values.length - 1;
+        ListIterator<E> it = listIterator(fromIndex);
+        for (int i = 0, n = toIndex-fromIndex; i<n; i++) {
+            it.next();
+            it.remove();
+        }
     }
 
     @Override
@@ -140,7 +158,7 @@ public class MyArray<E> implements List<E>, RandomAccess, Cloneable, java.io.Ser
 
             System.arraycopy(temp, index + 1, values, index, amountElementAfterIndex);
 
-        return null;
+        return values[index];
     }
 
     @Override

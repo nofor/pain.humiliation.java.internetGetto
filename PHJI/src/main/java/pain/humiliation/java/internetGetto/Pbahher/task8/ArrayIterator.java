@@ -10,7 +10,7 @@ import java.util.ListIterator;
 public class ArrayIterator<E> extends MyArray implements Iterator {
 
 
-    public int index = 0;
+    public int index;
     public E[] values;
 
     ArrayIterator(E[] values) {
