@@ -171,7 +171,7 @@ public class Task7Test {
     @Test
     public void removeAllTest2() {
         collection.addAll(collection2);
-        assertTrue(collection.removeAll(collection2));  //todo check if this deletion is cyclical
+        assertTrue(collection.removeAll(collection2));
     }
 
     @Test
@@ -223,7 +223,7 @@ public class Task7Test {
 
     @Test
     public void ensureCapacityTest() {
-        collection2.ensureCapacity(2);  //todo not useful here, or write correct comments
+        collection2.ensureCapacity(2);
         assertEquals(4, collection2.size());
     }
 
