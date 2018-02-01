@@ -39,17 +39,9 @@ public class Task8Test {
 
     @Test
     public void testSet() {
-
-        for (int i = 0; i < myCollection.size(); i++) {
-            System.out.print(myCollection.get(i) + " ");
-        }
-
-        System.out.println("\nAfter setting");
+        System.out.println(myCollection);
         System.out.println(myCollection.set(1, "added"));
-
-        for (int i = 0; i < myCollection.size(); i++) {
-            System.out.print(myCollection.get(i) + " ");
-        }
+        System.out.println(myCollection);
     }
 
     @Test
@@ -59,11 +51,11 @@ public class Task8Test {
 
     @Test
     public void testRemove() {
+        System.out.println(myCollection);
+
         myCollection.remove("element to remove");
 
-        for (int i = 0; i < myCollection.size(); i++) {
-            System.out.print(myCollection.get(i) + " ");
-        }
+        System.out.println(myCollection);
     }
 
     @Test
@@ -73,9 +65,7 @@ public class Task8Test {
         Collections.addAll(list, "1", "2", "3", "4", "5");
         myCollection.addAll(list);
 
-        for (int i = 0; i < myCollection.size(); i++) {
-            System.out.print(myCollection.get(i) + " ");
-        }
+        System.out.println(myCollection);
     }
 
     @Test
@@ -87,20 +77,13 @@ public class Task8Test {
     @Test
     public void testRemoveByIndex() {
         System.out.println(myCollection.remove(0));
-
-        for (int i = 0; i < myCollection.size(); i++) {
-            System.out.print(myCollection.get(i) + " ");
-        }
+        System.out.println(myCollection);
     }
 
     @Test
     public void testAddToIndex() {
         myCollection.add(2, "addedElement");
-
-        for (int i = 0; i < myCollection.size(); i++) {
-            System.out.print(myCollection.get(i) + " ");
-        }
-
+        System.out.println(myCollection);
     }
 
     @Test
@@ -117,10 +100,7 @@ public class Task8Test {
     @Test
     public void testRetainAll() {
         myCollection.retainAll(helpColl);
-
-        for (int i = 0; i < myCollection.size(); i++) {
-            System.out.print(myCollection.get(i) + " ");
-        }
+        System.out.println(myCollection);
     }
 
     @Test
@@ -141,19 +121,13 @@ public class Task8Test {
     @Test
     public void testRemoveAll() {
         myCollection.removeAll(helpColl);
-
-        for (int i = 0; i < myCollection.size(); i++) {
-            System.out.print(myCollection.get(i) + " ");
-        }
+        System.out.println(myCollection);
     }
 
     @Test
     public void testAddAllToIndex() {
         myCollection.addAll(3, helpColl);
-
-        for (int i = 0; i < myCollection.size(); i++) {
-            System.out.print(myCollection.get(i) + " ");
-        }
+        System.out.println(myCollection);
     }
 
     @Test
@@ -164,4 +138,9 @@ public class Task8Test {
             System.out.println(x);
         }
     }
+    @Test
+    public void testToString(){
+        System.out.println(myCollection);
+    }
 }
+

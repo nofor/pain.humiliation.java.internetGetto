@@ -301,4 +301,15 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
         default_array = result;
         return default_array;
     }
+
+    @Override
+    public String toString() {
+        String result = "";
+
+        for (int i = 0; i < size(); i++) {
+            result = result + get(i) + ", ";
+        }
+
+        return "[" + result + "]";
+    }
 }
