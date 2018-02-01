@@ -45,7 +45,7 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
 
     @Override
     public boolean add(Object o) {
-        boolean x = true;
+        boolean x;
 
         try {
             default_array[size] = o;
@@ -92,33 +92,19 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
 
         default_array = result;
         size = result.length;
-        return false;
+
+        return true;
     }
 
     @Override
     public boolean addAll(int index, Collection c) {
         Object[] array2 = c.toArray();
-        Object[] result = new Object[size() + array2.length];
-        int count = 0;
-        int count2 = size - index;
 
-        for (int i = 0; i < index; i++) {
-            result[i] = default_array[i];
-        }
-        size = size + array2.length;
-
-        for (int j = index + 1; j < array2.length; j++) {
-            result[j] = array2[count];
-            count++;
+        for (int i = array2.length - 1; i >= 0; i--) {
+            add(index, array2[i]);
         }
 
-        for (int k = array2.length + index; k < size - array2.length + index; k++) {
-            result[k] = default_array[count2];
-            count2++;
-        }
-
-        default_array = result;
-        return false;
+        return true;
     }
 
     @Override
@@ -186,7 +172,7 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
                 return i;
         }
 
-        return 0;
+        return -1;
     }
 
     @Override
@@ -247,9 +233,8 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
             }
         }
 
-        for (Object x : resultArray) {
-            System.out.print(x + " ");
-        }
+        default_array = resultArray;
+        size = resultArrayLength;
 
         return false;
     }
@@ -273,9 +258,8 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
 
     @Override
     public boolean containsAll(Collection c) {
-        int resultArrayIndex = 0;
         int resultArrayLength = 0;
-        boolean contain = true;
+        boolean contain;
         Object[] array2 = c.toArray();
 
         for (int i = 0; i < default_array.length; i++) {
@@ -286,18 +270,7 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
             }
         }
 
-        Object[] resultArray = new Object[resultArrayLength];
-
-        for (int i = 0; i < default_array.length; i++) {
-            for (int j = 0; j < array2.length; j++) {
-                if (default_array[i] == array2[j]) {
-                    resultArray[resultArrayIndex] = default_array[i];
-                    resultArrayIndex++;
-                }
-            }
-        }
-
-        if (resultArray.length == c.size()) {
+        if (resultArrayLength == c.size()) {
             contain = true;
         } else {
             contain = false;
