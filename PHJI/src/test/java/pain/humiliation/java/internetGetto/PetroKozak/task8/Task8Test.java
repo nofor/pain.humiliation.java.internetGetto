@@ -25,7 +25,8 @@ public class Task8Test {
         myCollection.add("ccc");
         myCollection.add("ccc");
         myCollection.add("ccc");
-        myCollection.add("ccc");
+        myCollection.add("ddd");
+
 
         helpColl.add("1");
         helpColl.add("2");

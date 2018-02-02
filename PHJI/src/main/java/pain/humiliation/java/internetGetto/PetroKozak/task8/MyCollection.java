@@ -50,7 +50,7 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
         try {
             default_array[size] = o;
             x = true;
-        } catch (IndexOutOfBoundsException ex) {
+        } catch (ArrayIndexOutOfBoundsException ex) {
             makeCapacityBigger(default_array);
             default_array[size] = o;
             x = true;
@@ -243,14 +243,20 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
     public boolean removeAll(Collection c) {
         Object[] array2 = c.toArray();
 
-        for (int i = 0; i < size(); i++) {
-            for (int k = 0; k < array2.length; k++) {
+        for (int i = 1; i < size(); i++) {
+            for (int k = 1; k < array2.length; k++) {
                 if (default_array[i] == array2[k]) {
                     remove(indexOf(array2[k]));
                     i--;
                 } else {
                     continue;
                 }
+            }
+        }
+
+        for(int j = 0; j < array2.length; j++){
+            if(default_array[0]==array2[j]){
+                remove(indexOf(array2[j]));
             }
         }
 
