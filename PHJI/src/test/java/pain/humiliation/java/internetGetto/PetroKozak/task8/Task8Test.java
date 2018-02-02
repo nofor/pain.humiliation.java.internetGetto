@@ -15,9 +15,17 @@ public class Task8Test {
     public void initializer() {
         myCollection.add("element to remove");
         myCollection.add("bbb");
+        myCollection.add("bbb");
+        myCollection.add("bbb");
+        myCollection.add("bbb");
+        myCollection.add("bbb");
+        myCollection.add("bbb");
+        myCollection.add("bbb");
         myCollection.add("ccc");
-        myCollection.add("dddd");
-
+        myCollection.add("ccc");
+        myCollection.add("ccc");
+        myCollection.add("ccc");
+        myCollection.add("ccc");
 
         helpColl.add("1");
         helpColl.add("2");

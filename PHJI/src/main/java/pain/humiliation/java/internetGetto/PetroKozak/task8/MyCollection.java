@@ -247,6 +247,7 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
             for (int k = 0; k < array2.length; k++) {
                 if (default_array[i] == array2[k]) {
                     remove(indexOf(array2[k]));
+                    i--;
                 } else {
                     continue;
                 }
@@ -292,13 +293,14 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
 
     public Object[] makeCapacityBigger(Object[] o) {
 
-        Object[] result = new Object[(initial_capacity * 3) / 2 + 1];
+        Object[] result = new Object[(size() * 3) / 2 + 1];
 
         for (int i = 0; i < size(); i++) {
             result[i] = o[i];
         }
 
         default_array = result;
+
         return default_array;
     }
 
