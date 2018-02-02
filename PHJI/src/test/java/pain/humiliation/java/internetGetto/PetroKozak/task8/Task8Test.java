@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 
 public class Task8Test {
 
@@ -144,12 +145,25 @@ public class Task8Test {
         Object[] test = myCollection.toArray();
 
         for (Object x : test) {
-            System.out.println(x);
+            System.out.print(x + " ");
         }
     }
+
     @Test
-    public void testToString(){
+    public void testToString() {
         System.out.println(myCollection);
+    }
+
+    @Test
+    public void testIterator() {
+        Iterator<Object> it = myCollection.iterator();
+
+        it.next();
+        it.remove();
+
+        while (it.hasNext()) {
+            System.out.print(it.next() + " ");
+        }
     }
 }
 

@@ -27,9 +27,32 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
         return indexOf(o) >= 0;
     }
 
+    public class PedroIterator<E> implements Iterator<E> {
+        private int cursor;
+
+        public PedroIterator() {
+            cursor = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return cursor < size();
+        }
+
+        @Override
+        public E next() {
+            return (E) default_array[cursor++];
+        }
+
+        @Override
+        public void remove() {
+            MyCollection.this.remove(cursor - 1);
+        }
+    }
+
     @Override
     public Iterator iterator() {
-        return null;
+        return new PedroIterator<E>();
     }
 
     @Override
@@ -254,8 +277,8 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
             }
         }
 
-        for(int j = 0; j < array2.length; j++){
-            if(default_array[0]==array2[j]){
+        for (int j = 0; j < array2.length; j++) {
+            if (default_array[0] == array2[j]) {
                 remove(indexOf(array2[j]));
             }
         }
