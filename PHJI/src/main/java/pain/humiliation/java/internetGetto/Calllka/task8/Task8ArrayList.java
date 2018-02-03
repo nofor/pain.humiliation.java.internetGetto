@@ -27,8 +27,8 @@ public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Seri
     }
 
     @Override
-    public Iterator iterator() {
-        return null;
+    public Iterator<E> iterator() {
+        return new IteratorTask8();
     }
 
     @Override
@@ -184,12 +184,12 @@ public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Seri
 
     @Override
     public ListIterator listIterator() {
-        return null;
+        return new Task8ArrayList.ListIteratorTask8(0);
     }
 
     @Override
     public ListIterator listIterator(int i) {
-        return null;
+        return new Task8ArrayList.ListIteratorTask8(i);
     }
 
     @Override
@@ -328,6 +328,76 @@ public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Seri
             throw new IndexOutOfBoundsException("toIndex = " + i1);
         } else if (i > i1) {
             throw new IllegalArgumentException("fromIndex(" + i + ") > toIndex(" + i1 + ")");
+        }
+    }
+
+    private class IteratorTask8 implements Iterator{
+        int myCursor = 0;
+
+        @Override
+        public boolean hasNext() {
+            return myCursor != size;
+        }
+
+        @Override
+        public Object next() {
+            Object[] iteratorArray = mainArray;
+
+            if (myCursor >= size) {
+                throw new NoSuchElementException();
+            } else {
+                if (myCursor >= iteratorArray.length) {
+                    throw new ConcurrentModificationException();
+                } else {
+                    return iteratorArray[myCursor++];
+                }
+            }
+        }
+
+        @Override
+        public void remove() {
+            Task8ArrayList.this.remove(myCursor);
+        }
+    }
+
+    public class ListIteratorTask8 extends Task8ArrayList.IteratorTask8 implements ListIterator {
+        public ListIteratorTask8(int i) {
+            this.myCursor = i;
+        }
+
+        @Override
+        public boolean hasPrevious() {
+            return myCursor != 0;
+        }
+
+        @Override
+        public int nextIndex() {
+            return this.myCursor;
+        }
+
+        @Override
+        public int previousIndex() {
+            return this.myCursor - 1;
+        }
+
+        @Override
+        public Object previous() {
+            Object[] listIteratorPreviousArray = mainArray.clone();
+            Object temp = listIteratorPreviousArray[this.myCursor - 1];
+
+            myCursor--;
+
+            return temp;
+        }
+
+        @Override
+        public void set(Object o) {
+            Task8ArrayList.this.set(this.myCursor, (E) o);
+        }
+
+        @Override
+        public void add(Object o) {
+            Task8ArrayList.this.add(this.myCursor++, (E) o);
         }
     }
 }
