@@ -151,8 +151,8 @@ public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Seri
         for (int j = i; j < size() - 1; j++) {
             mainArray[j] = mainArray[j + 1];
         }
-        mainArray[size--] = null;
 
+        mainArray[size--] = null;
         return (E) var;
     }
 
@@ -173,8 +173,8 @@ public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Seri
     public int lastIndexOf(Object o) {
         int i;
 
-        for(i = size - 1; i >= 0; i--){
-            if(mainArray[i].equals(o)){
+        for (i = size - 1; i >= 0; i--) {
+            if (mainArray[i].equals(o)) {
                 return i;
             }
         }
@@ -194,32 +194,92 @@ public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Seri
 
     @Override
     public List subList(int i, int i1) {
-        return null;
+        checkRangeSubList(i, i1, size);
+        Object[] resultArray = new Object[i1 - i];
+        int count = 0;
+
+        for(int j = i; j < i1; j++){
+            resultArray[count++] = mainArray[j];
+        }
+
+        return Arrays.asList(resultArray);
     }
 
     @Override
     public boolean retainAll(Collection collection) {
-        return false;
-    }
+        Object[] inputArray = collection.toArray();
+        Object[] tempArray;
+        int count = 0, elementPlace = 0;
 
-    @Override
-    public boolean removeAll(Collection collection) {
-        Object[] tempCollection = collection.toArray();
-
-        for(int i = 0; i < collection.size(); i++){
-            for(int j = 0; j < size; j++){
-                if(mainArray[j].equals(tempCollection[i])){
-                    remove(i);
+        for (int i = 0; i < inputArray.length; i++) {
+            for (int j = 0; j < size; j++) {
+                if (mainArray[j].equals(inputArray[i])) {
+                    count++;
                 }
             }
         }
 
-        return false;
+        tempArray = new Object[count];
+
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < inputArray.length; j++) {
+                if (mainArray[i].equals(inputArray[j])) {
+                    tempArray[elementPlace++] = mainArray[i];
+                }
+            }
+        }
+
+        size = count;
+        increaseArrayCapacity(mainArray, size);
+        mainArray = tempArray;
+
+        return collection.size() != 0;
+    }
+
+    @Override
+    public boolean removeAll(Collection collection) {
+        Object[] inputArray = collection.toArray();
+        Object[] tempArray = mainArray.clone();
+        int count = 0, elementPlace = 0;
+
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < inputArray.length; j++) {
+                if (mainArray[i].equals(inputArray[j])) {
+                    tempArray[i] = null;
+                    count++;
+                }
+            }
+        }
+
+        size -= count;
+        increaseArrayCapacity(mainArray, size);
+
+        for (Object temp : tempArray) {
+            if (temp != null) {
+                mainArray[elementPlace++] = temp;
+            }
+        }
+
+        return collection.size() != 0;
     }
 
     @Override
     public boolean containsAll(Collection collection) {
-        return false;
+        Object[] inputArray = collection.toArray();
+        int count = 0;
+        boolean flag;
+
+        for (int i = 0; i < inputArray.length; i++) {
+            for (int j = 0; j < size; j++) {
+                if (mainArray[j].equals(inputArray[i])) {
+                    count++;
+                }
+            }
+        }
+
+        flag = count == collection.size();
+
+        return flag;
     }
 
     @Override
@@ -230,7 +290,7 @@ public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Seri
     private Object[] increaseArrayCapacity(Object[] arrayForIncrease, int tempSize) {
         Object[] tempArray = new Object[tempSize];
 
-        for (int i = 0; i < size(); i++) {
+        for (int i = 0; i < size; i++) {
             tempArray[i] = arrayForIncrease[i];
         }
 
@@ -259,5 +319,15 @@ public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Seri
         }
 
         return "Collection: " + stringBuilderVar.toString();
+    }
+
+    private void checkRangeSubList(int i, int i1, int size) {
+        if (i < 0) {
+            throw new IndexOutOfBoundsException("fromIndex = " + i);
+        } else if (i1 > size) {
+            throw new IndexOutOfBoundsException("toIndex = " + i1);
+        } else if (i > i1) {
+            throw new IllegalArgumentException("fromIndex(" + i + ") > toIndex(" + i1 + ")");
+        }
     }
 }
