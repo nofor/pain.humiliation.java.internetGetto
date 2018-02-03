@@ -46,7 +46,8 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
 
         @Override
         public void remove() {
-            MyCollection.this.remove(cursor - 1);
+            MyCollection.this.remove(cursor);
+            cursor = 0;
         }
     }
 
@@ -208,14 +209,67 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
         return -1;
     }
 
+    public class PedroListIterator implements ListIterator<E> {
+
+        private int cursor;
+
+        public PedroListIterator(int index ){
+            cursor = index;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return cursor < size();
+        }
+
+        @Override
+        public E next() {
+            return (E) default_array[cursor++];
+        }
+
+        @Override
+        public boolean hasPrevious() {
+            return cursor!=0;
+        }
+
+        @Override
+        public E previous() {
+            return (E) default_array[cursor--];
+        }
+
+        @Override
+        public int nextIndex() {
+            return cursor++;
+        }
+
+        @Override
+        public int previousIndex() {
+            return cursor--;
+        }
+
+        @Override
+        public void remove() {
+            MyCollection.this.remove(cursor);
+        }
+
+        @Override
+        public void set(E e) {
+            MyCollection.this.set(cursor,e);
+        }
+
+        @Override
+        public void add(E e) {
+            MyCollection.this.add(cursor,e);
+        }
+    }
     @Override
     public ListIterator listIterator() {
-        return null;
+        return new PedroListIterator(0);
     }
 
     @Override
     public ListIterator listIterator(int index) {
-        return null;
+        return new PedroListIterator(index);
     }
 
     @Override

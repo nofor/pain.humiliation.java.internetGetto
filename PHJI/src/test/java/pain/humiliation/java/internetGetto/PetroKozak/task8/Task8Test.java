@@ -165,5 +165,14 @@ public class Task8Test {
             System.out.print(it.next() + " ");
         }
     }
+
+    @Test
+    public void testListIterator(){
+        Iterator <Object> it = myCollection.listIterator();
+
+        while (it.hasNext()) {
+            System.out.print(it.next() + " ");
+        }
+    }
 }
 
