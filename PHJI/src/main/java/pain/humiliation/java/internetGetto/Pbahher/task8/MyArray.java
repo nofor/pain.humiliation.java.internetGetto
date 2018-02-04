@@ -7,19 +7,9 @@ import java.util.*;
  */
 public class MyArray<E> implements List<E>, RandomAccess, Cloneable, java.io.Serializable {
 
-    public static void main(String[] args) {
-        MyArray<String> strings = new MyArray<>();
-        strings.add("one");
-        strings.add("two");
-        strings.add("three");
-
-        strings.remove(1);
-        System.out.println(strings.get(1));
-    }
-
     public E[] values;
-    public int index;
-    public int size;
+    public static Object[] myArray;
+    public int size = 0;
     private static final int def_cap = 10;
 
     public MyArray() {
@@ -50,6 +40,7 @@ public class MyArray<E> implements List<E>, RandomAccess, Cloneable, java.io.Ser
                 if (o.equals(e.next()))
                     flag = true;
         }
+
         return flag;
     }
 
@@ -87,12 +78,27 @@ public class MyArray<E> implements List<E>, RandomAccess, Cloneable, java.io.Ser
 
     @Override
     public boolean remove(Object o) {
-        return false;
+        range(indexOf(0));
+
+        for (int i = 0; i > size; i++) {
+            if (myArray[i].equals(o)) {
+                remove(i);
+                break;
+            }
+        }
+
+        return true;
     }
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        return false;
+        boolean flag = true;
+
+        Iterator<?> e = c.iterator();
+        while (e.hasNext())
+            if (!contains(e.next()))
+                flag = false;
+        return flag;
     }
 
     @Override
@@ -112,7 +118,17 @@ public class MyArray<E> implements List<E>, RandomAccess, Cloneable, java.io.Ser
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        return false;
+        boolean flag = false;
+
+        Iterator<E> e = iterator();
+        while (e.hasNext()) {
+            if (!c.contains(e.next())) {
+                e.remove();
+                flag = true;
+            }
+        }
+
+        return flag;
     }
 
     @Override
@@ -128,12 +144,16 @@ public class MyArray<E> implements List<E>, RandomAccess, Cloneable, java.io.Ser
 
     @Override
     public E get(int index) {
+        range(index);
         return values[index];
     }
 
     @Override
     public E set(int index, E value) {
-        return null;
+        range(index);
+        Object first = myArray[index];
+        myArray[index] = value;
+        return (E) first;
     }
 
     @Override
@@ -203,6 +223,33 @@ public class MyArray<E> implements List<E>, RandomAccess, Cloneable, java.io.Ser
 
     @Override
     public List<E> subList(int fromIndex, int toIndex) {
+        subListRange(fromIndex,toIndex,size);
         return null;
     }
+
+    public void range(int index) {
+        if (index >= size) {
+            throw new IndexOutOfBoundsException(outOfBoundMsg(index));
+        }
+    }
+
+    public void rangeForAdd(int index){
+        if (index > size || index < 0)
+            throw new IndexOutOfBoundsException(outOfBoundMsg(index));
+    }
+
+    private String outOfBoundMsg(int index){
+        return "Index: " +index+ ", Size: " +size;
+    }
+
+    static void subListRange (int fromIndex, int toIndex, int size) {
+        if (fromIndex < 0)
+            throw new IndexOutOfBoundsException("fromIndex: " +fromIndex);
+        if (toIndex > size)
+            throw new IndexOutOfBoundsException("toIndex: " +toIndex);
+        if (fromIndex > toIndex)
+            throw new IllegalArgumentException("fromIndex(" +fromIndex + ") > toIndex(" +
+                                                                                toIndex + ")");
+    }
+
 }
