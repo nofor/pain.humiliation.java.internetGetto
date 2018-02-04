@@ -339,57 +339,6 @@ public class Task7Test {
     }
 
     @Test
-    public void testTimeOfAddingInside() {
-        list.clear();
-
-        System.out.print("Write list size that you want to check:");
-
-        Scanner scan = new Scanner(System.in);
-        long size = scan.nextLong();
-
-        long spentTimeArrayList = testTimeAddList(size);
-        long spentTimeLinkedList = testTimeAddLinkedList(size);
-
-        System.out.println("Arraylist did add in " + spentTimeArrayList + " millisecs" +
-                "\nLinkedlist did add in " + spentTimeLinkedList + " millisecs");
-
-    }
-
-    @Test
-    public void testTimeOfDeletion() {
-        list.clear();
-
-        System.out.print("Write list size that you want to check:");
-
-        Scanner scan = new Scanner(System.in);
-        long size = scan.nextLong();
-
-        long spentTimeArrayList = testTimeDeleteList(size);
-        long spentTimeLinkedList = testTimeDeleteLinkedList(size);
-
-        System.out.println("Arraylist did remove in " + spentTimeArrayList + " millisecs" +
-                "\nLinkedlist did remove in " + spentTimeLinkedList + " millisecs");
-
-    }
-
-    @Test
-    public void testTimeOfSearch() {
-        list.clear();
-
-        System.out.print("Write list size that you want to check:");
-
-        Scanner scan = new Scanner(System.in);
-        long size = scan.nextLong();
-
-        long spentTimeArrayList = testTimeGetArrayList(size);
-        long spentTimeLinkedList = testTimeGetLinkedArrayList(size);
-
-        System.out.println("Arraylist did remove in " + spentTimeArrayList + " millisecs" +
-                "\nLinkedlist did remove in " + spentTimeLinkedList + " millisecs");
-
-    }
-
-    @Test
     public void testToArray() {
         Object[] a = list.toArray();
 
@@ -423,6 +372,15 @@ public class Task7Test {
         return count;
     }
 
+    @Test
+    public void testSpeed(){
+        System.out.println("Adding time for 100 elements ArrayList: " + testTimeAddList(100));
+        System.out.println("Adding time for 100 elements LinkedList: "  +testTimeAddLinkedList(100));
+        System.out.println("Deletion time for 100 elements ArrayList: " + testTimeDeleteList(100));
+        System.out.println("Deletion time for 100 elements LinkedList: "  +testTimeDeleteLinkedList(100));
+        System.out.println("Searching  time for 100 elements ArrayList: " + testTimeGetArrayList(100));
+        System.out.println("Searching time for 100 elements LinkedList: "  +testTimeGetLinkedList(100));
+    }
     public long testTimeAddList(long size) {
         long startTimeArrayList = System.currentTimeMillis();
 
@@ -475,18 +433,18 @@ public class Task7Test {
         }
 
         long startTimeLinkedList = System.nanoTime();
-        list.get(3);
+        list.get((int) (size/2));
 
         return System.nanoTime() - startTimeLinkedList;
     }
 
-    public long testTimeGetLinkedArrayList(long size) {
+    public long testTimeGetLinkedList(long size) {
         for (int i = 0; i <= size; i++) {
             linkedlist.add(i, "element");
         }
 
         long startTimeLinkedList = System.nanoTime();
-        linkedlist.get(3);
+        linkedlist.get((int) (size/2));
 
         return System.nanoTime() - startTimeLinkedList;
     }
