@@ -66,10 +66,10 @@ public class Task8Test {
         }
     }
 
-    @Test
+    /*@Test
     public void testToArrayT() {
 
-    }
+    }*/
 
     @Test
     public void testAdd() {
@@ -89,20 +89,20 @@ public class Task8Test {
 
     }
 
-    @Test
+    /*@Test
     public void testAddAll() {
 
-    }
+    }*/
 
-    @Test
+    /*@Test
     public void AddAllIndx() {
 
-    }
+    }*/
 
-    @Test
+    /*@Test
     public  void testRemoveAll() {
 
-    }
+    }*/
 
     @Test
     public void testRetainAll() {
@@ -127,10 +127,10 @@ public class Task8Test {
 
     }
 
-    @Test
+    /*@Test
     public void testAddIndx() {
 
-    }
+    }*/
 
     @Test
     public void testRemoveIndx() {
@@ -149,18 +149,18 @@ public class Task8Test {
         System.out.println(collection.lastIndexOf("four"));
     }
 
-    @Test
+    /*@Test
     public void testListIterator() {
 
-    }
+    }*/
 
-    @Test
+    /*@Test
     public void testListIteratorIndx() {
 
-    }
+    }*/
 
-    @Test
+    /*@Test
     public void testSubList() {
 
-    }
+    }*/
 }
