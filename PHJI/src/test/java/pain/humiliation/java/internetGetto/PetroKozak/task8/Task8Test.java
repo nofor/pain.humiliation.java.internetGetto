@@ -171,10 +171,10 @@ public class Task8Test {
 
     @Test
     public void testListIterator(){
-       ListIterator <Object> it = myCollection.listIterator();
+       ListIterator <Object> it = myCollection.listIterator(myCollection.size());
 
-        while (it.hasNext()) {
-            System.out.print(it.next() + " ");
+        while (it.hasPrevious()) {
+            System.out.print(it.previous() + " ");
         }
     }
 
