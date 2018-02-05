@@ -3,6 +3,7 @@ package pain.humiliation.java.internetGetto.PetroKozak.task7;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import pain.humiliation.java.internetGetto.PetroKozak.task8.MyCollection;
 
 import java.util.*;
 
@@ -11,21 +12,23 @@ import static org.junit.Assert.*;
 
 public class Task7Test {
 
-    private ArrayList<String> list = new ArrayList<>();
-    private ArrayList<String> list2 = new ArrayList<>();
-    private LinkedList<String> linkedlist = new LinkedList<>();
+    private MyCollection<Object> list = new MyCollection<>();
+    private MyCollection<Object> list2 = new MyCollection<>();
+    private ArrayList<Object> arrayList = new ArrayList<>();
 
     @Before
     public void initialize() {
         Collections.addAll(list, "Work", "hard", "play", "hard");
         Collections.addAll(list2, "Eat", "hard", "sleep", "hard");
-        Collections.addAll(linkedlist, "Work", "hard,", "play", "hard");
+        Collections.addAll(arrayList, "Work", "hard,", "play", "hard");
     }
 
     @Test
     public void testAddAll() {
         list.addAll(list2);
         assertTrue(list.containsAll(list2));
+        System.out.println(list);
+
     }
 
     @Test
@@ -37,7 +40,7 @@ public class Task7Test {
     @Test
     public void testAddAll3() {
         int a = list.size();
-        int b = list.size();
+        int b = list2.size();
 
         list.addAll(list2);
 
@@ -88,28 +91,30 @@ public class Task7Test {
     }
 
     @Test
-    public void testClone() {
+    public void testClone() throws CloneNotSupportedException {
         list.clear();
-        list = (ArrayList<String>) list2.clone();
+        list = (MyCollection<Object>) list2.clone();
         assertEquals(list, list2);
     }
 
     @Test
-    public void testClone2() {
-        list = (ArrayList<String>) list2.clone();
+    public void testClone2() throws CloneNotSupportedException {
+        list = (MyCollection<Object>) list2.clone();
         assertEquals(list, list2);
+
+
     }
 
     @Test
-    public void testClone3() {
-        String prove = list.get(0);
-        list = (ArrayList<String>) list2.clone();
+    public void testClone3() throws CloneNotSupportedException {
+        Object prove = list.get(0);
+        list = (MyCollection<Object>) list2.clone();
         assertFalse(list.contains(prove));
     }
 
     @Test
-    public void testClone4() {
-        list = (ArrayList<String>) list2.clone();
+    public void testClone4() throws CloneNotSupportedException {
+        list = (MyCollection<Object>) list2.clone();
         assertEquals(list.size(), list2.size());
     }
 
@@ -153,8 +158,8 @@ public class Task7Test {
     }
 
     @Test
-    public void testSetValue() {
-        ArrayList<String> testList = (ArrayList<String>) list.clone();
+    public void testSetValue() throws CloneNotSupportedException {
+        MyCollection <Object> testList = (MyCollection<Object>) list.clone();
         list.set(3, "blablabla");
         assertFalse(testList.equals(list));
     }
@@ -189,7 +194,7 @@ public class Task7Test {
 
     @Test
     public void testRemove() {
-        String a = list.get(2);
+        Object a = list.get(2);
 
         list.remove(2);
         assertTrue(a!=(list.get(2)));
@@ -208,7 +213,7 @@ public class Task7Test {
 
     @Test
     public void testIfElementsGoLeftAfterDeletion() {
-        String a = list.get(3);
+        Object a = list.get(3);
 
         list.remove(2);
         assertEquals(a, list.get(2));
@@ -290,12 +295,11 @@ public class Task7Test {
         }
 
         testIfThereAreEqualElements("add1");
-
     }
 
     @Test
     public void testAddingWithIterator2() {
-        ListIterator<String> iter = list.listIterator();
+        ListIterator<Object> iter = list.listIterator();
         int a = list.size();
 
         while (iter.hasNext()) {
@@ -322,7 +326,7 @@ public class Task7Test {
     @Test
     public void testRetainAll3() {
         list.retainAll(list2);
-        assertTrue(list.size() == 2);
+        assertTrue(list.containsAll(list2));
     }
 
     @Test
@@ -352,7 +356,7 @@ public class Task7Test {
         list.add(null);
         int count = 0;
 
-        for (String i : list) {
+        for (Object i : list) {
             if (i == null) {
                 count++;
             }
@@ -374,18 +378,18 @@ public class Task7Test {
 
     @Test
     public void testSpeed(){
-        System.out.println("Adding time for 100 elements ArrayList: " + testTimeAddList(100));
-        System.out.println("Adding time for 100 elements LinkedList: "  +testTimeAddLinkedList(100));
-        System.out.println("Deletion time for 100 elements ArrayList: " + testTimeDeleteList(100));
-        System.out.println("Deletion time for 100 elements LinkedList: "  +testTimeDeleteLinkedList(100));
-        System.out.println("Searching  time for 100 elements ArrayList: " + testTimeGetArrayList(100));
-        System.out.println("Searching time for 100 elements LinkedList: "  +testTimeGetLinkedList(100));
+        System.out.println("Adding time for 100 elements MyCollection: " + testTimeAddList(100));
+        System.out.println("Adding time for 100 elements ArrayList: "  +testTimeAddLinkedList(100));
+        System.out.println("Deletion time for 100 elements MyCollection: " + testTimeDeleteList(100));
+        System.out.println("Deletion time for 100 elements ArrayList: "  +testTimeDeleteLinkedList(100));
+        System.out.println("Searching  time for 100 elements MyCollection: " + testTimeGetArrayList(100));
+        System.out.println("Searching time for 100 elements ArrayList: "  +testTimeGetLinkedList(100));
     }
     public long testTimeAddList(long size) {
         long startTimeArrayList = System.currentTimeMillis();
 
         for (int i = 0; i <= size; i++) {
-            list.add(i, "element");
+            list.add( i,"element");
         }
         return System.nanoTime() - startTimeArrayList;
     }
@@ -394,7 +398,7 @@ public class Task7Test {
         long startTimeLinkedList = System.nanoTime();
 
         for (int i = 0; i <= size; i++) {
-            linkedlist.add(i, "element");
+            arrayList.add(i, "element");
         }
 
         return System.nanoTime() - startTimeLinkedList;
@@ -415,13 +419,13 @@ public class Task7Test {
 
     public long testTimeDeleteLinkedList(long size) {
         for (int i = 0; i <= size; i++) {
-            linkedlist.add(i, "element");
+            arrayList.add(i, "element");
         }
 
         long startTimeLinkedList = System.nanoTime();
 
         for (int i = 0; i <= size; i++) {
-            linkedlist.remove(i);
+            arrayList.remove(i);
         }
 
         return System.nanoTime() - startTimeLinkedList;
@@ -440,11 +444,11 @@ public class Task7Test {
 
     public long testTimeGetLinkedList(long size) {
         for (int i = 0; i <= size; i++) {
-            linkedlist.add(i, "element");
+            arrayList.add(i, "element");
         }
 
         long startTimeLinkedList = System.nanoTime();
-        linkedlist.get((int) (size/2));
+        arrayList.get((int) (size/2));
 
         return System.nanoTime() - startTimeLinkedList;
     }
@@ -453,7 +457,7 @@ public class Task7Test {
     public void cleanGarbage() {
         list.clear();
         list2.clear();
-        linkedlist.clear();
+        arrayList.clear();
     }
 
 }

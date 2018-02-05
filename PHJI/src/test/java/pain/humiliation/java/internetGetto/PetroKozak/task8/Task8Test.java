@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.ListIterator;
 
 public class Task8Test {
 
@@ -29,9 +30,9 @@ public class Task8Test {
         myCollection.add("ddd");
 
 
-        helpColl.add("1");
-        helpColl.add("2");
-        helpColl.add("3");
+       // helpColl.add("1");
+        //helpColl.add("2");
+        //helpColl.add("3");
         helpColl.add("bbb");
         helpColl.add("ccc");
     }
@@ -92,7 +93,7 @@ public class Task8Test {
 
     @Test
     public void testAddToIndex() {
-        myCollection.add(2, "addedElement");
+        myCollection.add(6, "addedElement");
         System.out.println(myCollection);
     }
 
@@ -158,8 +159,19 @@ public class Task8Test {
     public void testIterator() {
         Iterator<Object> it = myCollection.iterator();
 
-        it.next();
-        it.remove();
+
+
+        while (it.hasNext()) {
+            System.out.println(it.next());
+
+        }
+
+        System.out.println(myCollection.size());
+    }
+
+    @Test
+    public void testListIterator(){
+       ListIterator <Object> it = myCollection.listIterator();
 
         while (it.hasNext()) {
             System.out.print(it.next() + " ");
@@ -167,12 +179,10 @@ public class Task8Test {
     }
 
     @Test
-    public void testListIterator(){
-        Iterator <Object> it = myCollection.listIterator();
+    public void testClone() throws CloneNotSupportedException {
+        helpColl = (MyCollection<Object>) myCollection.clone();
 
-        while (it.hasNext()) {
-            System.out.print(it.next() + " ");
-        }
+        System.out.println(helpColl);
     }
 }
 

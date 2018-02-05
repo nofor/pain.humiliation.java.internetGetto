@@ -27,8 +27,20 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
         return indexOf(o) >= 0;
     }
 
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        MyCollection result = new MyCollection();
+
+        for (int i = 0; i < size(); i++) {
+            result.add(i, default_array[i]);
+        }
+
+        return result;
+    }
+
     public class PedroIterator<E> implements Iterator<E> {
         private int cursor;
+        private int realPos = -1;
 
         public PedroIterator() {
             cursor = 0;
@@ -36,12 +48,14 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
 
         @Override
         public boolean hasNext() {
-            return cursor < size();
+            return cursor != size();
         }
 
         @Override
         public E next() {
-            return (E) default_array[cursor++];
+            int i = cursor;
+            cursor = i + 1;
+            return (E) default_array[realPos = i];
         }
 
         @Override
@@ -157,20 +171,12 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
 
     @Override
     public void add(int index, Object element) {
-        Object[] result = new Object[size() + 1];
-
-        for (int i = 0; i < index; i++) {
-            result[i] = default_array[i];
+        add(element);
+        for (int i = size - 1; i > index; i--) {
+            Object temp = default_array[i];
+            default_array[i] = default_array[i - 1];
+            default_array[i - 1] = temp;
         }
-
-        result[index] = element;
-        size++;
-
-        for (int j = index + 1; j < size; j++) {
-            result[j] = default_array[j - 1];
-        }
-
-        default_array = result;
     }
 
     @Override
@@ -210,31 +216,36 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
     }
 
     public class PedroListIterator implements ListIterator<E> {
-
         private int cursor;
+        private int realPos;
 
-        public PedroListIterator(int index ){
+        public PedroListIterator(int index) {
             cursor = index;
         }
 
         @Override
         public boolean hasNext() {
-            return cursor < size();
+            return cursor != size;
         }
 
         @Override
         public E next() {
-            return (E) default_array[cursor++];
+            int i = cursor;
+            cursor = i + 1;
+            return (E) default_array[realPos = i];
+
         }
 
         @Override
         public boolean hasPrevious() {
-            return cursor!=0;
+            return cursor != 0;
         }
 
         @Override
         public E previous() {
-            return (E) default_array[cursor--];
+            int i = cursor - 1;
+            cursor = i;
+            return (E) default_array[realPos = i];
         }
 
         @Override
@@ -250,18 +261,21 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
         @Override
         public void remove() {
             MyCollection.this.remove(cursor);
+            cursor = 0;
         }
 
         @Override
         public void set(E e) {
-            MyCollection.this.set(cursor,e);
+            MyCollection.this.set(cursor, e);
         }
 
         @Override
         public void add(E e) {
-            MyCollection.this.add(cursor,e);
+            MyCollection.this.add(cursor, e);
+            cursor++;
         }
     }
+
     @Override
     public ListIterator listIterator() {
         return new PedroListIterator(0);
@@ -313,7 +327,7 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
         default_array = resultArray;
         size = resultArrayLength;
 
-        return false;
+        return true;
     }
 
     @Override
@@ -337,30 +351,15 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
             }
         }
 
-        return false;
+        return true;
     }
 
     @Override
     public boolean containsAll(Collection c) {
-        int resultArrayLength = 0;
-        boolean contain;
-        Object[] array2 = c.toArray();
-
-        for (int i = 0; i < default_array.length; i++) {
-            for (int j = 0; j < array2.length; j++) {
-                if (default_array[i] == array2[j]) {
-                    resultArrayLength++;
-                }
-            }
-        }
-
-        if (resultArrayLength == c.size()) {
-            contain = true;
-        } else {
-            contain = false;
-        }
-
-        return contain;
+        for (Object x : c)
+            if (contains(x) == false)
+                return false;
+        return true;
     }
 
     @Override
