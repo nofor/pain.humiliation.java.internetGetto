@@ -8,7 +8,7 @@ import java.util.*;
 //todo remove extra line DONE
 public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializable {  //todo add generic here. Collection must be generic DONE
     private static int MAIN_CAPACITY = 2;
-    private static Object[] mainArray = new Object[MAIN_CAPACITY];
+    private Object[] mainArray = new Object[MAIN_CAPACITY];
     private int size = 0;
 
     @Override
@@ -43,6 +43,18 @@ public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Seri
     }
 
     @Override
+    protected Object clone() throws CloneNotSupportedException {
+        Task8ArrayList temp = (Task8ArrayList) super.clone();
+        increaseArrayCapacity(mainArray, temp.size);
+
+        for(int i = 0; i < temp.size; i++){
+            temp.mainArray[i] = temp.get(i);
+        }
+
+        return temp;
+    }
+
+    @Override
     public boolean add(E e) {
         try {
             mainArray[size] = e;
@@ -57,16 +69,19 @@ public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Seri
 
     @Override
     public boolean remove(Object o) {
+        boolean flag = false;
         rangeCheck(indexOf(0)); //todo think why do you need it here DONE
 
         for (int i = 0; i < size(); i++) {
             if (mainArray[i].equals(o)) {
                 remove(i);
+                flag = true;
+
                 break;
             }
         }
 
-        return true;
+        return flag;
     }
 
     @Override
@@ -333,6 +348,7 @@ public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Seri
 
     private class IteratorTask8 implements Iterator{
         int myCursor = 0;
+        int iteratorStep = 0;
 
         @Override
         public boolean hasNext() {
@@ -341,26 +357,31 @@ public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Seri
 
         @Override
         public Object next() {
+            int next = myCursor;
             Object[] iteratorArray = mainArray;
 
-            if (myCursor >= size) {
+            if (next >= size) {
                 throw new NoSuchElementException();
             } else {
-                if (myCursor >= iteratorArray.length) {
+                if (next >= iteratorArray.length) {
                     throw new ConcurrentModificationException();
                 } else {
-                    return iteratorArray[myCursor++];
+                    myCursor = next + 1;
+                    return iteratorArray[iteratorStep = next];
                 }
             }
         }
 
         @Override
         public void remove() {
+            myCursor--;
             Task8ArrayList.this.remove(myCursor);
         }
     }
 
     public class ListIteratorTask8 extends Task8ArrayList.IteratorTask8 implements ListIterator {
+        int index = myCursor;
+
         public ListIteratorTask8(int i) {
             this.myCursor = i;
         }
@@ -382,17 +403,26 @@ public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Seri
 
         @Override
         public Object previous() {
-            Object[] listIteratorPreviousArray = mainArray.clone();
-            Object temp = listIteratorPreviousArray[this.myCursor - 1];
+            int previous = myCursor - 1;
+            Object[] iteratorArray = mainArray;
 
-            myCursor--;
-
-            return temp;
+            if (previous < 0) {
+                throw new NoSuchElementException();
+            } else {
+                if (previous >= iteratorArray.length) {
+                    throw new ConcurrentModificationException();
+                } else {
+                    myCursor = previous;
+                    return iteratorArray[iteratorStep = previous];
+                }
+            }
         }
 
         @Override
         public void set(Object o) {
-            Task8ArrayList.this.set(this.myCursor, (E) o);
+            index = iteratorStep;
+            Task8ArrayList.this.set(index, (E) o);
+            index = 0;
         }
 
         @Override
