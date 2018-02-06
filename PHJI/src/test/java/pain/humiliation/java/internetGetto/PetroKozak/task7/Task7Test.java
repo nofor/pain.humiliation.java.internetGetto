@@ -12,9 +12,9 @@ import static org.junit.Assert.*;
 
 public class Task7Test {
 
-    private MyCollection<Object> list = new MyCollection<>();
-    private MyCollection<Object> list2 = new MyCollection<>();
-    private ArrayList<Object> arrayList = new ArrayList<>();
+    private ArrayList<Object> list = new ArrayList<>();
+    private ArrayList<Object> list2 = new ArrayList<>();
+    private LinkedList<Object> arrayList = new LinkedList<>();
 
     @Before
     public void initialize() {
@@ -93,13 +93,13 @@ public class Task7Test {
     @Test
     public void testClone() throws CloneNotSupportedException {
         list.clear();
-        list = (MyCollection<Object>) list2.clone();
+        list = (ArrayList<Object>) list2.clone();
         assertEquals(list, list2);
     }
 
     @Test
     public void testClone2() throws CloneNotSupportedException {
-        list = (MyCollection<Object>) list2.clone();
+        list = (ArrayList<Object>) list2.clone();
         assertEquals(list, list2);
 
 
@@ -108,13 +108,13 @@ public class Task7Test {
     @Test
     public void testClone3() throws CloneNotSupportedException {
         Object prove = list.get(0);
-        list = (MyCollection<Object>) list2.clone();
+        list = (ArrayList<Object>) list2.clone();
         assertFalse(list.contains(prove));
     }
 
     @Test
     public void testClone4() throws CloneNotSupportedException {
-        list = (MyCollection<Object>) list2.clone();
+        list = (ArrayList<Object>) list2.clone();
         assertEquals(list.size(), list2.size());
     }
 
@@ -159,7 +159,7 @@ public class Task7Test {
 
     @Test
     public void testSetValue() throws CloneNotSupportedException {
-        MyCollection <Object> testList = (MyCollection<Object>) list.clone();
+        ArrayList <Object> testList = (ArrayList<Object>) list.clone();
         list.set(3, "blablabla");
         assertFalse(testList.equals(list));
     }
@@ -238,7 +238,7 @@ public class Task7Test {
 
     @Test
     public void deleteWithIterator() {
-        ListIterator<String> iter = list.listIterator();
+        ListIterator<Object> iter = list.listIterator();
 
         while (iter.hasNext()) {
             iter.next();
@@ -250,7 +250,7 @@ public class Task7Test {
 
     @Test
     public void deleteWithIterator2() {
-        ListIterator<String> iter = list.listIterator();
+        ListIterator<Object> iter = list.listIterator();
 
         while (iter.hasNext()) {
             iter.next();
@@ -262,7 +262,7 @@ public class Task7Test {
 
     @Test
     public void deleteWithIterator3() {
-        ListIterator<String> iter = list.listIterator();
+        ListIterator<Object> iter = list.listIterator();
         int a = list.size();
 
         while (iter.hasNext()) {
@@ -276,7 +276,7 @@ public class Task7Test {
 
     @Test
     public void deleteWithIterator4() {
-        ListIterator<String> iter = list.listIterator();
+        ListIterator<Object> iter = list.listIterator();
 
         while (iter.hasNext()) {
 
@@ -290,7 +290,7 @@ public class Task7Test {
 
     @Test
     public void testAddingWithIterator() {
-        ListIterator<String> iter = list.listIterator();
+        ListIterator<Object> iter = list.listIterator();
 
         while (iter.hasNext()) {
             iter.next();
@@ -339,7 +339,7 @@ public class Task7Test {
 
     @Test
     public void testIterator() {
-        ListIterator<String> iter = list.listIterator();
+        ListIterator<Object> iter = list.listIterator();
         int a = 0;
 
         while (iter.hasNext()) {
@@ -373,7 +373,7 @@ public class Task7Test {
     }
 
     public int testIfThereAreEqualElements(String x) {
-        ListIterator<String> iter = list.listIterator();
+        ListIterator<Object> iter = list.listIterator();
         int count = 0;
 
         while (iter.hasNext()) {

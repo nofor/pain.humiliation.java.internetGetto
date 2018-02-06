@@ -32,7 +32,7 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
         MyCollection result = (MyCollection) super.clone();
 
         for (int i = 0; i < size(); i++) {
-            result.add(i, default_array[i]);
+            result.set(i, default_array[i]);
         }
 
         return result;
