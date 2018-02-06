@@ -202,7 +202,10 @@ public class Task7Test {
 
     @Test
     public void testRemove2() {
-        list.removeAll(Collections.singleton("hard"));
+        arrayList.clear();
+        arrayList.add("hard");
+
+        list.removeAll(arrayList);
         assertFalse(list.contains("hard"));
     }
 
@@ -326,7 +329,12 @@ public class Task7Test {
     @Test
     public void testRetainAll3() {
         list.retainAll(list2);
-        assertTrue(list.containsAll(list2));
+        arrayList.clear();
+
+        arrayList.add("hard");
+        arrayList.add("hard");
+
+        assertTrue(list.containsAll(arrayList));
     }
 
     @Test

@@ -34,6 +34,7 @@ public class Task8Test {
         //helpColl.add("2");
         //helpColl.add("3");
         helpColl.add("bbb");
+        helpColl.add("bbb");
         helpColl.add("ccc");
     }
 
@@ -64,7 +65,7 @@ public class Task8Test {
     public void testRemove() {
         System.out.println(myCollection);
 
-        myCollection.remove("element to remove");
+        myCollection.remove("bbb");
 
         System.out.println(myCollection);
     }
