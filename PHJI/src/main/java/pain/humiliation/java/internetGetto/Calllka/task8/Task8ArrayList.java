@@ -43,7 +43,7 @@ public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Seri
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         Task8ArrayList temp = (Task8ArrayList) super.clone();
         increaseArrayCapacity(mainArray, temp.size);
 
@@ -222,7 +222,8 @@ public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Seri
 
     @Override
     public boolean retainAll(Collection collection) {
-        Object[] inputArray = collection.toArray();
+        HashSet collectionSet = new HashSet<>(collection);
+        Object[] inputArray = collectionSet.toArray();
         Object[] tempArray;
         int count = 0, elementPlace = 0;
 
@@ -253,7 +254,8 @@ public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Seri
 
     @Override
     public boolean removeAll(Collection collection) {
-        Object[] inputArray = collection.toArray();
+        HashSet collectionSet = new HashSet<>(collection);
+        Object[] inputArray = collectionSet.toArray();
         Object[] tempArray = mainArray.clone();
         int count = 0, elementPlace = 0;
 
