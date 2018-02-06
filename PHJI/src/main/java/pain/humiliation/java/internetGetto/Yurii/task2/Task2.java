@@ -7,6 +7,7 @@ public class Task2 {
         } else {
             int divideResult = firstNumber / secondNumber;
             int remainderOfTheDivision = firstNumber % secondNumber;
+            //todo extra line
             System.out.println(firstNumber + "/" + secondNumber + " = " + divideResult + " & " + remainderOfTheDivision + " in remain");
         }
     }
@@ -17,6 +18,7 @@ public class Task2 {
         } else {
             double divideResult = firstNumber / secondNumber;
             double remainderOfTheDivision = firstNumber % secondNumber;
+            //todo extra line
             System.out.println(firstNumber + "/" + secondNumber + " = " + divideResult + " & " + remainderOfTheDivision + " in remain");
         }
     }
@@ -57,7 +59,7 @@ public class Task2 {
     }
 
     public void roundNumberWithDecimal (double num) {
-        int result = (int)(num + 0.5);
+        int result = (int)(num + 0.5);  //todo remove it
         System.out.println("Round of " + num + " = " + result);
     }
 }

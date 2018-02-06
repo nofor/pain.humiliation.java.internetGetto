@@ -1,7 +1,8 @@
 package pain.humiliation.java.internetGetto.Yurii.task1;
 
 public class Task1 {
-    public void outputDigitsByLoop(int j){
+    //todo extra line
+    public void outputDigitsByLoop(int j){  //todo zdelay 2 parametra. 1-y otkyda nachinaetsa cucl, 2-y gde zakanchivaetsya
         System.out.println("for loop:");
 
         for(int i = j; i < 10; i++){
@@ -11,7 +12,7 @@ public class Task1 {
         System.out.println("\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
     }
 
-    public void outputDigitsByWhileDo(){
+    public void outputDigitsByWhileDo(){  //todo zdelay 2 parametra. 1-y otkyda nachinaetsa cucl, 2-y gde zakanchivaetsya
         int i = 0;
 
         System.out.println("while do:");
@@ -24,7 +25,7 @@ public class Task1 {
         System.out.println("\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
     }
 
-    public void outputDigitsByDoWhile(){
+    public void outputDigitsByDoWhile(){  //todo zdelay 2 parametra. 1-y otkyda nachinaetsa cucl, 2-y gde zakanchivaetsya
         int i = 0;
         System.out.println("do while:");
 
