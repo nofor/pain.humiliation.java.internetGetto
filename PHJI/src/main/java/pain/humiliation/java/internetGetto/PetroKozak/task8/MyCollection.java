@@ -29,10 +29,10 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-        MyCollection result = new MyCollection();
+        MyCollection result = (MyCollection) super.clone();
 
         for (int i = 0; i < size(); i++) {
-            result.add(i, default_array[i]);
+            result.set(i, default_array[i]);
         }
 
         return result;
@@ -301,9 +301,10 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
 
     @Override
     public boolean retainAll(Collection c) {
+        HashSet tempSet = new HashSet<>(c);
         int resultArrayIndex = 0;
         int resultArrayLength = 0;
-        Object[] array2 = c.toArray();
+        Object[] array2 = tempSet.toArray();
 
         for (int i = 0; i < default_array.length; i++) {
             for (int j = 0; j < array2.length; j++) {
@@ -332,7 +333,8 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
 
     @Override
     public boolean removeAll(Collection c) {
-        Object[] array2 = c.toArray();
+        HashSet tempSet = new HashSet <> (c);
+        Object[] array2 = tempSet.toArray();
 
         for (int i = 1; i < size(); i++) {
             for (int k = 1; k < array2.length; k++) {
