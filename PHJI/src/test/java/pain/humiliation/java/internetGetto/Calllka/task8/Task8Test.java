@@ -13,6 +13,7 @@ public class Task8Test {
     private Task8ArrayList<Object> mainList = new Task8ArrayList<>();
     private Task8ArrayList<Object> tempList = new Task8ArrayList<>();
 
+    @SuppressWarnings("Duplicates")
     @Before
     public void runBeforeTest() {
         Collections.addAll(mainList, "one", "two", "three", "four", "five", "six");
@@ -32,7 +33,7 @@ public class Task8Test {
 
     @Test
     public void testAddElements() {
-        mainList.add("temp");//todo remove extra line DONE
+        mainList.add("temp");
         assertTrue("temp".equals(mainList.get(mainList.size() - 1)));
     }
 
@@ -66,12 +67,12 @@ public class Task8Test {
         mainList.addAll(1, tempList);
 
         assertNotEquals("two", mainList.get(1));
-        assertEquals("seven", mainList.get(1)); //todo add check on first element of second collection DONE
+        assertEquals("seven", mainList.get(1));
     }
 
     @Test
     public void testAddAllElementsInPositionSubList() {
-        mainList.addAll(1, tempList);        //todo add extra line DONE
+        mainList.addAll(1, tempList);
 
         Object[] array = mainList.subList(1, 5).toArray();
         assertArrayEquals(new Object[]{"seven", "eight", "nine", "one"}, array);
@@ -112,7 +113,7 @@ public class Task8Test {
 
     @Test
     public void testCloneSize() throws CloneNotSupportedException {
-        int mainSize = mainList.size(); //todo add extra line DONE
+        int mainSize = mainList.size();
 
         mainList = (Task8ArrayList<Object>) tempList.clone();
         assertNotEquals(mainSize, mainList);
@@ -146,7 +147,7 @@ public class Task8Test {
         assertFalse(mainList.contains(tempList.get(1)));
     }
 
-    @Test  //todo remove copy DONE
+    @Test
     public void testContainsWithSet() {
         mainList.set(0,"temp");
         assertFalse(mainList.contains("one"));
@@ -213,8 +214,8 @@ public class Task8Test {
     }
 
     @Test
-    public void testListIterator() {  //todo +1 v karmy DONE
-        ListIterator iterator = mainList.listIterator();
+    public void testListIterator() {
+        ListIterator iterator = mainList.listIterator(6);
         int i = mainList.size() - 1;
 
         while (iterator.hasPrevious()) {
@@ -223,6 +224,7 @@ public class Task8Test {
         }
     }
 
+    @SuppressWarnings("Duplicates")
     @Test
     public void testListIteratorAdd() {
         ListIterator listIterator = mainList.listIterator();
@@ -282,7 +284,7 @@ public class Task8Test {
     }
 
     @Test
-    public void testSetNotSame() {  //todo +1 v karmy za not same method DONE
+    public void testSetNotSame() {
         Object temp = mainList.get(0);
 
         mainList.set(0, "1");
@@ -350,7 +352,7 @@ public class Task8Test {
     public void testRemoveALlWithTempArrayList(){
         mainList.removeAll(tempList);
 
-        Object[] temp = mainList.toArray();  //todo initialize it during first use DONE
+        Object[] temp = mainList.toArray();
         assertArrayEquals(new String[]{"two", "four", "six"}, temp);
     }
 
@@ -363,7 +365,7 @@ public class Task8Test {
         one.add("u");
 
         assertNotSame(mainList, one);
-        mainList.retainAll(one);  //todo do not yse the same collection DONE
+        mainList.retainAll(one);
         assertEquals(0, mainList.size());
     }
 
@@ -377,7 +379,7 @@ public class Task8Test {
     public void testRetainAllWithTempArrayListArrayEquals(){
         mainList.retainAll(tempList);
 
-        Object[] mainArrayBeforeRetain= mainList.toArray(); //todo initialize it during first use DONE
+        Object[] mainArrayBeforeRetain= mainList.toArray();
         assertArrayEquals(new String[]{"one", "three", "five"}, mainArrayBeforeRetain);
     }
 

@@ -3,10 +3,8 @@ package pain.humiliation.java.internetGetto.Calllka.task8;
 import java.io.Serializable;
 import java.util.*;
 
-//todo make flag as local variable DONE
-//todo extra line DONE
-//todo remove extra line DONE
-public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializable {  //todo add generic here. Collection must be generic DONE
+
+public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializable {
     private static int MAIN_CAPACITY = 2;
     private Object[] mainArray = new Object[MAIN_CAPACITY];
     private int size = 0;
@@ -70,7 +68,7 @@ public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Seri
     @Override
     public boolean remove(Object o) {
         boolean flag = false;
-        rangeCheck(indexOf(0)); //todo think why do you need it here DONE
+        rangeCheck(indexOf(0));
 
         for (int i = 0; i < size(); i++) {
             if (mainArray[i].equals(o)) {
@@ -85,7 +83,7 @@ public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Seri
     }
 
     @Override
-    public boolean addAll(Collection collection) {  //todo change it DONE
+    public boolean addAll(Collection collection) {
         for (Object temp : collection) {
             add((E) temp);
         }
@@ -122,7 +120,7 @@ public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Seri
     @Override
     public void clear() {
         for (int i = 0; i < size(); i++) {
-            mainArray[i] = null;  //todo this must be new empty array DONE
+            mainArray[i] = null;
         }
 
         size = 0;
@@ -301,7 +299,41 @@ public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Seri
 
     @Override
     public Object[] toArray(Object[] objects) {
-        return new Object[0];
+        Object[] result = new Object[objects.length];
+
+        for (int i = 0; i < objects.length; i++) {
+            result[i] = objects[i];
+        }
+
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilderVar = new StringBuilder();
+
+        for (int i = 0; i < size; i++) {
+            stringBuilderVar.append(mainArray[i]).append(" ");
+        }
+
+        return "Collection: " + stringBuilderVar.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task8ArrayList<?> that = (Task8ArrayList<?>) o;
+        return size == that.size &&
+                Arrays.equals(mainArray, that.mainArray);
+    }
+
+    @Override
+    public int hashCode() {
+
+        int result = Objects.hash(size);
+        result = 31 * result + Arrays.hashCode(mainArray);
+        return result;
     }
 
     private Object[] increaseArrayCapacity(Object[] arrayForIncrease, int tempSize) {
@@ -325,17 +357,6 @@ public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Seri
         if (var1 >= size) {
             throw new IndexOutOfBoundsException("Index: " + var1 + ", Size: " + size);
         }
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder stringBuilderVar = new StringBuilder();
-
-        for (int i = 0; i < size; i++) {
-            stringBuilderVar.append(mainArray[i]).append(" ");
-        }
-
-        return "Collection: " + stringBuilderVar.toString();
     }
 
     private void checkRangeSubList(int i, int i1, int size) {
@@ -381,7 +402,7 @@ public class Task8ArrayList<E> implements List<E>, RandomAccess, Cloneable, Seri
         }
     }
 
-    public class ListIteratorTask8 extends Task8ArrayList.IteratorTask8 implements ListIterator {
+    private class ListIteratorTask8 extends Task8ArrayList.IteratorTask8 implements ListIterator {
         int index = myCursor;
 
         public ListIteratorTask8(int i) {
