@@ -102,16 +102,13 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
     public boolean remove(Object o) {
         for (int i = 0; i < size() - 1; i++) {
             if (default_array[i].equals(o)) {
-                for (int j = i; j < size() - 1; j++) {
-                    Object temp = default_array[j + 1];
-                    default_array[j + 1] = default_array[j];
-                    default_array[j] = temp;
-                }
+                remove(i);
             }
         }
 
         default_array[size() - 1] = null;
         size--;
+
         return true;
     }
 
@@ -333,26 +330,14 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
 
     @Override
     public boolean removeAll(Collection c) {
-        HashSet tempSet = new HashSet <> (c);
-        Object[] array2 = tempSet.toArray();
+        HashSet tempSet = new HashSet<>(c);
+        Iterator iter = new PedroIterator();
 
-        for (int i = 1; i < size(); i++) {
-            for (int k = 1; k < array2.length; k++) {
-                if (default_array[i] == array2[k]) {
-                    remove(indexOf(array2[k]));
-                    i--;
-                } else {
-                    continue;
-                }
+        while (iter.hasNext()) {
+            if (tempSet.contains(iter.next())) {
+                iter.remove();
             }
         }
-
-        for (int j = 0; j < array2.length; j++) {
-            if (default_array[0] == array2[j]) {
-                remove(indexOf(array2[j]));
-            }
-        }
-
         return true;
     }
 
@@ -372,6 +357,27 @@ public class MyCollection<E> implements List<E>, RandomAccess, Cloneable, java.i
             result[i] = a[i];
         }
 
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        MyCollection<?> that = (MyCollection<?>) o;
+
+        if (size != that.size) return false;
+        if (initial_capacity != that.initial_capacity) return false;
+        // Probably incorrect - comparing Object[] arrays with Arrays.equals
+        return Arrays.equals(default_array, that.default_array);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = size;
+        result = 31 * result + Arrays.hashCode(default_array);
+        result = 31 * result + initial_capacity;
         return result;
     }
 

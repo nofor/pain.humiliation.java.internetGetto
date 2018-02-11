@@ -4,10 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.ListIterator;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -161,7 +158,9 @@ public class Task8Test {
     public void testSetValue() throws CloneNotSupportedException {
         MyCollection <Object> testList = (MyCollection<Object>) list.clone();
         list.set(3, "blablabla");
-        assertFalse(testList.equals(list));
+
+        System.out.println(list);
+        assertFalse(testList==list);
     }
 
     @Test
