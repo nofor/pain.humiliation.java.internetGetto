@@ -1,6 +1,5 @@
 package pain.humiliation.java.internetGetto.PetroKozak.task9test;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
 import org.junit.Before;
 import org.junit.Test;
 import pain.humiliation.java.internetGetto.PetroKozak.task9.Task9;
@@ -26,7 +25,6 @@ public class Task9Test {
 
         System.out.print("Time spent to complete the method is: " + (System.nanoTime() - startTime));
     }
-
 
     @Test
     public void testThreads() {
