@@ -7,19 +7,27 @@ public class Task9 {
     public void addingToCollection(ArrayList<Object> x) {
         int count = 1;
 
-        for(int i = 0;i<100;i++){
+        for (int i = 0; i < 100; i++) {
             x.add(count);
             count++;
         }
     }
 
-    public void printingOut25TimesWithCode(ArrayList<Object> x){
+    public void printingOut25TimesWithCode(ArrayList<Object> x) {
 
-        for(int i =1;i<25;i++){
-            for (Object temp: x) {
+        for (int i = 1; i < 25; i++) {
+            for (Object temp : x) {
                 System.out.print(temp);
             }
             System.out.println("");
         }
     }
+
+    public synchronized void printOutForThread(ArrayList <Object> x){
+
+        for (Object temp : x) {
+            System.out.print(temp);
+        }
+    }
+
 }
