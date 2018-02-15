@@ -14,7 +14,7 @@ public class CalllkaTask9 {
         }
     }
 
-    public synchronized void outputPoolThread(ArrayList<Integer> someList){
+    public static synchronized void outputPoolThread(ArrayList<Integer> someList){
         for(Integer temp : someList){
             System.out.println("Element: " + temp);
         }
@@ -26,6 +26,20 @@ public class CalllkaTask9 {
         }
 
         return list;
+    }
+
+    public static class InnerCalllkaClass implements Runnable{
+        private ArrayList innerCalllkaClassList;
+
+        public InnerCalllkaClass(ArrayList innerCalllkaClassList){
+            this.innerCalllkaClassList = innerCalllkaClassList;
+        }
+
+        @Override
+        public void run() {
+            System.out.println(Thread.currentThread().getName());
+            outputPoolThread(innerCalllkaClassList);
+        }
     }
 
 }
