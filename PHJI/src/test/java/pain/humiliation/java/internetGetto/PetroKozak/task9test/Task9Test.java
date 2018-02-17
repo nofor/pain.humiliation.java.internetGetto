@@ -5,8 +5,10 @@ import org.junit.Test;
 import pain.humiliation.java.internetGetto.PetroKozak.task9.Task9;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class Task9Test {
 
@@ -31,7 +33,8 @@ public class Task9Test {
         ExecutorService executor = Executors.newFixedThreadPool(25);
 
         for (int i = 0; i < 25; i++) {
-             executor.execute(new Runnable() {
+             Future future =  executor.submit(new Runnable() {
+
                  @Override
                  public void run() {
                      for (Object temp : arrayList) {
@@ -41,11 +44,17 @@ public class Task9Test {
                      System.out.println("");
                  }
              });
+
+            try {
+                future.get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
         }
 
-        while(!executor.isTerminated()){
-        executor.shutdown();
-        }
+
     }
 
 
