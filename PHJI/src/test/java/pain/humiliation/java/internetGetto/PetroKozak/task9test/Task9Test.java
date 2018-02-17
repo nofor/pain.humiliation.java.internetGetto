@@ -33,17 +33,16 @@ public class Task9Test {
         ExecutorService executor = Executors.newFixedThreadPool(25);
 
         for (int i = 0; i < 25; i++) {
-             Future future =  executor.submit(new Runnable() {
+            Future future = executor.submit(new Runnable() {
+                @Override
+                public void run() {
+                    for (Object temp : arrayList) {
+                        System.out.print(temp + " ");
+                    }
 
-                 @Override
-                 public void run() {
-                     for (Object temp : arrayList) {
-                         System.out.print(temp+" ");
-                     }
-
-                     System.out.println("");
-                 }
-             });
+                    System.out.println("");
+                }
+            });
 
             try {
                 future.get();
@@ -53,10 +52,5 @@ public class Task9Test {
                 e.printStackTrace();
             }
         }
-
-
     }
-
-
-
 }
