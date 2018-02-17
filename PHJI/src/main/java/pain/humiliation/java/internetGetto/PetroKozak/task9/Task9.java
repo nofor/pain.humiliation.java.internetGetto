@@ -13,7 +13,7 @@ public class Task9 {
         }
     }
 
-    public void printingOut25TimesWithCode(ArrayList<Object> x) {
+    public synchronized void printingOut25TimesWithCode(ArrayList<Object> x) {
 
         for (int i = 1; i < 25; i++) {
             for (Object temp : x) {
@@ -23,11 +23,12 @@ public class Task9 {
         }
     }
 
-    public synchronized void printOutForThread(ArrayList <Object> x){
+    public  void printOutForThread(ArrayList <Object> x){
 
         for (Object temp : x) {
-            System.out.print(temp);
+            System.out.print(temp+" ");
         }
+        System.out.println("");
     }
 
 }

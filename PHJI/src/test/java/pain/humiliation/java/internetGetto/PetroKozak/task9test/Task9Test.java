@@ -31,19 +31,24 @@ public class Task9Test {
         ExecutorService executor = Executors.newFixedThreadPool(25);
 
         for (int i = 0; i < 25; i++) {
-            Runnable worker = new MyThread();
-            executor.execute(worker);
+             executor.submit(new Process(i));
         }
         executor.shutdown();
     }
 
-    public class MyThread implements Runnable {
+    public class Process implements Runnable {
+
+        private int id;
+
+        public Process(int id){
+            this.id=id;
+        }
 
         @Override
-        public void run() {
-            System.out.println(Thread.currentThread().getName() + "Start");
+        public  void run() {
+            System.out.println("Start" +id);
             task9.printOutForThread(arrayList);
-            System.out.println(Thread.currentThread().getName() + "End");
+            System.out.println("Task completed for" + id);
         }
     }
 
