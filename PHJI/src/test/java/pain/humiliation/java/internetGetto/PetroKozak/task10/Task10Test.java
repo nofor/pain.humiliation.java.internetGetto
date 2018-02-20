@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public class Task10Test {
 
@@ -12,7 +13,21 @@ public class Task10Test {
 
 
     @Test
-    public void testOutputWithFiles() throws IOException {
+    public void testOutputWithFileReader() throws IOException {
+        long start = System.nanoTime();
         task10.outPutWithFileReader(file);
+        long end = System.nanoTime()-start;
+
+        System.out.println("Output with FileReader took " + TimeUnit.NANOSECONDS.toMicros(end)+" microseconds");
+    }
+
+    @Test
+    public void testOutputWithBufferedReader()throws IOException{
+        long start = System.nanoTime();
+        task10.outputWithBufferedReader(file);
+        long end = System.nanoTime()-start;
+
+        System.out.println("Output with BufferedReader took "+ TimeUnit.NANOSECONDS.toMicros(end)+" microseconds");
+
     }
 }

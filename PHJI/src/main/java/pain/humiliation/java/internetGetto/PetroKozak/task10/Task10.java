@@ -1,9 +1,7 @@
 package pain.humiliation.java.internetGetto.PetroKozak.task10;
 
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 public class Task10 {
@@ -16,5 +14,16 @@ public class Task10 {
         }
 
         fr.close();
+    }
+
+    public void outputWithBufferedReader(File file) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String line;
+
+        while((line = br.readLine())!=null){
+            System.out.println(line);
+        }
+
+        br.close();
     }
 }
