@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+//TODO you time calculation is not correct. You print time before threads has finish works. REWORK !!!
+
 public class Task9 {
     private static ArrayList<Integer> list = new ArrayList<>();
-    private static ExecutorService executorService = Executors.newCachedThreadPool();
+    private static ExecutorService executorService = Executors.newCachedThreadPool();    //todo if you create global class variable and after do not modify it, naming must be as UPPER_CASE
     private static long ITERATION_COUNT = 25;
 
     static{
@@ -18,12 +20,12 @@ public class Task9 {
     public static void main(String[] args) throws InterruptedException {
         long startTimeLoop = System.currentTimeMillis();
         outputWithLoop(list);
-        long outputTimeWithLoop = System.currentTimeMillis()-startTimeLoop;
+        long outputTimeWithLoop = System.currentTimeMillis()-startTimeLoop;    //todo do not use excessive variable here
 
 
         long startTimeThread = System.currentTimeMillis();
         outputWithThreads();
-        long outputTimeWithThread = System.currentTimeMillis()-startTimeThread;
+        long outputTimeWithThread = System.currentTimeMillis()-startTimeThread;    //todo do not use excessive variable here
 
         System.out.println("Time Loop " +outputTimeWithLoop);
         System.out.println("Time Thread " + outputTimeWithThread);
@@ -35,7 +37,8 @@ public class Task9 {
             for (Object temp : x) {
                 System.out.print(temp + " ");
             }
-            System.out.println("");
+            //todo add extra lime
+            System.out.println("");    //todo why are you need it here ???
         }
     }
 
@@ -44,13 +47,15 @@ public class Task9 {
             executorService.execute(new Runnable() {
                 @Override
                 public void run() {
-                    System.out.println(Thread.currentThread().getName());
+                    System.out.println(Thread.currentThread().getName());  //todo why are ypu need it here ???
+                    //todo add extra line
                     for (Integer temp : Task9.list) {
                         System.out.println("Thread:" + Thread.currentThread().getName() + " Element: " + temp);
                     }
                 }
             });
         }
+        //todo add extra line
         executorService.shutdown();
     }
 }

@@ -5,8 +5,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+//TODO you time calculation is not correct. You print time before threads has finish works. REWORK !!!
+
 public class Task9 {
-    static long timeOne, timeTwo;
+    static long timeOne, timeTwo;    //todo if you create static variable. you must create getter and setter or call it as "Task9.timeOne" But here using static variables - excessive. Remove please.
     private static ArrayList<Integer> list = new ArrayList<>();
     private static ExecutorService executorService = Executors.newCachedThreadPool();
 
@@ -19,10 +21,10 @@ public class Task9 {
     public static void main(String[] args) throws InterruptedException {
         outputElement(list);
         outputElementWithThread(list);
-        Thread.sleep(1000);
-        System.out.println(TimeUnit.NANOSECONDS.toMillis(timeOne));
-        System.out.println(TimeUnit.NANOSECONDS.toMillis(timeTwo));
-        System.out.println("TIMEEEEEEEE !!!!!!!!!!!!!!!!  ____________--------------___________:    " +
+        Thread.sleep(1000);  //todo WTF ??? Why are you need it here ? Also, add extra line
+        System.out.println(TimeUnit.NANOSECONDS.toMillis(timeOne));    //todo Just print time, without any comments ??
+        System.out.println(TimeUnit.NANOSECONDS.toMillis(timeTwo));    //todo Just print time, without any comments ??
+        System.out.println("TIMEEEEEEEE !!!!!!!!!!!!!!!!  ____________--------------___________:    " +  //todo WTF ???
                 + TimeUnit.NANOSECONDS.toMillis((timeOne - timeTwo)));
     }
 
@@ -42,7 +44,8 @@ public class Task9 {
         Runnable myRun = new Runnable() {
             @Override
             public void run() {
-                System.out.println(Thread.currentThread().getName());
+                System.out.println(Thread.currentThread().getName());    //todo why are you need it here ??? You duplicate this peace of code "Thread.currentThread().getName()".
+                // todo add extra line
                 for (Integer temp : someList) {
                     System.out.println("Thread:" + Thread.currentThread().getName() + " Element: " + temp);
                 }
