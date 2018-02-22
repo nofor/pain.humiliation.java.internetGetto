@@ -13,21 +13,26 @@ public class Task10Test {
 
 
     @Test
-    public void testOutputWithFileReader() throws IOException {    //todo remove "throws IOException"
+    public void testOutputWithFileReader()  {
         long start = System.nanoTime();
-        task10.outPutWithFileReader(file);
+
+        try {
+            task10.outPutWithFileReader(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         long end = System.nanoTime()-start;
 
         System.out.println("Output with FileReader took " + TimeUnit.NANOSECONDS.toMicros(end)+" microseconds");
     }
 
     @Test
-    public void testOutputWithBufferedReader()throws IOException{    //todo remove "throws IOException"
-        long start = System.nanoTime();
-        task10.outputWithBufferedReader(file);
-        long end = System.nanoTime()-start;
-
-        System.out.println("Output with BufferedReader took "+ TimeUnit.NANOSECONDS.toMicros(end)+" microseconds");
-
+    public void testOutputWithBufferedReader(){
+        try {
+            task10.outputWithBufferedReader(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
