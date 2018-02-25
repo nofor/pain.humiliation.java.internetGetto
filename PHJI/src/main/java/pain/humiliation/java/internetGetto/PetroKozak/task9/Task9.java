@@ -1,5 +1,7 @@
 package pain.humiliation.java.internetGetto.PetroKozak.task9;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -10,6 +12,7 @@ public class Task9 {
     private static ThreadPoolExecutor EXECUTOR = (ThreadPoolExecutor) Executors.newCachedThreadPool();
     private static long ITERATION_COUNT = 25;
 
+
     static {
         for (int i = 1; i < 101; i++) {
             list.add(i);
@@ -18,7 +21,7 @@ public class Task9 {
 
     public static void main(String[] args) throws InterruptedException {
 
-        long timeLoop = System.nanoTime();
+        Instant start = Instant.now();
 
         for (int i = 1; i < ITERATION_COUNT; i++) {
             for (Object temp : list) {
@@ -26,7 +29,8 @@ public class Task9 {
             }
         }
 
-        System.out.println("TIME" + TimeUnit.NANOSECONDS.toMicros(System.nanoTime() - timeLoop));
+        Instant end = Instant.now();
+        System.out.println("TIME" + Duration.between(start, end));
 
 
         Runnable run = new Runnable() {
@@ -38,7 +42,7 @@ public class Task9 {
             }
         };
 
-        long timeThread = System.nanoTime();
+        Instant startThread = Instant.now();
 
         for (int i = 0; i < 25; i++) {
             EXECUTOR.execute(run);
@@ -47,7 +51,7 @@ public class Task9 {
         EXECUTOR.shutdown();
 
         if (EXECUTOR.getActiveCount() == 0) {
-            System.out.println("TIMETHREAD" + TimeUnit.NANOSECONDS.toMicros(System.nanoTime() - timeThread));
+            System.out.println("TIMETHREAD" + Duration.between(startThread, Instant.now()));
         }
     }
 }
