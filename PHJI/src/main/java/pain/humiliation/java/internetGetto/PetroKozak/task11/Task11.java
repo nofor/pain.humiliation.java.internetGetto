@@ -15,13 +15,13 @@ public class Task11 {
 
     public File writeRandomValues(ArrayList<String> valuesToAdd, String path, String fileName) throws IOException {
 
-        createNewFileOrCheckIfExists(path,fileName);
+        createNewFileOrCheckIfExists(path, fileName);
 
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
 
-        for(int i = 0; i<valuesToAdd.size();i++){
-            for(int j = 0; j<5 + (int) (Math.random()*15);j++){
-                bufferedWriter.write(valuesToAdd.get(i)+" ");
+        for (int i = 0; i < valuesToAdd.size(); i++) {
+            for (int j = 0; j < 5 + (int) (Math.random() * 15); j++) {
+                bufferedWriter.write(valuesToAdd.get(i) + " ");
             }
         }
 
@@ -29,17 +29,17 @@ public class Task11 {
         return file;
     }
 
-    public HashMap<String,ArrayList<String>> countValues(File file) throws IOException {
+    public HashMap<String, ArrayList<String>> countValues(File file) throws IOException {
 
         BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
         String line = bufferedReader.readLine();
 
-        HashMap<String,ArrayList<String>> result = new
+        HashMap<String, ArrayList<String>> result = new
                 HashMap<>();
-        result.put("Java",new ArrayList<>());
-        result.put("PHP",new ArrayList<>());
-        result.put("C++",new ArrayList<>());
-        result.put("Python",new ArrayList<>());
+        result.put("Java", new ArrayList<>());
+        result.put("PHP", new ArrayList<>());
+        result.put("C++", new ArrayList<>());
+        result.put("Python", new ArrayList<>());
 
         while (line != null) {
             String[] words = line.split(" ");
@@ -62,7 +62,7 @@ public class Task11 {
         return result;
     }
 
-    public void writeResultInANewFile(HashMap<String,ArrayList<String>> map, File file) throws IOException {
+    public void writeResultInANewFile(HashMap<String, ArrayList<String>> map, File file) throws IOException {
 
         BufferedWriter bufferedWriter = new BufferedWriter(new
                 FileWriter(file));
@@ -70,7 +70,7 @@ public class Task11 {
         for (Iterator i = map.keySet().iterator(); i.hasNext
                 (); ) {
             String key = (String) i.next();
-            ArrayList<String> value =  map.get(key);
+            ArrayList<String> value = map.get(key);
 
             bufferedWriter.write(key + myToString(value));
             bufferedWriter.newLine();
@@ -79,7 +79,7 @@ public class Task11 {
         bufferedWriter.close();
     }
 
-    public  String myToString(ArrayList x) {
+    public String myToString(ArrayList x) {
         String result = "";
 
         for (int i = 0; i < x.size(); i++) {
@@ -89,12 +89,12 @@ public class Task11 {
         return result;
     }
 
-    private void createNewFileOrCheckIfExists ( String path, String fileName){
-        if(!new File(path).isDirectory()){
+    private void createNewFileOrCheckIfExists(String path, String fileName) {
+        if (!new File(path).isDirectory()) {
             new File(path).mkdir();
         }
 
-        if(!file.exists()){
+        if (!file.exists()) {
             try {
                 new File(path + "/" + fileName).createNewFile();
             } catch (IOException e) {

@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Task9 {
     private static ArrayList<Integer> list = new ArrayList<>();
-    private static ThreadPoolExecutor EXECUTOR = (ThreadPoolExecutor)Executors.newCachedThreadPool();
+    private static ThreadPoolExecutor EXECUTOR = (ThreadPoolExecutor) Executors.newCachedThreadPool();
     private static long ITERATION_COUNT = 25;
 
     static {

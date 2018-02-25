@@ -12,7 +12,7 @@ public class Task10Test {
 
 
     @Test
-    public void testOutputWithFileReader()  {
+    public void testOutputWithFileReader() {
         try {
             task10.outPutWithFileReader(file);
         } catch (IOException e) {
@@ -21,7 +21,7 @@ public class Task10Test {
     }
 
     @Test
-    public void testOutputWithBufferedReader(){
-            task10.outputWithBufferedReader(file);
+    public void testOutputWithBufferedReader() {
+        task10.outputWithBufferedReader(file);
     }
 }
