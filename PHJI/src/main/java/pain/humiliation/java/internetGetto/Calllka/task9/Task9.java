@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 //todo Just print time, without any comments ?? DONE
 //todo if you create static variable. you must create getter and setter or call it as "Task9.timeOne" But here using static variables - excessive. Remove please. DONE
 
+//todo use Petya's comments
 public class Task9 {
     private static ArrayList<Integer> list = new ArrayList<>();
 

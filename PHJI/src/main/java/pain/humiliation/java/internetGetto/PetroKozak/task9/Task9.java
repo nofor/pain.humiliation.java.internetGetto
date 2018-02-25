@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
-
+//todo remove extra line
 public class Task9 {
     private static ArrayList<Integer> list = new ArrayList<>();
     private static ThreadPoolExecutor EXECUTOR = (ThreadPoolExecutor) Executors.newCachedThreadPool();
     private static long ITERATION_COUNT = 25;
 
-
+    //todo remove extra line
     static {
         for (int i = 1; i < 101; i++) {
             list.add(i);
@@ -20,7 +20,7 @@ public class Task9 {
     }
 
     public static void main(String[] args) throws InterruptedException {
-
+        //todo remove extra line
         Instant start = Instant.now();
 
         for (int i = 1; i < ITERATION_COUNT; i++) {
@@ -30,10 +30,11 @@ public class Task9 {
         }
 
         Instant end = Instant.now();
+        //todo add extra line because of first line is variable creating, second line just printing
         System.out.println("TIME" + Duration.between(start, end));
 
-
-        Runnable run = new Runnable() {
+        //todo remove extra line
+        Runnable run = new Runnable() {  //todo replace it with lambda
             @Override
             public void run() {
                 for (Integer temp : list) {
@@ -53,7 +54,7 @@ public class Task9 {
         while (!EXECUTOR.isTerminated()){
         }
 
-        if (EXECUTOR.getActiveCount() == 0) {
+        if (EXECUTOR.getActiveCount() == 0) {  //todo you no need this because of you have "is terminated" condition
             System.out.println("TIMETHREAD" + Duration.between(startThread, Instant.now()));
         }
     }

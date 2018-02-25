@@ -42,16 +42,16 @@ public class Task10 {
     }
 
     private void checkDirectoryAndFileName(String path, String writeText) {
-
-        if (!new File(path).isDirectory()) {
-            new File(path).mkdir();
-        }
+        //todo remove extra line
+        if (!new File(path).isDirectory()) {  //todo do not create two different new files. Use "file" from constructor
+            new File(path).mkdirs();  //todo use recursive dir creating
+        }  //todo use "else if"
 
         if (!file.exists()) {
             try {
                 file.createNewFile();
 
-                try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))) {
+                try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))) {  //todo NEVER use try in try
                     bufferedWriter.write(writeText);
                     bufferedWriter.flush();
                 }

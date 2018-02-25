@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Task11 {
-    private String path, fileName;
+    private String path, fileName;  //todo use different String object
     private File file;
 
     Task11(String path, String fileName) {
