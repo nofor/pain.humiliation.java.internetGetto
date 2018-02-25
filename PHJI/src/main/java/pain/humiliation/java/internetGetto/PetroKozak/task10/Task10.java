@@ -5,26 +5,27 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Task10 {
-    //todo add extra line
-    public void outPutWithFileReader(File file) throws IOException {    //todo rework it with TRY..CATCH
-        FileReader fr = new FileReader(file);    //todo you make this method without creating "fr" variable
-        Scanner scan = new Scanner(fr);    //todo you make this method without creating "scan" variable
 
-        while (scan.hasNextLine()) {
-            System.out.println(scan.nextLine());
+    public void outPutWithFileReader(File file) throws IOException {
+        try(Scanner scanner = new Scanner(new FileReader(file))){
+            while (scanner.hasNextLine()){
+                System.out.println(scanner.nextLine());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        fr.close();
     }
 
-    public void outputWithBufferedReader(File file) throws IOException {    //todo rework it with TRY..CATCH
-        BufferedReader br = new BufferedReader(new FileReader(file));    //todo you make this method without creating "br" variable
-        String line;
+    public void outputWithBufferedReader(File file) {
+        try(BufferedReader br = new BufferedReader(new FileReader(file))){
+            String line;
 
-        while((line = br.readLine())!=null){
-            System.out.println(line);
+            while ((line = br.readLine()) != null){
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        br.close();
     }
 }

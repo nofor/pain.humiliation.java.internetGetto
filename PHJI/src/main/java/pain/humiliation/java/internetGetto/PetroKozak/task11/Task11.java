@@ -20,7 +20,7 @@ public class Task11 {
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
 
         for(int i = 0; i<valuesToAdd.size();i++){
-            for(int j = 0; j<5 + (int) (Math.random()*5);j++){
+            for(int j = 0; j<5 + (int) (Math.random()*15);j++){
                 bufferedWriter.write(valuesToAdd.get(i)+" ");
             }
         }

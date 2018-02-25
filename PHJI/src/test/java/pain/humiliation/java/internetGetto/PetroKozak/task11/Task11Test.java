@@ -18,7 +18,7 @@ public class Task11Test {
     Task11 task11 = new Task11(pathOfOriginalFile,nameOfOriginalFile);
 
     @Test
-    public void testCratingandAdding() throws IOException {
+    public void testCountingValuesAndPrintingItInANewFile() throws IOException {
         Collections.addAll(values,"Java", "C++","Python","PHP" );
         task11.writeResultInANewFile(task11.countValues(task11.writeRandomValues(values,pathOfOriginalFile,nameOfOriginalFile)),
                 new File(pathOfResultFile,nameOfResultFile));
