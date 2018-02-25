@@ -50,6 +50,9 @@ public class Task9 {
 
         EXECUTOR.shutdown();
 
+        while (!EXECUTOR.isTerminated()){
+        }
+
         if (EXECUTOR.getActiveCount() == 0) {
             System.out.println("TIMETHREAD" + Duration.between(startThread, Instant.now()));
         }
