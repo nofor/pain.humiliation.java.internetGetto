@@ -10,7 +10,7 @@ public class Task10 {
         FileReader fr = new FileReader(file);    //todo you make this method without creating "fr" variable
         Scanner scan = new Scanner(fr);    //todo you make this method without creating "scan" variable
 
-        while (new Scanner(new FileReader(file)).hasNextLine()) {
+        while (scan.hasNextLine()) {
             System.out.println(scan.nextLine());
         }
 
