@@ -1,6 +1,8 @@
 package pain.humiliation.java.internetGetto.Calllka.task9;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -10,10 +12,9 @@ import java.util.concurrent.TimeUnit;
 //TODO you time calculation is not correct. You print time before threads has finish works. REWORK !!! DONE
 //todo WTF ??? Why are you need it here ? Also, add extra line DONE
 //todo Just print time, without any comments ?? DONE
+//todo if you create static variable. you must create getter and setter or call it as "Task9.timeOne" But here using static variables - excessive. Remove please. DONE
+
 public class Task9 {
-    private static long timeOne, timeTwo, extraTime;
-    //todo if you create static variable. you must create getter and setter or call it as "Task9.timeOne" But here using static variables - excessive. Remove please.
-    //I use static variable, cause all my methods is STATIC. I'm running my methods through "main". It, "main" method, is STATIC.
     private static ArrayList<Integer> list = new ArrayList<>();
 
     static {
@@ -23,15 +24,16 @@ public class Task9 {
     }
 
     public static void main(String[] args) {
-        outputElement(list);
-        outputElementWithThread(list);
-        System.out.println("Output time by FOR: " + TimeUnit.NANOSECONDS.toMillis(timeOne));
-        System.out.println("Output time by Thread: " + TimeUnit.NANOSECONDS.toMillis(timeTwo));
-        System.out.println("Time difference" + TimeUnit.NANOSECONDS.toMillis((timeOne - timeTwo)));
+        long checkWorkTimeCycle = TimeUnit.NANOSECONDS.toMillis(outputElement(list));
+        long checkWorkTimeThread = TimeUnit.NANOSECONDS.toMillis(outputElementWithThread(list));
+
+        System.out.println("Output time by FOR: " + checkWorkTimeCycle + "\n"
+                + "Output time by Thread: " + checkWorkTimeThread + "\n"
+                + "Time difference: " + (checkWorkTimeCycle - checkWorkTimeThread));
     }
 
-    private static void outputElement(ArrayList<Integer> someList) {
-        Task9.timeOne = System.nanoTime();
+    private static long outputElement(ArrayList<Integer> someList) {
+        long timeOne = System.nanoTime();
 
         for (int i = 0; i < 25; i++) {
             for (Integer temp : someList) {
@@ -39,11 +41,13 @@ public class Task9 {
             }
         }
 
-        Task9.timeOne = System.nanoTime() - Task9.timeOne;
+        return (System.nanoTime() - timeOne);
     }
 
-    private static void outputElementWithThread(final ArrayList<Integer> someList) {
-        ThreadPoolExecutor ex = (ThreadPoolExecutor) Executors.newCachedThreadPool();
+    private static long outputElementWithThread(final ArrayList<Integer> someList) {
+        long timeTwo;
+
+        ExecutorService ex = Executors.newCachedThreadPool();
         Runnable myRun = new Runnable() {
             @Override
             public void run() {
@@ -53,7 +57,7 @@ public class Task9 {
             }
         };
 
-        Task9.timeTwo = System.nanoTime();
+        timeTwo = System.nanoTime();
 
         for (int i = 0; i < 25; i++) {
             ex.execute(myRun);
@@ -61,10 +65,9 @@ public class Task9 {
 
         ex.shutdown();
 
-        while (ex.getActiveCount() != 0) {
-            Task9.extraTime = System.nanoTime();
+        while (!ex.isTerminated()){
         }
 
-        Task9.timeOne = Task9.extraTime - Task9.timeTwo;
+        return System.nanoTime() - timeTwo;
     }
 }

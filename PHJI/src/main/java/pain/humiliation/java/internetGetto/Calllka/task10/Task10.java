@@ -1,28 +1,25 @@
 package pain.humiliation.java.internetGetto.Calllka.task10;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
+
 //todo you make this method without creating "fr" variable DONE
 //todo you make this method without creating "scan" variable
 //todo rework it with TRY..CATCH DONE
 public class Task10 {
-    private String path, fileName;
+    private String path;
     private File file;
 
     public Task10(String path, String fileName) {
         this.path = path;
-        this.fileName = fileName;
-        this.file = new File(path, fileName);
+        this.file = new File(this.path, fileName);
     }
 
-    public void outputFileWithScanner(){
-        checkDirectoryAndFileName(this.path, this.fileName);
+    public void outputFileWithScanner(String writeText) {
+        checkDirectoryAndFileName(this.path, writeText);
 
-        try(Scanner scanner = new Scanner(new FileReader(file))){
-            while (scanner.hasNextLine()){
+        try (Scanner scanner = new Scanner(new FileReader(file))) {
+            while (scanner.hasNextLine()) {
                 System.out.println(scanner.nextLine());
             }
         } catch (IOException e) {
@@ -30,13 +27,13 @@ public class Task10 {
         }
     }
 
-    public void outputFileWithBufferReader(){
-        checkDirectoryAndFileName(this.path, this.fileName);
+    public void outputFileWithBufferReader(String writeText) {
+        checkDirectoryAndFileName(this.path, writeText);
 
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(file))){
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
             String stringLine;
 
-            while ((stringLine = bufferedReader.readLine()) != null){
+            while ((stringLine = bufferedReader.readLine()) != null) {
                 System.out.println(stringLine);
             }
         } catch (IOException e) {
@@ -44,15 +41,20 @@ public class Task10 {
         }
     }
 
-    private void checkDirectoryAndFileName(String path, String fileName){
+    private void checkDirectoryAndFileName(String path, String writeText) {
 
-        if(!new File(path).isDirectory()){
+        if (!new File(path).isDirectory()) {
             new File(path).mkdir();
         }
 
-        if(!file.exists()){
+        if (!file.exists()) {
             try {
-                new File(path + "/" + fileName).createNewFile();
+                file.createNewFile();
+
+                try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))) {
+                    bufferedWriter.write(writeText);
+                    bufferedWriter.flush();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
