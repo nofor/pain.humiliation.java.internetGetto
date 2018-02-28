@@ -2,66 +2,33 @@ package pain.humiliation.java.internetGetto.PetroKozak.task11;
 
 import java.io.*;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Task11 {
-    private String path, fileName;
-    private File file;
 
-    public Task11(String path, String fileName) {
-        this.path = path;
-        this.fileName = fileName;
-        this.file = new File(path, fileName);
-    }
-
-    public File writeRandomValues(ArrayList<String> valuesToAdd, String path, String fileName) throws IOException {
-
-        createNewFileOrCheckIfExists(path, fileName);
-
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
-
-        for (int i = 0; i < valuesToAdd.size(); i++) {
-            for (int j = 0; j < 5 + (int) (Math.random() * 15); j++) {
-                bufferedWriter.write(valuesToAdd.get(i) + " ");
-            }
-        }
-
-        bufferedWriter.close();
-        return file;
-    }
-
-    public HashMap<String, ArrayList<String>> countValues(File file) throws IOException {
-
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+    public HashMap<String, ArrayList<String>> readFile(String path) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
         String line = bufferedReader.readLine();
 
-        HashMap<String, ArrayList<String>> result = new
-                HashMap<>();
-        result.put("Java", new ArrayList<>());
-        result.put("PHP", new ArrayList<>());
-        result.put("C++", new ArrayList<>());
-        result.put("Python", new ArrayList<>());
+        HashMap<String, ArrayList<String>> result = new HashMap<>();
 
-        while (line != null) {
-            String[] words = line.split(" ");
+        while(line!=null){
+            String[] words = getOnlyStrings(line).split(" ");
             line = bufferedReader.readLine();
 
-            for (int i = 0; i < words.length; i++) {
-
-                if (words[i].equals("Java")) {
-                    result.get("Java").add("|");
-                } else if (words[i].equals("PHP")) {
-                    result.get("PHP").add("|");
-                } else if (words[i].equals("C++")) {
-                    result.get("C++").add("|");
-                } else if (words[i].equals("Python")) {
-                    result.get("Python").add("|");
+            for (String str: words) {
+                if(result.get(str)!=null){
+                    result.get(str).add("|");
+                }else{
+                    result.put(str, new ArrayList<String>());
+                    result.get(str).add("|");
                 }
             }
         }
 
         return result;
     }
-
     public void writeResultInANewFile(HashMap<String, ArrayList<String>> map, File file) throws IOException {
 
         BufferedWriter bufferedWriter = new BufferedWriter(new
@@ -72,8 +39,10 @@ public class Task11 {
             String key = (String) i.next();
             ArrayList<String> value = map.get(key);
 
+            if(map.get(key).size()>1){
             bufferedWriter.write(key + myToString(value));
             bufferedWriter.newLine();
+            }
         }
 
         bufferedWriter.close();
@@ -89,17 +58,10 @@ public class Task11 {
         return result;
     }
 
-    private void createNewFileOrCheckIfExists(String path, String fileName) {
-        if (!new File(path).isDirectory()) {
-            new File(path).mkdir();
-        }
-
-        if (!file.exists()) {
-            try {
-                new File(path + "/" + fileName).createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+    public static String getOnlyStrings(String s) {
+        Pattern pattern = Pattern.compile("[^a-z A-Z]");
+        Matcher matcher = pattern.matcher(s);
+        String result = matcher.replaceAll(" ");
+        return result;
     }
 }

@@ -9,18 +9,18 @@ import java.util.Collections;
 
 public class Task11Test {
 
-    private String pathOfOriginalFile = "C:\\Users\\Acer\\Desktop";
+    private String pathOfOriginalFile = "C:\\Users\\Acer\\Desktop\\task11.txt";
     private String nameOfOriginalFile = "task11.txt";
-    private String pathOfResultFile = "C:\\Users\\Acer\\Desktop";
+    private String pathOfResultFile = "C:\\Users\\Acer\\Desktop\\result.txt";
     private String nameOfResultFile = "result.txt";
-    private ArrayList<String> values = new ArrayList<>();
 
-    Task11 task11 = new Task11(pathOfOriginalFile, nameOfOriginalFile);
+
+    Task11 task11 = new Task11();
 
     @Test
     public void testCountingValuesAndPrintingItInANewFile() throws IOException {
-        Collections.addAll(values, "Java", "C++", "Python", "PHP");
-        task11.writeResultInANewFile(task11.countValues(task11.writeRandomValues(values, pathOfOriginalFile, nameOfOriginalFile)),
-                new File(pathOfResultFile, nameOfResultFile));
+       task11.writeResultInANewFile(task11.readFile(pathOfOriginalFile),new File(pathOfResultFile));
+
+        //System.out.print(task11.readFile(pathOfOriginalFile).keySet());
     }
 }
