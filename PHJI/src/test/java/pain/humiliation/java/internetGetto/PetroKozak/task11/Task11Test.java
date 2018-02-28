@@ -20,7 +20,5 @@ public class Task11Test {
     @Test
     public void testCountingValuesAndPrintingItInANewFile() throws IOException {
        task11.writeResultInANewFile(task11.readFile(pathOfOriginalFile),new File(pathOfResultFile));
-
-        //System.out.print(task11.readFile(pathOfOriginalFile).keySet());
     }
 }
