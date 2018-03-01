@@ -28,7 +28,7 @@ public class Task11 {
                 sb.append(" ");
             }
 
-            arrayWordFromFile = sb.toString().toLowerCase().replaceAll("[^a-z0-9]", " ").split(" ");
+            arrayWordFromFile = sb.toString().toLowerCase().replaceAll("[^a-z0-9]", " ").split("\\s+");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,10 +55,6 @@ public class Task11 {
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
             for (Map.Entry<String, Integer> entry : elementFromFile) {
-                if (entry.getKey().equals("")) {
-                    continue;
-                }
-
                 StringBuilder sb = new StringBuilder();
 
                 for (int i = 0; i < entry.getValue(); i++) {
