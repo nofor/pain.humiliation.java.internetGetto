@@ -36,10 +36,10 @@ public class Task11 {
 
         HashMap<String, ArrayList<String>> result = new
                 HashMap<>();
-        result.put("Java", new ArrayList<>());
-        result.put("PHP", new ArrayList<>());
-        result.put("C++", new ArrayList<>());
-        result.put("Python", new ArrayList<>());
+        result.put("Java", new ArrayList<String>());
+        result.put("PHP", new ArrayList<String>());
+        result.put("C++", new ArrayList<String>());
+        result.put("Python", new ArrayList<String>());
 
         while (line != null) {
             String[] words = line.split(" ");

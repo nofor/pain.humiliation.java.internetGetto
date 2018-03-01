@@ -6,17 +6,19 @@ import java.util.Scanner;
 //todo you make this method without creating "fr" variable DONE
 //todo you make this method without creating "scan" variable
 //todo rework it with TRY..CATCH DONE
+//todo use recursive dir creating DONE can see in Task11
+//todo NEVER use try in try DONE
+//todo do not create two different new files. Use "file" from constructor DONE
 public class Task10 {
     private String path;
     private File file;
 
-    public Task10(String path, String fileName) {
+    Task10(String path) {
         this.path = path;
-        this.file = new File(this.path, fileName);
     }
 
-    public void outputFileWithScanner(String writeText) {
-        checkDirectoryAndFileName(this.path, writeText);
+    public void outputFileWithScanner() {
+        checkDirectoryAndFileName();
 
         try (Scanner scanner = new Scanner(new FileReader(file))) {
             while (scanner.hasNextLine()) {
@@ -27,8 +29,8 @@ public class Task10 {
         }
     }
 
-    public void outputFileWithBufferReader(String writeText) {
-        checkDirectoryAndFileName(this.path, writeText);
+    public void outputFileWithBufferReader() {
+        checkDirectoryAndFileName();
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
             String stringLine;
@@ -41,23 +43,29 @@ public class Task10 {
         }
     }
 
-    private void checkDirectoryAndFileName(String path, String writeText) {
-        //todo remove extra line
-        if (!new File(path).isDirectory()) {  //todo do not create two different new files. Use "file" from constructor
-            new File(path).mkdirs();  //todo use recursive dir creating
-        }  //todo use "else if"
+    private void checkDirectoryAndFileName() {
+        file = new File(path);
 
-        if (!file.exists()) {
+        if (!file.getParentFile().isDirectory()) {
             try {
-                file.createNewFile();
-
-                try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))) {  //todo NEVER use try in try
-                    bufferedWriter.write(writeText);
-                    bufferedWriter.flush();
-                }
-            } catch (IOException e) {
+                throw new FileNotFoundException("Incorrect path or directory isn't exists");
+            } catch (FileNotFoundException e) {
                 e.printStackTrace();
+                System.out.println("Your path to directory: " + file.getParentFile());
+
+                System.exit(1);
             }
+        } else if (!file.exists()) {
+            try {
+                throw new FileNotFoundException("Incorrect filename or file isn't exists");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                System.out.println("Your filename: " + file.getName());
+
+                System.exit(1);
+            }
+        } else {
+            System.out.println("File is found");
         }
     }
 }

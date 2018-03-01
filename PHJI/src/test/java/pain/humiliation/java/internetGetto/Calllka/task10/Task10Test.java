@@ -2,21 +2,20 @@ package pain.humiliation.java.internetGetto.Calllka.task10;
 
 import org.junit.Test;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
+//todo do not use concatenation during constant creating DONE
+//todo use UPPER case DONE
 public class Task10Test {
 
-    private String fileName = "temp.txt";  //todo use UPPER case
-    private String path = "/home/calllka/Programming/Kurs/" +  //todo do not use concatenation during constant creating
-            "pain.humiliation.java.internetGetto/PHJI/src/main" +
-            "/java/pain/humiliation/java/internetGetto/Calllka" +
-            "/task10/sourcePackage";  //todo use UPPER case
-    private Task10 task10 = new Task10(path, fileName);  //todo use UPPER case
+    private String PATH_TO_FILE = "/home/calllka/Programming/Kurs/pain.humiliation.java.internetGetto/PHJI/src/main/java/pain/humiliation/java/internetGetto/Calllka/task11/sourcePackage/temp";
+    private Task10 task10 = new Task10(PATH_TO_FILE);
 
     @Test
-    public void runOutputFile(){
-        String writeText = "some some some some\ntext text text\ntemp temp\nword";
-        task10.outputFileWithScanner(writeText);
-        task10.outputFileWithBufferReader(writeText);
+    public void runOutputFile() {
+        task10.outputFileWithScanner();
+        task10.outputFileWithBufferReader();
     }
 
 }

@@ -1,67 +1,71 @@
 package pain.humiliation.java.internetGetto.Calllka.task11;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
+//TODO SORTED COLLECTION MAP
 public class Task11 {
-    private String path, fileName;  //todo use different String object
+    private String directoryPath, nameOfUsedFile;  //todo use different String object DONE
     private File file;
 
     Task11(String path, String fileName) {
-        this.path = path;
-        this.fileName = fileName;
-        this.file = new File(path, fileName);
+        this.directoryPath = path;
+        this.nameOfUsedFile = fileName;
     }
 
-    public void writeInToHashMap(String pathToSaveNewFile, String nameForSavedFile, String textIfFileIsEmpty) {
+    public void writeInToHashMap(String pathToSaveNewFile) {
         String[] arrayWordFromFile = new String[0];
-        HashMap<String, StringBuilder> mainHashMap = new HashMap<>();
+        HashMap<String, Integer> mainHashMap = new HashMap<>();
 
-        checkDirectoryAndFileName(this.path, this.fileName);
-        checkAndWriteInEmptyFile(this.file, textIfFileIsEmpty);
+        checkDirectoryAndFileName(this.directoryPath, this.nameOfUsedFile, false);
 
-        try(BufferedReader bf = new BufferedReader(new FileReader(file))){
+        try (BufferedReader bf = new BufferedReader(new FileReader(file))) {
             String tempStringToBufferReader;
             StringBuilder sb = new StringBuilder();
 
-            while ((tempStringToBufferReader = bf.readLine()) != null){
+            while ((tempStringToBufferReader = bf.readLine()) != null) {
                 sb.append(tempStringToBufferReader);
                 sb.append(" ");
             }
 
-            arrayWordFromFile = sb.toString().replaceAll("\\p{P}", "").toLowerCase().split(" ");
+            arrayWordFromFile = sb.toString().toLowerCase().replaceAll("[^a-z0-9]", " ").split(" ");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        for (String temp : arrayWordFromFile){
+        for (String temp : arrayWordFromFile) {
             mainHashMap.put(temp, null);
         }
 
-        for(String tempMap : mainHashMap.keySet()){
-            StringBuilder sbMap = new StringBuilder();
+        for (String tempMap : mainHashMap.keySet()) {
+            int i = 1;
 
-            for(String sbTemp : arrayWordFromFile){
-                if(tempMap.equals(sbTemp)){
-                    mainHashMap.put(tempMap, sbMap.append("|"));
+            for (String sbTemp : arrayWordFromFile) {
+                if (tempMap.equals(sbTemp)) {
+                    mainHashMap.put(tempMap, i++);
                 }
             }
         }
 
-        writeMapInToTheFile(pathToSaveNewFile, nameForSavedFile, mainHashMap);
+        writeMapInToTheFile(pathToSaveNewFile, new StringBuilder(nameOfUsedFile).insert(0, "New").toString(), sortedMap(mainHashMap));
     }
 
-    private void writeMapInToTheFile(String pathToSaveNewFile, String nameForSavedFile, HashMap<String, StringBuilder> mainHashMap){
-        File newFile;
+    private void writeMapInToTheFile(String pathToSaveNewFile, String nameForNewFile, List<Map.Entry<String, Integer>> elementFromFile) {
+        checkDirectoryAndFileName(pathToSaveNewFile, nameForNewFile, true);
 
-        checkDirectoryAndFileName(pathToSaveNewFile, nameForSavedFile);
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
+            for (Map.Entry<String, Integer> entry : elementFromFile) {
+                if (entry.getKey().equals("")) {
+                    continue;
+                }
 
-        newFile = new File(pathToSaveNewFile, nameForSavedFile);
+                StringBuilder sb = new StringBuilder();
 
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter(newFile))){
-            for(Map.Entry<String, StringBuilder> entry: mainHashMap.entrySet()){
-                bw.write(entry.getKey() + ": " + entry.getValue());
+                for (int i = 0; i < entry.getValue(); i++) {
+                    sb.append("|");
+                }
+
+                bw.write(entry.getKey() + ": " + sb);
                 bw.newLine();
             }
 
@@ -71,35 +75,45 @@ public class Task11 {
         }
     }
 
-    private void checkAndWriteInEmptyFile(File file, String someText) {
-        try {
-            if (new BufferedReader(new FileReader(file)).readLine() == null) {
-                BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+    private void checkDirectoryAndFileName(String path, String fileName, boolean isKeep) {//"isKeep" is variable of choose, do you need to create a file
+        boolean flag = false;
+        file = new File(path, fileName);
 
-                bufferedWriter.write(someText);
-                bufferedWriter.flush();
-
-                System.out.println("Write some text in to FILE");
-            } else {
-                System.out.println("FILE isn't empty");
+        if (isKeep) {
+            if (!file.getParentFile().isDirectory()) {
+                flag = file.getParentFile().mkdirs();
+            } else if (!file.exists()) {
+                try {
+                    flag = file.createNewFile();
+                } catch (IOException e) {
+                    System.out.println("Incorrect path or filename");
+                    e.printStackTrace();
+                }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+
+        if (flag) {
+            System.out.println("Folder and File created");
+            System.out.println("File location: " + file.getParent());
+            System.out.println("Filename: " + file.getName());
+        } else if (!file.getParentFile().isDirectory() && !file.exists()) {
+            try {
+                System.out.println("Incorrect path to folder or filename");
+                System.out.println("File location: " + file.getParent());
+                System.out.println("Filename: " + file.getName());
+                throw new FileNotFoundException();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                System.exit(1);
+            }
+        }
+
     }
 
-    private void checkDirectoryAndFileName(String path, String fileName) {
+    private List<Map.Entry<String, Integer>> sortedMap(HashMap<String, Integer> mainHashMap) {
+        List<Map.Entry<String, Integer>> list = new ArrayList<>(mainHashMap.entrySet());
+        list.sort((o1, o2) -> (o2.getValue()).compareTo(o1.getValue()));
 
-        if (!new File(path).isDirectory()) {
-            new File(path).mkdir();
-        }
-
-        if (!file.exists()) {
-            try {
-                new File(path + "/" + fileName).createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        return list;
     }
 }
