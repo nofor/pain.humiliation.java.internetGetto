@@ -10,11 +10,7 @@ import java.util.Collections;
 public class Task11Test {
 
     private String pathOfOriginalFile = "C:\\Users\\Acer\\Desktop\\task11.txt";
-    private String nameOfOriginalFile = "task11.txt";
     private String pathOfResultFile = "C:\\Users\\Acer\\Desktop\\result.txt";
-    private String nameOfResultFile = "result.txt";
-
-
     Task11 task11 = new Task11();
 
     @Test

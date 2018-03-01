@@ -1,6 +1,5 @@
 package pain.humiliation.java.internetGetto.PetroKozak.task10;
 
-//todo remove extra line
 import java.io.*;
 import java.util.Scanner;
 
@@ -14,7 +13,6 @@ public class Task10 {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//todo remove extra line
     }
 
     public void outputWithBufferedReader(File file) {
