@@ -16,6 +16,8 @@ import java.util.concurrent.TimeUnit;
 //todo use Petya's comments DONE
 public class Task9 {
     private static ArrayList<Integer> list = new ArrayList<>();
+    static ExecutorService ex = Executors.newCachedThreadPool();
+    static long cycleWhileTime;
 
     static {
         for (int i = 0; i < 100; i++) {
@@ -24,7 +26,7 @@ public class Task9 {
     }
 
     public static void main(String[] args) {
-        long checkWorkTimeThread, cycleWhileTime;
+        long checkWorkTimeThread;
         long checkWorkTimeCycle = System.nanoTime();
 
         for (int i = 0; i < 25; i++) {
@@ -35,7 +37,6 @@ public class Task9 {
 
         checkWorkTimeCycle = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - checkWorkTimeCycle);
 
-        ExecutorService ex = Executors.newCachedThreadPool();
         Runnable myRun = () -> {
             for (Integer temp : list) {
                 System.out.println("Thread:" + Thread.currentThread().getName() + " Element: " + temp);
@@ -48,14 +49,7 @@ public class Task9 {
             ex.execute(myRun);
         }
 
-        ex.shutdown();
-
-        cycleWhileTime = System.nanoTime();
-
-        while (!ex.isTerminated()){
-        }
-
-        cycleWhileTime = System.nanoTime() - cycleWhileTime;
+        cycleWhileTime = shutdownAllThread();
 
 
         checkWorkTimeThread = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - checkWorkTimeThread - cycleWhileTime);
@@ -63,5 +57,17 @@ public class Task9 {
         System.out.println("Output time by FOR: " + checkWorkTimeCycle + "\n"
                 + "Output time by Thread: " + checkWorkTimeThread + "\n"
                 + "Time difference: " + (checkWorkTimeCycle - checkWorkTimeThread));
+    }
+
+    public static long shutdownAllThread() {
+        ex.shutdown();
+
+        cycleWhileTime = System.nanoTime();
+
+        while (!ex.isTerminated()) {
+            continue;
+        }
+
+        return System.nanoTime() - cycleWhileTime;
     }
 }
