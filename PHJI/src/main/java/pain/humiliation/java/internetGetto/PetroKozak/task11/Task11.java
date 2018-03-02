@@ -6,7 +6,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Task11 {
-
     public HashMap<String, ArrayList<String>> readFile(String path) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
         String line;
