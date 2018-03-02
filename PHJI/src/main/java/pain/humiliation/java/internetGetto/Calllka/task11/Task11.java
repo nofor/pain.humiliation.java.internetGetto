@@ -13,8 +13,8 @@ public class Task11 {
         this.nameOfUsedFile = fileName;
     }
 
-    public void writeInToHashMap(String pathToSaveNewFile) {
-        String[] arrayWordFromFile = new String[0];
+    public void writeInToHashMap(String pathToSaveNewFile) {    //todo make additional param for pattern
+        String[] arrayWordFromFile = new String[0];    //todo initialize it as null
         HashMap<String, Integer> mainHashMap = new HashMap<>();
 
         checkDirectoryAndFileName(this.directoryPath, this.nameOfUsedFile, false);
@@ -28,12 +28,12 @@ public class Task11 {
                 sb.append(" ");
             }
 
-            arrayWordFromFile = sb.toString().toLowerCase().replaceAll("[^a-z0-9]", " ").split("\\s+");
+            arrayWordFromFile = sb.toString().toLowerCase().replaceAll("[^a-z0-9]", " ").split("\\s+");  //todo to make it more practical, move pattern inti incoming param
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        for (String temp : arrayWordFromFile) {
+        for (String temp : arrayWordFromFile) {  //todo try to make it in single for_each
             mainHashMap.put(temp, null);
         }
 
@@ -89,18 +89,19 @@ public class Task11 {
         }
 
         if (flag) {
-            System.out.println("Folder and File created");
+            System.out.println("Folder and File created");    //todo rework it with https://dzone.com/articles/java-string-format-examples
             System.out.println("File location: " + file.getParent());
             System.out.println("Filename: " + file.getName());
         } else if (!file.getParentFile().isDirectory() && !file.exists()) {
             try {
-                System.out.println("Incorrect path to folder or filename");
+                System.out.println("Incorrect path to folder or filename");    //todo rework it with https://dzone.com/articles/java-string-format-examples
                 System.out.println("File location: " + file.getParent());
                 System.out.println("Filename: " + file.getName());
+                //todo add extra line
                 throw new FileNotFoundException();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-                System.exit(1);
+                System.exit(1);  //todo remove it and remove try_catch block. Just throw exception.
             }
         }
 

@@ -6,9 +6,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Task11 {
-    public HashMap<String, ArrayList<String>> readFile(String path) throws IOException {
+    //todo add extra line
+    public HashMap<String, ArrayList<String>> readFile(String path) throws IOException {    //todo add pattern incoming param and use it under getOnlyStrings() method
         BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
-        String line;
+        String line;    //todo grup primitive to primitive, other to other
         StringBuilder sb = new StringBuilder();
         HashMap<String, ArrayList<String>> result = new HashMap<>();
 
@@ -17,18 +18,19 @@ public class Task11 {
             sb.append(" ");
         }
 
-        String[] words = getOnlyStrings(sb.toString().toLowerCase()).split("\\s+");
+        String[] words = getOnlyStrings(sb.toString().toLowerCase()).split("\\s+");  //todo do not create extra variable
 
         for (String str : words) {
             if (result.get(str) != null) {
                 result.get(str).add("|");
             } else {
-                result.put(str, new ArrayList<String>());
+                result.put(str, new ArrayList<String>());    //todo <String> is not necessary here
                 result.get(str).add("|");
             }
         }
 
         bufferedReader.close();
+        //todo add extra line
         return result;
     }
 
@@ -37,7 +39,7 @@ public class Task11 {
         Map<String, ArrayList<String>> sortedMap = sortByArraySizeDesc(map);
 
         for (String key : sortedMap.keySet()) {
-            ArrayList<String> value = sortedMap.get(key);
+            ArrayList<String> value = sortedMap.get(key);  //todo initialize it at the beginning
 
             bufferedWriter.write(key + myToString(value));
             bufferedWriter.newLine();
@@ -46,7 +48,7 @@ public class Task11 {
         bufferedWriter.close();
     }
 
-    public String myToString(ArrayList x) {
+    public String myToString(ArrayList x) {    //todo rename it
         String result = "";
 
         for (Object aX : x) {
@@ -57,7 +59,7 @@ public class Task11 {
     }
 
     public static String getOnlyStrings(String s) {
-        Pattern pattern = Pattern.compile("[^a-z A-Z 0-9]");
+        Pattern pattern = Pattern.compile("[^a-z A-Z 0-9]");    //todo make patter as incoming param
         Matcher matcher = pattern.matcher(s);
 
         return matcher.replaceAll(" ");
@@ -68,9 +70,9 @@ public class Task11 {
 
         Collections.sort(list, (Comparator) Task11::compare);
 
-        Map res = new LinkedHashMap();
+        Map res = new LinkedHashMap();  //todo move it to beginning
 
-        for (Iterator it = list.iterator(); it.hasNext(); ) {
+        for (Iterator it = list.iterator(); it.hasNext(); ) {    //todo rework it like _for (Map.Entry<String, String> entry : map.entrySet())_
             Map.Entry entry = (Map.Entry) it.next();
             res.put(entry.getKey(), entry.getValue());
         }
@@ -86,8 +88,10 @@ public class Task11 {
         } else if (o2 == null) {
             return -1;
         }
+        //todo add extra line
         int size1 = ((List) ((Map.Entry) (o1)).getValue()).size();
         int size2 = ((List) ((Map.Entry) (o2)).getValue()).size();
+        //todo add extra line
         return size2 - size1;
     }
 }

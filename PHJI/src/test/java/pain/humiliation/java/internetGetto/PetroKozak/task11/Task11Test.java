@@ -6,9 +6,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class Task11Test {
-    private String pathOfOriginalFile = "C:\\Users\\Acer\\Desktop\\task11.txt";
-    private String pathOfResultFile = "C:\\Users\\Acer\\Desktop\\result.txt";
-    Task11 task11 = new Task11();
+    private String pathOfOriginalFile = "C:\\Media\\Dewelopment\\Configs\\Songs";
+    private String pathOfResultFile = "C:\\Users\\Zaitsev Artem\\Desktop\\Доки\\result.txt";
+    Task11 task11 = new Task11();  //todo why this is default ?
 
     @Test
     public void testCountingValuesAndPrintingItInANewFile() throws IOException {
