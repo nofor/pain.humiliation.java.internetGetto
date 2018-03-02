@@ -9,7 +9,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class Task9 {
     private static ArrayList<Integer> list = new ArrayList<>();
     private static ThreadPoolExecutor EXECUTOR = (ThreadPoolExecutor) Executors.newCachedThreadPool();
-    private static long ITERATION_COUNT = 25;
+    private static long ITERATION_COUNT = 2500;
 
     static {
         for (int i = 1; i < 101; i++) {
@@ -28,8 +28,6 @@ public class Task9 {
 
         Instant end = Instant.now();
 
-        System.out.println("TIME" + Duration.between(start, end));
-
         Runnable run = () -> {
             for (Integer temp : list) {
                 System.out.println("Thread:" + Thread.currentThread().getName() + " Element: " + temp);
@@ -42,13 +40,19 @@ public class Task9 {
             EXECUTOR.execute(run);
         }
 
+        shutExecutorDown();
+
+        Instant endThread = Instant.now();
+
+        System.out.println("TIME WITH LOOP FOR:" + Duration.between(start, end).toMillis() + "MILLISECS");
+        System.out.println("TIME WITH THREADPOOL" + Duration.between(startThread, endThread).toMillis() + "MILLISECS");
+    }
+
+    public static void shutExecutorDown() {
         EXECUTOR.shutdown();
 
-        while (!EXECUTOR.isTerminated()){
-        }
-
-        if (EXECUTOR.getActiveCount() == 0) {  //todo you no need this because of you have "is terminated" condition
-            System.out.println("TIMETHREAD" + Duration.between(startThread, Instant.now()));
+        while (!EXECUTOR.isTerminated()) {
+            continue;
         }
     }
 }
