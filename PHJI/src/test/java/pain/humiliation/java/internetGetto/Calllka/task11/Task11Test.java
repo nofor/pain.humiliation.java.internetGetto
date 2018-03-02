@@ -1,17 +1,18 @@
 package pain.humiliation.java.internetGetto.Calllka.task11;
 
 import org.junit.Test;
-//todo UPPER case, Concatenation
+
 public class Task11Test {
 
-    private String fileName = "Course Useful100500.txt";
-    private String path = "C:\\Users\\Zaitsev Artem\\Desktop";
-    private Task11 task11 = new Task11(path, fileName);
+    private String NAME_OF_USED_FILE = "temp";
+    private String DIRECTORY_PATH_TO_FILE = "/home/calllka/Programming/Kurs/pain.humiliation.java.internetGetto/PHJI/src/main/java/pain/humiliation/java/internetGetto/Calllka/task11/sourcePackage";
+    private Task11 task11 = new Task11(DIRECTORY_PATH_TO_FILE, NAME_OF_USED_FILE);
 
+    // New File is created with the name "New" + oldFilename".txt
     @Test
     public void writeTextInNewFileTest(){
-        String text = "some some some some\ntext text text\ntemp temp\nword";  //todo is this file ?
-
-        task11.writeInToHashMap(path, fileName + "2", text);
+        String directoryPathForSavedNewFile = "/home/calllka/Programming/Kurs/pain.humiliation.java.internetGetto/PHJI/src/main/java/pain/humiliation/java/internetGetto/Calllka/task11/sourcePackage/sourcePackage/sourcePackage";
+        //"directoryPathForSavedNewFile" Path to directory where will be created a new file.
+        task11.writeInToHashMap(directoryPathForSavedNewFile);
     }
 }

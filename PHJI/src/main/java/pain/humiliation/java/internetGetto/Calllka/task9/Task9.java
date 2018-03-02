@@ -8,15 +8,16 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 //todo why are you need it here ??? You duplicate this peace of code "Thread.currentThread().getName()". DONE
-// todo add extra line DONE
+//todo add extra line DONE
 //TODO you time calculation is not correct. You print time before threads has finish works. REWORK !!! DONE
 //todo WTF ??? Why are you need it here ? Also, add extra line DONE
 //todo Just print time, without any comments ?? DONE
 //todo if you create static variable. you must create getter and setter or call it as "Task9.timeOne" But here using static variables - excessive. Remove please. DONE
-
-//todo use Petya's comments
+//todo use Petya's comments DONE
 public class Task9 {
     private static ArrayList<Integer> list = new ArrayList<>();
+    static ExecutorService ex = Executors.newCachedThreadPool();
+    static long cycleWhileTime;
 
     static {
         for (int i = 0; i < 100; i++) {
@@ -25,50 +26,48 @@ public class Task9 {
     }
 
     public static void main(String[] args) {
-        long checkWorkTimeCycle = TimeUnit.NANOSECONDS.toMillis(outputElement(list));
-        long checkWorkTimeThread = TimeUnit.NANOSECONDS.toMillis(outputElementWithThread(list));
+        long checkWorkTimeThread;
+        long checkWorkTimeCycle = System.nanoTime();
+
+        for (int i = 0; i < 25; i++) {
+            for (Integer temp : list) {
+                System.out.println("Cycle number: " + i + " ; " + "Element: " + temp);
+            }
+        }
+
+        checkWorkTimeCycle = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - checkWorkTimeCycle);
+
+        Runnable myRun = () -> {
+            for (Integer temp : list) {
+                System.out.println("Thread:" + Thread.currentThread().getName() + " Element: " + temp);
+            }
+        };
+
+        checkWorkTimeThread = System.nanoTime();
+
+        for (int i = 0; i < 25; i++) {
+            ex.execute(myRun);
+        }
+
+        cycleWhileTime = shutdownAllThread();
+
+
+        checkWorkTimeThread = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - checkWorkTimeThread - cycleWhileTime);
 
         System.out.println("Output time by FOR: " + checkWorkTimeCycle + "\n"
                 + "Output time by Thread: " + checkWorkTimeThread + "\n"
                 + "Time difference: " + (checkWorkTimeCycle - checkWorkTimeThread));
     }
 
-    private static long outputElement(ArrayList<Integer> someList) {
-        long timeOne = System.nanoTime();
-
-        for (int i = 0; i < 25; i++) {
-            for (Integer temp : someList) {
-                System.out.println("Cycle number: " + i + " ; " + "Element: " + temp);
-            }
-        }
-
-        return (System.nanoTime() - timeOne);
-    }
-
-    private static long outputElementWithThread(final ArrayList<Integer> someList) {
-        long timeTwo;
-
-        ExecutorService ex = Executors.newCachedThreadPool();
-        Runnable myRun = new Runnable() {
-            @Override
-            public void run() {
-                for (Integer temp : someList) {
-                    System.out.println("Thread:" + Thread.currentThread().getName() + " Element: " + temp);
-                }
-            }
-        };
-
-        timeTwo = System.nanoTime();
-
-        for (int i = 0; i < 25; i++) {
-            ex.execute(myRun);
-        }
-
+    public static long shutdownAllThread() {
         ex.shutdown();
 
-        while (!ex.isTerminated()){
+        cycleWhileTime = System.nanoTime();
+
+        while (!ex.isTerminated()) {
+            continue;
         }
 
-        return System.nanoTime() - timeTwo;
+        return System.nanoTime() - cycleWhileTime;
     }
 }
