@@ -66,10 +66,9 @@ public class Task11 {
 
     private static Map<String, ArrayList<String>> sortByArraySizeDesc(Map<String, ArrayList<String>> map) {
         List<Map.Entry<String,ArrayList<String>>> list = new LinkedList(map.entrySet());
+        Map res = new LinkedHashMap();
 
         Collections.sort(list, (Comparator) Task11::compare);
-
-        Map res = new LinkedHashMap();
 
         for (Map.Entry<String, ArrayList<String>> entry:list ) {
             res.put(entry.getKey(), entry.getValue());
