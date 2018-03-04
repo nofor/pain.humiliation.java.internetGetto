@@ -3,16 +3,15 @@ package pain.humiliation.java.internetGetto.Maksim.task2;
 public class Task2 {
 
     public String divisionNumberWithRemainder(int q, int w){
-        //todo remove extra line
         double division = 0;
-        //todo add extra line
+
         try {
             division = q / w;
         }
         catch (ArithmeticException e){
             System.out.println("Error!");
         }
-        //todo add extra line
+
         int remainder = q % w;
 
         return "Your example is -> " + q + "/" + w + "=" + (int)division + "\nRemainder is -> " + remainder;
@@ -20,7 +19,7 @@ public class Task2 {
 
     public String sumNumberOfNumber(int a){
         int sum = 0;
-        //todo add extra line
+
         if((a <= 99 ) && ( a >= 10 )){
             int b = a / 10;
             int c = a % 10;
@@ -35,10 +34,10 @@ public class Task2 {
 
     public void ceilNumber(double num){
         int c = (int)num;
-        //todo add extra line
+
         if((num - c) >= 0.5){
             c = c + 1;
-            //todo add extra line
+
             System.out.println("Your number is -> " + num + "\nCeil -> " + c);
         }
         else {
