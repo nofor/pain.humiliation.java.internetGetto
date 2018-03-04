@@ -2,18 +2,20 @@ package pain.humiliation.java.internetGetto.Calllka.task11;
 
 import org.junit.Test;
 
+import java.io.FileNotFoundException;
+
+//todo move it class variable DONE
 public class Task11Test {
 
-    private String NAME_OF_USED_FILE = "Songs";
-    private String DIRECTORY_PATH_TO_FILE = "C:\\Media\\Dewelopment\\Configs";
+    private String NAME_OF_USED_FILE = "temp";
+    private String DIRECTORY_PATH_TO_FILE = "/home/calllka/Programming/Kurs/pain.humiliation.java.internetGetto/PHJI/src/main/java/pain/humiliation/java/internetGetto/Calllka/task11/sourcePackage";
+    private String directoryPathForSavedNewFile = "/home/calllka/Programming/Kurs/pain.humiliation.java.internetGetto/PHJI/src/main/java/pain/humiliation/java/internetGetto/Calllka/task11/sourcePackage/sourcePackage";
     private Task11 task11 = new Task11(DIRECTORY_PATH_TO_FILE, NAME_OF_USED_FILE);
 
     // New File is created with the name "New" + oldFilename".txt
     @Test
-    public void writeTextInNewFileTest(){
-        //todo move it class variable
-        String directoryPathForSavedNewFile = "C:\\Media\\Dewelopment\\Configs";
+    public void writeTextInNewFileTest() throws FileNotFoundException {
         //"directoryPathForSavedNewFile" Path to directory where will be created a new file.
-        task11.writeInToHashMap(directoryPathForSavedNewFile);
+        task11.writeInToHashMap(directoryPathForSavedNewFile, "[^a-z0-9]");
     }
 }

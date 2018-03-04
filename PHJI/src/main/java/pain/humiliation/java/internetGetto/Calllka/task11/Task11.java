@@ -3,7 +3,9 @@ package pain.humiliation.java.internetGetto.Calllka.task11;
 import java.io.*;
 import java.util.*;
 
-//TODO SORTED COLLECTION MAP
+//TODO SORTED COLLECTION MAP DONE
+//todo add extra line DONE
+//todo rework it with https://dzone.com/articles/java-string-format-examples DONE
 public class Task11 {
     private String directoryPath, nameOfUsedFile;  //todo use different String object DONE
     private File file;
@@ -13,9 +15,9 @@ public class Task11 {
         this.nameOfUsedFile = fileName;
     }
 
-    public void writeInToHashMap(String pathToSaveNewFile) {    //todo make additional param for pattern
-        String[] arrayWordFromFile = new String[0];    //todo initialize it as null
-        HashMap<String, Integer> mainHashMap = new HashMap<>();
+    public void writeInToHashMap(String pathToSaveNewFile, String regExp) throws FileNotFoundException {    //todo make additional param for pattern DONE
+        String[] arrayWordFromFile = null;    //todo initialize it as null DONE
+        TreeMap<String, Integer> mainHashMap = new TreeMap<>();
 
         checkDirectoryAndFileName(this.directoryPath, this.nameOfUsedFile, false);
 
@@ -28,29 +30,22 @@ public class Task11 {
                 sb.append(" ");
             }
 
-            arrayWordFromFile = sb.toString().toLowerCase().replaceAll("[^a-z0-9]", " ").split("\\s+");  //todo to make it more practical, move pattern inti incoming param
+            arrayWordFromFile = sb.toString().toLowerCase().replaceAll(regExp, " ").split("\\s+");  //todo to make it more practical, move pattern inti incoming param DONE
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        for (String temp : arrayWordFromFile) {  //todo try to make it in single for_each
-            mainHashMap.put(temp, null);
-        }
-
-        for (String tempMap : mainHashMap.keySet()) {
+        assert arrayWordFromFile != null;
+        for (String temp : arrayWordFromFile) {  //todo try to make it in single for_each DONE
             int i = 1;
 
-            for (String sbTemp : arrayWordFromFile) {
-                if (tempMap.equals(sbTemp)) {
-                    mainHashMap.put(tempMap, i++);
-                }
-            }
+            mainHashMap.merge(temp, i, (a, b) -> a + b);
         }
 
         writeMapInToTheFile(pathToSaveNewFile, new StringBuilder(nameOfUsedFile).insert(0, "New").toString(), sortedMap(mainHashMap));
     }
 
-    private void writeMapInToTheFile(String pathToSaveNewFile, String nameForNewFile, List<Map.Entry<String, Integer>> elementFromFile) {
+    private void writeMapInToTheFile(String pathToSaveNewFile, String nameForNewFile, List<Map.Entry<String, Integer>> elementFromFile) throws FileNotFoundException {
         checkDirectoryAndFileName(pathToSaveNewFile, nameForNewFile, true);
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
@@ -71,7 +66,7 @@ public class Task11 {
         }
     }
 
-    private void checkDirectoryAndFileName(String path, String fileName, boolean isKeep) {//"isKeep" is variable of choose, do you need to create a file
+    private void checkDirectoryAndFileName(String path, String fileName, boolean isKeep) throws FileNotFoundException {//"isKeep" is variable of choose, do you need to create a file
         boolean flag = false;
         file = new File(path, fileName);
 
@@ -89,25 +84,16 @@ public class Task11 {
         }
 
         if (flag) {
-            System.out.println("Folder and File created");    //todo rework it with https://dzone.com/articles/java-string-format-examples
-            System.out.println("File location: " + file.getParent());
-            System.out.println("Filename: " + file.getName());
+            System.out.printf("Folder and File created\nFile location: %s\nFilename: %s", file.getParent(), file.getName());
         } else if (!file.getParentFile().isDirectory() && !file.exists()) {
-            try {
-                System.out.println("Incorrect path to folder or filename");    //todo rework it with https://dzone.com/articles/java-string-format-examples
-                System.out.println("File location: " + file.getParent());
-                System.out.println("Filename: " + file.getName());
-                //todo add extra line
-                throw new FileNotFoundException();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                System.exit(1);  //todo remove it and remove try_catch block. Just throw exception.
-            }
+            System.out.printf("Incorrect path to folder or filename\nFile location: %s\nFilename: %s", file.getParent(), file.getName());
+
+            throw new FileNotFoundException();
         }
 
     }
 
-    private List<Map.Entry<String, Integer>> sortedMap(HashMap<String, Integer> mainHashMap) {
+    private List<Map.Entry<String, Integer>> sortedMap(TreeMap<String, Integer> mainHashMap) {
         List<Map.Entry<String, Integer>> list = new ArrayList<>(mainHashMap.entrySet());
         list.sort((o1, o2) -> (o2.getValue()).compareTo(o1.getValue()));
 
