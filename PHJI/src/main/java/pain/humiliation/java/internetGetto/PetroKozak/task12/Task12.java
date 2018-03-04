@@ -61,7 +61,7 @@ public class Task12 {
         } catch (ClassCastException ex) {
             System.out.println("You cant cast " + j.getClass().getName() + " to String");
         } finally {
-            System.out.println("The programm casted it to Integer. Value is: " + j);
+            System.out.println("The program casted it to Integer. Value is: " + j);
         }
     }
 
@@ -85,7 +85,7 @@ public class Task12 {
         try {
             int[] temp = new int[size];
         } catch (NegativeArraySizeException ex) {
-            System.out.println("ARRAYS SIZE CANT BE NULL. But your brain size can.");
+            System.out.println("ARRAYS SIZE CANT BE LESS THAN NULL. But your brain size can.");
         }
     }
 
