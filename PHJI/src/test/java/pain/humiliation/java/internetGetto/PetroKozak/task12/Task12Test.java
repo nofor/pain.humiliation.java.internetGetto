@@ -5,7 +5,7 @@ import org.junit.Test;
 public class Task12Test {
     private Task12 task12 = new Task12();
     private int[] array = new int[5];
-    private Object [] arrayObject = new Integer[5];
+    private Object[] arrayObject = new Integer[5];
     private int age = 5;
     private String stringForNullPointer = null;
 
@@ -40,7 +40,7 @@ public class Task12Test {
 
     @Test
     public void testArithmeticException() {
-        task12.handleArithmeticException(5,0);
+        task12.handleArithmeticException(5, 0);
     }
 
     @Test
@@ -50,25 +50,27 @@ public class Task12Test {
 
     @Test
     public void testArrayStoreException() {
-        arrayObject [0] = 1;
+        arrayObject[0] = 1;
         task12.handleArrayStoreException(arrayObject, new String("4"));
     }
 
     @Test
-    public void testIllegalArgumentException(){
+    public void testIllegalArgumentException() {
         task12.handleIllegalArgumentException(age);
     }
 
     @Test
-    public void testNegativeArraySizeException(){
+    public void testNegativeArraySizeException() {
         task12.handleNegativeArraySizeException(-10);
     }
+
     @Test
-    public void testNullPointerException(){
+    public void testNullPointerException() {
         task12.handleNullPointerException(stringForNullPointer);
     }
+
     @Test
-    public void testNumberFormatException(){
+    public void testNumberFormatException() {
         task12.handleNumberFormatException(array);
     }
 
