@@ -4,11 +4,19 @@ public class Task12 {
     private int SIZE = 200000000;
 
     public void callOutOfMemoryError() {
-        int[] i = new int[SIZE];
+        try{
+            int[] i = new int[SIZE];
+        }catch (OutOfMemoryError er){
+            System.out.println("OutOfMemoryError caught");
+        }
     }
 
-    public int callStackOverFlow(int number) {
-        return number * callStackOverFlow(number);
+    public void callStackOverFlow(int number) {
+        try{
+            callStackOverFlow(++number);
+        }catch (StackOverflowError er){
+            System.out.println("StackOverflowError caught");
+        }
     }
 
     public void handleIndexOutOfBoundsException(int[] array) {
