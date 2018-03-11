@@ -3,6 +3,7 @@ package pain.humiliation.java.internetGetto.PetroKozak.task12;
 import org.junit.Test;
 
 public class Task12Test {
+    //todo add separate line
     private Task12 task12 = new Task12();
     private int[] array = new int[5];
     private Object[] arrayObject = new Integer[5];
@@ -66,7 +67,7 @@ public class Task12Test {
 
     @Test
     public void testNullPointerException() {
-        task12.handleNullPointerException(stringForNullPointer);
+        task12.handleNullPointerException(stringForNullPointer);    //todo do not create null variable, set just null
     }
 
     @Test

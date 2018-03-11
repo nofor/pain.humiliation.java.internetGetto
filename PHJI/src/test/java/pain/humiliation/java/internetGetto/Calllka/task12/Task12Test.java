@@ -2,6 +2,7 @@ package pain.humiliation.java.internetGetto.Calllka.task12;
 
 import org.junit.Test;
 
+//todo create separate tests
 public class Task12Test {
     private Task12 task12 = new Task12("filename.txt");
 

@@ -1,11 +1,14 @@
 package pain.humiliation.java.internetGetto.PetroKozak.task12;
 
+//todo use reformat code
+//todo do not use CAPS in your SAPT
+//todo do not create custom message in _catch_ block, use exception message or cause
 public class Task12 {
-    private int SIZE = 200000000;
+    private int SIZE = 200000000;  //todo make it static
 
     public void callOutOfMemoryError() {
         try{
-            int[] i = new int[SIZE];
+            int[] i = new int[SIZE];    //todo rework, do not create not useful variable
         }catch (OutOfMemoryError er){
             System.out.println("OutOfMemoryError caught");
         }
@@ -42,7 +45,7 @@ public class Task12 {
             temp[temp.length] = x;
         } catch (ArrayIndexOutOfBoundsException ex) {
             System.out.println("You're out Of Bounds");
-        } finally {
+        } finally {    //todo do not use finally for repairing exception, use _catch_ block for it
             int count = 0;
 
             for (int h : temp) {
@@ -91,7 +94,7 @@ public class Task12 {
 
     public void handleNegativeArraySizeException(int size) {
         try {
-            int[] temp = new int[size];
+            int[] temp = new int[size];    //todo do not use unusable variable
         } catch (NegativeArraySizeException ex) {
             System.out.println("ARRAYS SIZE CANT BE LESS THAN NULL. But your brain size can.");
         }
@@ -105,9 +108,9 @@ public class Task12 {
         }
     }
 
-    private void setYourAge(int yourAge) {
+    private void setYourAge(int yourAge) {    //todo move this method to the end of class
         if (yourAge < 18) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException();    //todo do not throw new exception, emulate situation with this exception
         }
     }
 
@@ -119,7 +122,7 @@ public class Task12 {
         }
     }
 
-    class PedroException extends Exception {
+    class PedroException extends Exception {    //todo move it to separate package and class, make it public, extend it from RuntimeException, don't forget about message
         private String message = "YOU SHOULD BE AT LEAST 18 YEARS OLD, YOU LITTLE BASTARD!!";
 
         public PedroException() {
