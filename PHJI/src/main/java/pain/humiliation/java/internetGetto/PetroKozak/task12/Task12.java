@@ -1,23 +1,21 @@
 package pain.humiliation.java.internetGetto.PetroKozak.task12;
 
-//todo use reformat code
-//todo do not use CAPS in your SAPT
-//todo do not create custom message in _catch_ block, use exception message or cause
+import pain.humiliation.java.internetGetto.PetroKozak.task12.exception.WrongAgeException;
+
 public class Task12 {
-    private int SIZE = 200000000;  //todo make it static
 
     public void callOutOfMemoryError() {
-        try{
-            int[] i = new int[SIZE];    //todo rework, do not create not useful variable
-        }catch (OutOfMemoryError er){
+        try {
+            System.out.println(new int[Integer.MAX_VALUE]);
+        } catch (OutOfMemoryError er) {
             System.out.println("OutOfMemoryError caught");
         }
     }
 
     public void callStackOverFlow(int number) {
-        try{
+        try {
             callStackOverFlow(++number);
-        }catch (StackOverflowError er){
+        } catch (StackOverflowError er) {
             System.out.println("StackOverflowError caught");
         }
     }
@@ -28,13 +26,13 @@ public class Task12 {
         } catch (IndexOutOfBoundsException ex) {
             System.out.println("It should be the FUCKING EXCEPTION here. It isn't here, only because I caught IT.\n");
         } finally {
-            System.out.println("NEVER EVER TRY TO PUT IN ARRAY THE ELEMENT WITH INDEX BIGGER THEN ARRAYS LENGTH. STUPID MOTHERFUCKER.");
+            System.out.println("never ever try to put in array the element with index bigger then arrays length. stupid motherfucker.");
         }
     }
 
-    public void usingMyExceptionInAgeValidator(int age) throws PedroException {
+    public void usingMyExceptionInAgeValidator(int age) throws WrongAgeException {
         if (age <= 18) {
-            throw new PedroException();
+            throw new WrongAgeException("You wrote the wrong age");
         } else {
             System.out.println("Your age is accepted.");
         }
@@ -45,7 +43,7 @@ public class Task12 {
             temp[temp.length] = x;
         } catch (ArrayIndexOutOfBoundsException ex) {
             System.out.println("You're out Of Bounds");
-        } finally {    //todo do not use finally for repairing exception, use _catch_ block for it
+
             int count = 0;
 
             for (int h : temp) {
@@ -86,7 +84,7 @@ public class Task12 {
 
     public void handleIllegalArgumentException(int x) {
         try {
-            setYourAge(x);
+            new Integer(String.valueOf(Long.MAX_VALUE));
         } catch (IllegalArgumentException ex) {
             System.out.println("You are to small to watch this Sasha Greys movie. TURN TV OFF!!!");
         }
@@ -94,9 +92,9 @@ public class Task12 {
 
     public void handleNegativeArraySizeException(int size) {
         try {
-            int[] temp = new int[size];    //todo do not use unusable variable
+            System.out.println(new int[size]);
         } catch (NegativeArraySizeException ex) {
-            System.out.println("ARRAYS SIZE CANT BE LESS THAN NULL. But your brain size can.");
+            System.out.println("arrays size cant be less than null. but your brain size can.");
         }
     }
 
@@ -108,25 +106,12 @@ public class Task12 {
         }
     }
 
-    private void setYourAge(int yourAge) {    //todo move this method to the end of class
-        if (yourAge < 18) {
-            throw new IllegalArgumentException();    //todo do not throw new exception, emulate situation with this exception
-        }
-    }
-
     public void handleNumberFormatException(int[] x) {
         try {
             System.out.println(x[new Integer(null)]);
         } catch (NumberFormatException ex) {
             System.out.println("You use the wrong format. Please change it.");
-        }
-    }
 
-    class PedroException extends Exception {    //todo move it to separate package and class, make it public, extend it from RuntimeException, don't forget about message
-        private String message = "YOU SHOULD BE AT LEAST 18 YEARS OLD, YOU LITTLE BASTARD!!";
-
-        public PedroException() {
-            System.out.println(message);
         }
     }
 }

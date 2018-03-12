@@ -1,14 +1,14 @@
 package pain.humiliation.java.internetGetto.PetroKozak.task12;
 
 import org.junit.Test;
+import pain.humiliation.java.internetGetto.PetroKozak.task12.exception.WrongAgeException;
 
 public class Task12Test {
-    //todo add separate line
+
     private Task12 task12 = new Task12();
     private int[] array = new int[5];
     private Object[] arrayObject = new Integer[5];
     private int age = 5;
-    private String stringForNullPointer = null;
 
     @Test
     public void testingOutOfMemoryError() {
@@ -26,8 +26,12 @@ public class Task12Test {
     }
 
     @Test
-    public void testOwnException() throws Task12.PedroException {
-        task12.usingMyExceptionInAgeValidator(age);
+    public void testOwnException() {
+        try {
+            task12.usingMyExceptionInAgeValidator(age);
+        } catch (WrongAgeException ex) {
+            ex.outputMessage();
+        }
     }
 
     @Test
@@ -67,7 +71,7 @@ public class Task12Test {
 
     @Test
     public void testNullPointerException() {
-        task12.handleNullPointerException(stringForNullPointer);    //todo do not create null variable, set just null
+        task12.handleNullPointerException(null);
     }
 
     @Test
