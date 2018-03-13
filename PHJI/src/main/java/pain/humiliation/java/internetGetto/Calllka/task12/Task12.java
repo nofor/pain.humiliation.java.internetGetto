@@ -2,9 +2,10 @@ package pain.humiliation.java.internetGetto.Calllka.task12;
 
 import pain.humiliation.java.internetGetto.Calllka.task12.exception.FileNameException;
 
-//todo do not create custom message in _catch_ block, use exception message or cause
+//todo do not create custom message in _catch_ block, use exception message or cause DONE
 public class Task12 {
-    //todo add extra line
+
+    static int  num;
     String filename;
 
     Task12(String inputFileName) {
@@ -13,7 +14,7 @@ public class Task12 {
 
     public void methodToCheckHowToWorksTryCatchFinally() {
         String tempString = filename;
-        //todo add extra line
+
         for (int i = 0; i < 2; i++) {
             if (i == 1) {
                 filename = filename.replaceAll(".txt", "");
@@ -25,29 +26,27 @@ public class Task12 {
                 } else {
                     throw new FileNameException("It work block 'catch'");
                 }
-            } catch (FileNameException e) {
-                e.outputExceptionsMessage();
+            } catch (FileNameException ex) {
+                System.out.println(ex.getMessage());
             } finally {
                 System.out.println("Block 'finally' work every time");
             }
         }
     }
 
-    public void evokeStackOverFlow(int num) {    //todo revork, you no need incoming variable here
+    public void evokeStackOverFlow() {    //todo revork, you no need incoming variable here DONE
         try {
-            System.out.println("Number: " + num);
-
-            evokeStackOverFlow(++num);
+            evokeStackOverFlow();
         } catch (StackOverflowError ex) {
-            System.out.println("\nPlz be careful then u use recursive");
+            System.out.println("Plz be careful then u use recursive");
         }
     }
 
     public void evokeOutOfMemoryError() {
         try {
-            long[] l = new long[Integer.MAX_VALUE];    //todo do not create unusable variable
+            System.out.println(new long[Integer.MAX_VALUE]);   //todo do not create unusable variable DONE
         } catch (OutOfMemoryError ex) {
-            System.out.println("WTF Karl????????");
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -55,19 +54,19 @@ public class Task12 {
         try {
             System.out.println(3 / 0);
         } catch (ArithmeticException ex) {
-            System.out.println("plz, don't divide by zero");
+            System.out.println(ex.getMessage());
         }
     }
 
     public void evokeArrayIndexOutOfBoundsException() {
         try {
             int[] j = new int[10];
-            //todo add extra line
+
             for (int i = 0; i < j.length + 1; i++) {
                 j[i] = i;
             }
         } catch (ArrayIndexOutOfBoundsException ex) {
-            System.out.println("Watch the arrays length");
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -77,7 +76,7 @@ public class Task12 {
         try {
             System.out.println((char) i);
         } catch (ClassCastException ex) {
-            System.out.println("Plz don't cast digit to char or conversely");
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -86,38 +85,33 @@ public class Task12 {
             Object[] o = "a;b;c".split(";");
             o[0] = 42;
         } catch (ArrayStoreException ex){
-            System.out.println("Added element must be have similar type");
+            System.out.println(ex.getMessage());
         }
     }
 
     public void evokeIllegalArgumentException() {
         try{
-            int a = Integer.parseInt(null);
-            System.out.println(a);  //todo this code never run
+            Integer.parseInt(null);//todo this code never run DONE
         } catch (NumberFormatException ex){
-            System.out.println("incorrect parse string to digit");
+            System.out.println(ex.getMessage());
         }
     }
 
     public void evokeIndexOutOfBoundsException() {
         try {
-            int[] j = new int[3];
-
-            for (int i = 0; i < j.length; i++){    //todo no need to do it
-                j[i] = i;
-            }
+            int[] j = new int[3];  //todo no need to do it DONE
 
             System.out.println(j[4]);
         } catch (IndexOutOfBoundsException ex){
-            System.out.println("Handle IndexOutOfBoundsException");
+            System.out.println(ex.getMessage());
         }
     }
 
     public void evokeNegativeArraySizeException() {
         try {
-            int[] i = new int[-8];    //todo unusable variable
+            System.out.println(new int[-8]);    //todo unusable variable DONE
         } catch (NegativeArraySizeException ex){
-            System.out.println("Array can't have minus value");
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -125,9 +119,9 @@ public class Task12 {
         try {
             String string = null;
 
-            if (string.equals("sadsa"));  //todo do not use _if_ block
+            string.equals("sadsa"); //todo do not use _if_ block DONE
         } catch (NullPointerException ex){
-            System.out.println("can't equals null value");
+            System.out.println(ex.getMessage());
         }
     }
 }
