@@ -11,20 +11,14 @@ public class Task13 {
     private static Statement stmt = null;
 
 
-    public void createTable(){
+    public void createTable(String creatingTableQuery){
         try {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:C:\\Java\\Project\\pain.humiliation.java.internetGetto\\PHJI\\src\\main\\resources\\pedroDB.db");
             System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
-            String sql = "CREATE TABLE FIRSTTABLE " +
-                    "(ID INT PRIMARY KEY     NOT NULL," +
-                    " NAME           TEXT    NOT NULL, " +
-                    " SURNAME        TEXT    NOT NULL, " +
-                    " AGE            INT     NOT NULL, " +
-                    " SEX            TEXT    NOT NULL)";
-            stmt.executeUpdate(sql);
+            stmt.executeUpdate(creatingTableQuery);
             stmt.close();
             c.close();
         } catch ( Exception e ) {
@@ -34,7 +28,7 @@ public class Task13 {
         System.out.println("Table created successfully");
     }
 
-    public void selectInDatabase(){
+    public void selectInDatabase(String selectionQuery){
         try {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:C:\\Java\\Project\\pain.humiliation.java.internetGetto\\PHJI\\src\\main\\resources\\pedroDB.db");
@@ -42,7 +36,7 @@ public class Task13 {
             System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery( "SELECT * FROM FIRSTTABLE;" );
+            ResultSet rs = stmt.executeQuery( selectionQuery );
 
             while ( rs.next() ) {
                 int id = rs.getInt("id");
@@ -88,8 +82,7 @@ public class Task13 {
             System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
-            String sql = query;
-            stmt.executeUpdate(sql);
+            stmt.executeUpdate(query);
             c.commit();
 
             stmt.close();

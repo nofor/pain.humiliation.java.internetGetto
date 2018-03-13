@@ -8,12 +8,17 @@ public class Task13Test {
 
     @Test
     public void testCreatingTable(){
-        task13.createTable();
+        task13.createTable("CREATE TABLE FIRSTTABLE " +
+                "(ID INT PRIMARY KEY     NOT NULL," +
+                " NAME           TEXT    NOT NULL, " +
+                " SURNAME        TEXT    NOT NULL, " +
+                " AGE            INT     NOT NULL, " +
+                " SEX            TEXT    NOT NULL)");
     }
 
     @Test
     public void testDatabaseSelection(){
-        task13.selectInDatabase();
+        task13.selectInDatabase("SELECT * FROM FIRSTTABLE;" );
     }
 
     @Test
