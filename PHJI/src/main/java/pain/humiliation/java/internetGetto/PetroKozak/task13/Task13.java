@@ -7,20 +7,20 @@ import java.sql.Statement;
 
 public class Task13 {
 
-    private static Connection c = null;  //todo use full naming, not just "c"
-    private static Statement stmt = null;  //todo use full naming, not just "stmt"
+    private static Connection connection = null;
+    private static Statement statement = null;
 
 
     public void createTable(String creatingTableQuery) {
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:C:\\Java\\Project\\pain.humiliation.java.internetGetto\\PHJI\\src\\main\\resources\\pedroDB.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:C:\\Java\\Project\\pain.humiliation.java.internetGetto\\PHJI\\src\\main\\resources\\pedroDB.db");
             System.out.println("Opened database successfully");
 
-            stmt = c.createStatement();
-            stmt.executeUpdate(creatingTableQuery);
-            stmt.close();
-            c.close();
+            statement = connection.createStatement();
+            statement.executeUpdate(creatingTableQuery);
+            statement.close();
+            connection.close();
         } catch (Exception e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
@@ -31,12 +31,12 @@ public class Task13 {
     public void selectInDatabase(String selectionQuery) {
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:C:\\Java\\Project\\pain.humiliation.java.internetGetto\\PHJI\\src\\main\\resources\\pedroDB.db");
-            c.setAutoCommit(false);
+            connection = DriverManager.getConnection("jdbc:sqlite:C:\\Java\\Project\\pain.humiliation.java.internetGetto\\PHJI\\src\\main\\resources\\pedroDB.db");
+            connection.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
-            stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery(selectionQuery);
+            statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(selectionQuery);
 
             while (rs.next()) {
                 int id = rs.getInt("id");
@@ -53,8 +53,8 @@ public class Task13 {
                 System.out.println();
             }
             rs.close();
-            stmt.close();
-            c.close();
+            statement.close();
+            connection.close();
         } catch (Exception e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
@@ -77,16 +77,16 @@ public class Task13 {
     public void doSomeOperationAccordingToTheInputQuery(String query) {
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:C:\\Java\\Project\\pain.humiliation.java.internetGetto\\PHJI\\src\\main\\resources\\pedroDB.db");
-            c.setAutoCommit(false);
+            connection = DriverManager.getConnection("jdbc:sqlite:C:\\Java\\Project\\pain.humiliation.java.internetGetto\\PHJI\\src\\main\\resources\\pedroDB.db");
+            connection.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
-            stmt = c.createStatement();
-            stmt.executeUpdate(query);
-            c.commit();
+            statement = connection.createStatement();
+            statement.executeUpdate(query);
+            connection.commit();
 
-            stmt.close();
-            c.close();
+            statement.close();
+            connection.close();
         } catch (Exception e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
