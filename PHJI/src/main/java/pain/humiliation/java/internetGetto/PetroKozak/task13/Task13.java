@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class Task13 {
 
-    private static Connection c = null;  //todo use full naming, not just "c"
+    private static Connection c = null;  //todo use full naming, not just "c" _______
     private static Statement stmt = null;  //todo use full naming, not just "stmt"
 
 
