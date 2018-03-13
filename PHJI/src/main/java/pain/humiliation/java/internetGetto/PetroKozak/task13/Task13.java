@@ -7,8 +7,8 @@ import java.sql.Statement;
 
 public class Task13 {
 
-    private static Connection c = null;
-    private static Statement stmt = null;
+    private static Connection c = null;  //todo use full naming, not just "c"
+    private static Statement stmt = null;  //todo use full naming, not just "stmt"
 
 
     public void createTable(String creatingTableQuery) {
