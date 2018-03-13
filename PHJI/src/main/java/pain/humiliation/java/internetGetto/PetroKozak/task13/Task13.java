@@ -11,7 +11,7 @@ public class Task13 {
     private static Statement stmt = null;
 
 
-    public void createTable(String creatingTableQuery){
+    public void createTable(String creatingTableQuery) {
         try {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:C:\\Java\\Project\\pain.humiliation.java.internetGetto\\PHJI\\src\\main\\resources\\pedroDB.db");
@@ -21,14 +21,14 @@ public class Task13 {
             stmt.executeUpdate(creatingTableQuery);
             stmt.close();
             c.close();
-        } catch ( Exception e ) {
-            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
         System.out.println("Table created successfully");
     }
 
-    public void selectInDatabase(String selectionQuery){
+    public void selectInDatabase(String selectionQuery) {
         try {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:C:\\Java\\Project\\pain.humiliation.java.internetGetto\\PHJI\\src\\main\\resources\\pedroDB.db");
@@ -36,27 +36,27 @@ public class Task13 {
             System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery( selectionQuery );
+            ResultSet rs = stmt.executeQuery(selectionQuery);
 
-            while ( rs.next() ) {
+            while (rs.next()) {
                 int id = rs.getInt("id");
-                String  name = rs.getString("name");
-                String  surname = rs.getString("surname");
-                int age  = rs.getInt("age");
-                String  sex = rs.getString("sex");
+                String name = rs.getString("name");
+                String surname = rs.getString("surname");
+                int age = rs.getInt("age");
+                String sex = rs.getString("sex");
 
-                System.out.println( "ID = " + id );
-                System.out.println( "NAME = " + name );
-                System.out.println( "SURNAME = " + surname );
-                System.out.println( "AGE = " + age );
-                System.out.println( "SEX = " + sex );
+                System.out.println("ID = " + id);
+                System.out.println("NAME = " + name);
+                System.out.println("SURNAME = " + surname);
+                System.out.println("AGE = " + age);
+                System.out.println("SEX = " + sex);
                 System.out.println();
             }
             rs.close();
             stmt.close();
             c.close();
-        } catch ( Exception e ) {
-            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
         System.out.println("Operation done successfully");
@@ -70,11 +70,11 @@ public class Task13 {
         doSomeOperationAccordingToTheInputQuery(deleteQuery);
     }
 
-    public void dropTable(String droppingQuery){
+    public void dropTable(String droppingQuery) {
         doSomeOperationAccordingToTheInputQuery(droppingQuery);
     }
 
-    public void doSomeOperationAccordingToTheInputQuery(String query){
+    public void doSomeOperationAccordingToTheInputQuery(String query) {
         try {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:C:\\Java\\Project\\pain.humiliation.java.internetGetto\\PHJI\\src\\main\\resources\\pedroDB.db");
@@ -87,8 +87,8 @@ public class Task13 {
 
             stmt.close();
             c.close();
-        } catch ( Exception e ) {
-            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
         System.out.println("Operation done successfully");
