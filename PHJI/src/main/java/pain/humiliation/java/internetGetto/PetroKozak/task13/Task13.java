@@ -10,7 +10,7 @@ public class Task13 {
     private static Connection connection = null;
     private static Statement statement = null;
 
-    //todo really, again extra line ???????
+    //todo really, again extra line ?
     public void createTable(String creatingTableQuery) {
         try {
             Class.forName("org.sqlite.JDBC");
