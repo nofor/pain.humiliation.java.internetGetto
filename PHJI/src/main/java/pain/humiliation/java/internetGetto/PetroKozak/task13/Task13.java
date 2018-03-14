@@ -5,34 +5,40 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+//todo move closing of connection and statement to separate method and use it
+//todo you reinitialize you connection in every method, move it to separate method and initialize it only once
+//todo you no need separate method (insertIntoDatabase(), deleteFromId(), dropTable()) because all of them use doSomeOperationAccordingToTheInputQuery() method. Difference only int passed query string.
+//todo you must not have any duplicate code !!!
 public class Task13 {
 
     private static Connection connection = null;
     private static Statement statement = null;
 
-
+    //todo really, again extra line ?
     public void createTable(String creatingTableQuery) {
         try {
             Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection("jdbc:sqlite:C:\\Java\\Project\\pain.humiliation.java.internetGetto\\PHJI\\src\\main\\resources\\pedroDB.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:C:\\Java\\Project\\pain.humiliation.java.internetGetto\\PHJI\\src\\main\\resources\\pedroDB.db");  //todo as you have commited your DB in GIT repository, you need set this path into resource folder
             System.out.println("Opened database successfully");
 
             statement = connection.createStatement();
             statement.executeUpdate(creatingTableQuery);
+            //todo add extra line because of closing and executing is different operations
             statement.close();
             connection.close();
         } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
-            System.exit(0);
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());  //todo you can use e.printStackTrace(); instead of sout
+            System.exit(0);    //todo why are you need it here ?
         }
-        System.out.println("Table created successfully");
+        //todo add extra line again
+        System.out.println("Table created successfully");    //todo this log will be printed in any case (fail or true) of table creating. This is BUG
     }
 
-    public void selectInDatabase(String selectionQuery) {
+    public void selectInDatabase(String selectionQuery) {    //todo what does mean "selectInDatabase", you select from database
         try {
             Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection("jdbc:sqlite:C:\\Java\\Project\\pain.humiliation.java.internetGetto\\PHJI\\src\\main\\resources\\pedroDB.db");
-            connection.setAutoCommit(false);
+            connection = DriverManager.getConnection("jdbc:sqlite:C:\\Java\\Project\\pain.humiliation.java.internetGetto\\PHJI\\src\\main\\resources\\pedroDB.db");    //todo as you have commited your DB in GIT repository, you need set this path into resource folder
+            connection.setAutoCommit(false);    //todo why are you need it here ?
             System.out.println("Opened database successfully");
 
             statement = connection.createStatement();
@@ -52,14 +58,16 @@ public class Task13 {
                 System.out.println("SEX = " + sex);
                 System.out.println();
             }
+            //todo add extra line
             rs.close();
             statement.close();
             connection.close();
         } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());    //todo you can use e.printStackTrace(); instead of sout
             System.exit(0);
         }
-        System.out.println("Operation done successfully");
+        //todo add extra line again
+        System.out.println("Operation done successfully");    //todo this log will be printed in any case (fail or true) of operation. This is BUG
     }
 
     public void insertIntoDatabase(String insertQuery) {
@@ -77,7 +85,7 @@ public class Task13 {
     public void doSomeOperationAccordingToTheInputQuery(String query) {
         try {
             Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection("jdbc:sqlite:C:\\Java\\Project\\pain.humiliation.java.internetGetto\\PHJI\\src\\main\\resources\\pedroDB.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:C:\\Java\\Project\\pain.humiliation.java.internetGetto\\PHJI\\src\\main\\resources\\pedroDB.db");  //todo as you have commited your DB in GIT repository, you need set this path into resource folder
             connection.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
@@ -88,9 +96,10 @@ public class Task13 {
             statement.close();
             connection.close();
         } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
-            System.exit(0);
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());    //todo you can use e.printStackTrace(); instead of sout
+            System.exit(0);    //todo why are you need it here ?
         }
-        System.out.println("Operation done successfully");
+        //todo add extra line again
+        System.out.println("Operation done successfully");    //todo this log will be printed in any case (fail or true) of operation. This is BUG
     }
 }
