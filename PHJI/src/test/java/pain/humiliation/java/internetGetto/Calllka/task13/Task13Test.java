@@ -4,12 +4,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class Task13Test {
-    String url = "jdbc:sqlite:/home/calllka/Programming/Kurs/pain.humiliation.java.internetGetto/PHJI/src/main/resources/CalllkaDB";
-    private Task13 task13 = new Task13(url);
+    private Task13 task13 = new Task13();
 
     @Before
-    public void createAndInsertTable(){
+    public void createAndInsertTable() {
         task13.createTable();
+    }
+
+    @Test
+    public void testInsertInToTable() {
         task13.insertInToTable("Calllka", "Novikov", 25, "male");
         task13.insertInToTable("Pedro", "Kakoytomeksikanec", 22, "male");
         task13.insertInToTable("Artemiya", "Senceyavna", 27, "female");
@@ -19,9 +22,13 @@ public class Task13Test {
     }
 
     @Test
-    public void testConn() {
-        task13.selectAllFromTable();
+    public void testOutputTable() {
+        task13.selectAllFieldsFromTable();
+    }
+
+    @Test
+    public void testDeleteById() {
         task13.deleteDataFromTable(4);
-        task13.selectAllFromTable();
+        task13.selectAllFieldsFromTable();
     }
 }
