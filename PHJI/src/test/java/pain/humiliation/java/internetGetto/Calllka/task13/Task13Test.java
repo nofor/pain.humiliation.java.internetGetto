@@ -31,4 +31,9 @@ public class Task13Test {
         task13.deleteDataFromTable(4);
         task13.selectAllFieldsFromTable();
     }
+
+    @Test
+    public void testDropTable() throws InterruptedException {
+        task13.dropTable();
+    }
 }
