@@ -18,22 +18,22 @@ public class Task13Test {
 
     @Test
     public void testDatabaseSelection() {
-        task13.selectInDatabase("SELECT * FROM FIRSTTABLE;");
+        task13.selectFromDatabase("SELECT * FROM FIRSTTABLE;");
     }
 
     @Test
     public void testDatabaseInsertion() {
-        task13.insertIntoDatabase("INSERT INTO FIRSTTABLE (ID,NAME,SURNAME,AGE,SEX) " +
+        task13.doSomeOperationAccordingToTheInputQuery("INSERT INTO FIRSTTABLE (ID,NAME,SURNAME,AGE,SEX) " +
                 "VALUES (1, 'Petro', 'Kozak', 22, 'male' );");
     }
 
     @Test
     public void testDatabaseDeletion() {
-        task13.deleteFromId("DELETE from FIRSTTABLE where ID=1;");
+        task13.doSomeOperationAccordingToTheInputQuery("DELETE from FIRSTTABLE where ID=1;");
     }
 
     @Test
     public void testDroppingTable() {
-        task13.dropTable("DROP TABLE FIRSTTABLE");
+        task13.doSomeOperationAccordingToTheInputQuery("DROP TABLE FIRSTTABLE");
     }
 }
