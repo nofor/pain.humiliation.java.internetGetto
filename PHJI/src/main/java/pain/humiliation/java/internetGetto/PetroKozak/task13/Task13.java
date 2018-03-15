@@ -3,10 +3,6 @@ package pain.humiliation.java.internetGetto.PetroKozak.task13;
 import java.io.File;
 import java.sql.*;
 
-//todo move closing of connection and statement to separate method and use it
-//todo you reinitialize you connection in every method, move it to separate method and initialize it only once
-//todo you no need separate method (insertIntoDatabase(), deleteFromId(), dropTable()) because all of them use doSomeOperationAccordingToTheInputQuery() method. Difference only int passed query string.
-//todo you must not have any duplicate code !!!
 public class Task13 {
 
     private static final String PATH = new StringBuilder("jdbc:sqlite:").append(new File("src/main/resources/pedroDB").getAbsolutePath()).toString();
