@@ -3,8 +3,9 @@ package pain.humiliation.java.internetGetto.Calllka.task13;
 import java.io.File;
 import java.sql.*;
 
+//todo add drop table method
 public class Task13 {
-    private static final String PATH_TO_DB = new StringBuilder("jdbc:sqlite:").append(new File("src/main/resources/CalllkaDB").getAbsolutePath()).toString();
+    private static final String PATH_TO_DB = new StringBuilder("jdbc:sqlite:").append(new File("src/main/resources/CalllkaDB").getAbsolutePath()).toString();  //todo do not use variable
     private static Connection dbConnection = null;
 
     static {
@@ -14,6 +15,7 @@ public class Task13 {
             System.out.println("Opened database successfully");
         } catch (SQLException e) {
             e.printStackTrace();
+            //todo close you app
         }
     }
 
@@ -21,7 +23,7 @@ public class Task13 {
         String createTableQuery = "CREATE TABLE IF NOT EXISTS CalllkaTable (id integer PRIMARY KEY AUTOINCREMENT, name text NOT NULL, secondName text NOT NULL, age integer, sex text);";
 
         try (Statement statement = dbConnection.createStatement()) {
-            statement.execute(createTableQuery);
+            statement.execute(createTableQuery);  //todo check execute results
 
             statement.close();
         } catch (SQLException e) {
@@ -37,8 +39,9 @@ public class Task13 {
             preparedStatement.setString(2, secondName);
             preparedStatement.setInt(3, age);
             preparedStatement.setString(4, sex);
-            preparedStatement.execute();
-
+            //todo add extra line
+            preparedStatement.execute(); //todo check results
+            // todo remove extra line
             preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -52,8 +55,9 @@ public class Task13 {
             System.out.println("Deleting id number: " + id);
 
             preparedStatement.setInt(1, id);
+            //todo add extra line
             preparedStatement.execute();
-
+            // todo remove extra line
             preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -64,7 +68,7 @@ public class Task13 {
         String insertDataQuery = "SELECT * FROM CalllkaTable";
 
         try (Statement statement = dbConnection.createStatement();
-             ResultSet resultSet = statement.executeQuery(insertDataQuery)) {
+             ResultSet resultSet = statement.executeQuery(insertDataQuery)) {  //todo remove extra char at the beginning
             System.out.println("Output all data from table: ");
 
             while (resultSet.next()) {

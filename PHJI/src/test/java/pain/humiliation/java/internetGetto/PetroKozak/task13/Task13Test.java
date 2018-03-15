@@ -7,7 +7,7 @@ public class Task13Test {
     Task13 task13 = new Task13();
 
     @Test
-    public void testCreatingTable() {
+    public void testCreatingTable() {  //todo make your id as autoincrement
         task13.createTable("CREATE TABLE FIRSTTABLE " +
                 "(ID INT PRIMARY KEY     NOT NULL," +
                 " NAME           TEXT    NOT NULL, " +
@@ -24,7 +24,7 @@ public class Task13Test {
     @Test
     public void testDatabaseInsertion() {
         task13.doSomeOperationAccordingToTheInputQuery("INSERT INTO FIRSTTABLE (ID,NAME,SURNAME,AGE,SEX) " +
-                "VALUES (1, 'Petro', 'Kozak', 22, 'male' );");
+                "VALUES (2, 'Petro', 'Kozak', 22, 'male' );");
     }
 
     @Test
