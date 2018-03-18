@@ -6,7 +6,7 @@ public interface ModelService {
 
     void insert(Model model);
 
-    void delete(int id);
+    void delete(long id);
 
     void select();
 }

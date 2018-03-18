@@ -1,6 +1,5 @@
 package pain.humiliation.java.internetGetto.PetroKozak.task14.serviceImpl;
 
-import pain.humiliation.java.internetGetto.Calllka.task14.tableModel.UserModel;
 import pain.humiliation.java.internetGetto.PetroKozak.task14.modelOfTable.Model;
 import pain.humiliation.java.internetGetto.PetroKozak.task14.service.ModelService;
 import pain.humiliation.java.internetGetto.PetroKozak.task14.utils.HibernateUtils;
@@ -12,11 +11,11 @@ public class ModelServiceImpl extends HibernateUtils implements ModelService {
     @Override
     public void insert(Model model) {
         getSession().save(model);
-        getSession().getTransaction().commit();
+        getSession().beginTransaction().commit();
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(long id) {
         getSession().delete(getSession().find(Model.class,id));
         getSession().getTransaction().commit();
     }
@@ -24,10 +23,10 @@ public class ModelServiceImpl extends HibernateUtils implements ModelService {
     @Override
     public void select() {
         getSession().beginTransaction();
-        List<UserModel> userList = getSession().createQuery("FROM Model").list();
+        List<Model> modelList = getSession().createQuery("FROM Model").list();
 
-        for (UserModel user : userList) {
-            System.out.println(user);
+        for (Model model : modelList) {
+            System.out.println(model);
         }
     }
 }

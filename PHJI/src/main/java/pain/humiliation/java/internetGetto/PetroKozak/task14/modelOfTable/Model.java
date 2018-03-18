@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Model {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Column (name ="Id")
     long id;
 
