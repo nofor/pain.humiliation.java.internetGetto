@@ -2,7 +2,7 @@ package pain.humiliation.java.internetGetto.Calllka.task14.dao;
 
 import pain.humiliation.java.internetGetto.Calllka.task14.tableModel.UserModel;  //todo do not need create separate package for interfaces DONE
 
-public interface MyInterfaceForTask14 {
+public interface MyInterfaceForTask14 {  //todo rename correctly
 
     void insertInToTheTable(UserModel userModel);
 

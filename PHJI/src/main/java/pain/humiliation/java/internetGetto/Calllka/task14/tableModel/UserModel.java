@@ -31,6 +31,8 @@ public class UserModel {
         this.sex = sex;
     }
 
+    //todo add default constructor
+
     public String getName() {
         return name;
     }

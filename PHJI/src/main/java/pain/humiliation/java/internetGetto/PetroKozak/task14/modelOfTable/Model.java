@@ -1,4 +1,4 @@
-package pain.humiliation.java.internetGetto.PetroKozak.task14.modelOfTable;
+package pain.humiliation.java.internetGetto.PetroKozak.task14.modelOfTable;  //todo rename it just Model
 
 import javax.persistence.*;
 
@@ -29,6 +29,8 @@ public class Model {
         this.age = age;
         this.sex = sex;
     }
+
+    //todo add default constructor
 
     public String getName() {
         return name;

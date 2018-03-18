@@ -22,7 +22,7 @@ public class ModelServiceImpl extends HibernateUtils implements ModelService {
 
     @Override
     public void select() {
-        getSession().beginTransaction();
+        getSession().beginTransaction();  //todo remove transaction
         List<Model> modelList = getSession().createQuery("FROM Model").list();
 
         for (Model model : modelList) {

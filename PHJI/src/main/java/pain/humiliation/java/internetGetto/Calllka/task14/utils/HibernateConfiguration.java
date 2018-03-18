@@ -1,4 +1,4 @@
-package pain.humiliation.java.internetGetto.Calllka.task14.utils;
+package pain.humiliation.java.internetGetto.Calllka.task14.utils;  //todo rename utils
 
 import org.hibernate.Session;
 import org.hibernate.boot.MetadataSources;
@@ -27,7 +27,7 @@ public class HibernateConfiguration {
 
             registry = registryBuilder.applySettings(settings).build();
 
-            sessionFactory = new MetadataSources(registry).addAnnotatedClass(UserModel.class).getMetadataBuilder().build().getSessionFactoryBuilder().build().openSession();
+            sessionFactory = new MetadataSources(registry).addAnnotatedClass(UserModel.class).getMetadataBuilder().build().getSessionFactoryBuilder().build().openSession();  //todo move properties to separate line
         } catch (Exception e) {
             e.printStackTrace();
 
