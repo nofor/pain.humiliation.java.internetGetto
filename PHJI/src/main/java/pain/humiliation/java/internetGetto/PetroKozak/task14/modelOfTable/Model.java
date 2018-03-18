@@ -30,10 +30,6 @@ public class Model {
         this.sex = sex;
     }
 
-    public Model(){
-
-    }
-
     public String getName() {
         return name;
     }
