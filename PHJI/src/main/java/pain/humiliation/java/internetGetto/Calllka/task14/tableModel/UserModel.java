@@ -2,6 +2,7 @@ package pain.humiliation.java.internetGetto.Calllka.task14.tableModel;  //todo t
 
 import javax.persistence.*;
 
+//todo dont need create unusable constructor DONE
 @Entity
 @Table(name = "CalllkaTable")
 public class UserModel {
@@ -28,9 +29,6 @@ public class UserModel {
         this.secondName = secondName;
         this.age = age;
         this.sex = sex;
-    }
-
-    public UserModel() {  //todo dont need create unusable constructor
     }
 
     public String getName() {

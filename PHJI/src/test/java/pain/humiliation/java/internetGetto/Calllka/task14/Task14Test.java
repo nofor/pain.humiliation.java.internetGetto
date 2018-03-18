@@ -18,7 +18,7 @@ public class Task14Test {
 
     @Test
     public void testDeleteUser() {
-        useHibernate.deleteUser(1);
+        useHibernate.deleteUser(36);
     }
 
     @Test
