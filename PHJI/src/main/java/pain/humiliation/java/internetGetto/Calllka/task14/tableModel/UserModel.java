@@ -1,4 +1,4 @@
-package pain.humiliation.java.internetGetto.Calllka.task14.tableModel;
+package pain.humiliation.java.internetGetto.Calllka.task14.tableModel;  //todo this must be a daoModel not table model
 
 import javax.persistence.*;
 
@@ -30,7 +30,7 @@ public class UserModel {
         this.sex = sex;
     }
 
-    public UserModel() {
+    public UserModel() {  //todo dont need create unusable constructor
     }
 
     public String getName() {

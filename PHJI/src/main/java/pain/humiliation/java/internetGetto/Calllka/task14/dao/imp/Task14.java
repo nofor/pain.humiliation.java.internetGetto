@@ -19,7 +19,7 @@ public class Task14 extends HibernateUtils implements MyInterfaceForTask14 {
     }
 
     public void selectAllFromTable() {
-        getSessionFactory().beginTransaction();
+        //getSessionFactory().beginTransaction();  //todo remove transaction
         List<UserModel> userList = getSessionFactory().createQuery("FROM UserModel").list();
 
         for (UserModel user : userList) {
