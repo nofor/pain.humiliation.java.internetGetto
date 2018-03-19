@@ -1,11 +1,11 @@
-package pain.humiliation.java.internetGetto.Calllka.task14.utils;  //todo rename utils
+package pain.humiliation.java.internetGetto.Calllka.task14.configuration;  //todo rename configuration DONE
 
 import org.hibernate.Session;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Environment;
-import pain.humiliation.java.internetGetto.Calllka.task14.tableModel.UserModel;
+import pain.humiliation.java.internetGetto.Calllka.task14.model.UserModel;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +27,11 @@ public class HibernateConfiguration {
 
             registry = registryBuilder.applySettings(settings).build();
 
-            sessionFactory = new MetadataSources(registry).addAnnotatedClass(UserModel.class).getMetadataBuilder().build().getSessionFactoryBuilder().build().openSession();  //todo move properties to separate line
+            sessionFactory = new MetadataSources(registry)
+                    .addAnnotatedClass(UserModel.class)
+                    .getMetadataBuilder().build()
+                    .getSessionFactoryBuilder().build()
+                    .openSession();  //todo move properties to separate line DONE
         } catch (Exception e) {
             e.printStackTrace();
 

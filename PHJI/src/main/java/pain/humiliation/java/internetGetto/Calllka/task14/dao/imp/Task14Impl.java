@@ -1,12 +1,12 @@
 package pain.humiliation.java.internetGetto.Calllka.task14.dao.imp;
 
-import pain.humiliation.java.internetGetto.Calllka.task14.dao.MyInterfaceForTask14;
-import pain.humiliation.java.internetGetto.Calllka.task14.tableModel.UserModel;
-import pain.humiliation.java.internetGetto.Calllka.task14.utils.HibernateConfiguration;
+import pain.humiliation.java.internetGetto.Calllka.task14.dao.Task14;
+import pain.humiliation.java.internetGetto.Calllka.task14.model.UserModel;
+import pain.humiliation.java.internetGetto.Calllka.task14.configuration.HibernateConfiguration;
 
 import java.util.List;
 
-public class Task14 extends HibernateConfiguration implements MyInterfaceForTask14 {
+public class Task14Impl extends HibernateConfiguration implements Task14 {
 
     public void insertInToTheTable(UserModel userModel) {
         getSessionFactory().save(userModel);

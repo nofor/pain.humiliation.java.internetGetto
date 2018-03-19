@@ -1,11 +1,11 @@
 package pain.humiliation.java.internetGetto.Calllka.task14;
 
 import org.junit.Test;
-import pain.humiliation.java.internetGetto.Calllka.task14.dao.imp.Task14;
-import pain.humiliation.java.internetGetto.Calllka.task14.tableModel.UserModel;
+import pain.humiliation.java.internetGetto.Calllka.task14.dao.imp.Task14Impl;
+import pain.humiliation.java.internetGetto.Calllka.task14.model.UserModel;
 
 public class Task14Test {
-    Task14 useHibernate = new Task14();
+    Task14Impl useHibernate = new Task14Impl();
 
     @Test
     public void testInsertInToTheTable() {
@@ -18,7 +18,7 @@ public class Task14Test {
 
     @Test
     public void testDeleteUser() {
-        useHibernate.deleteUser(36);
+        useHibernate.deleteUser(43);
     }
 
     @Test
