@@ -8,16 +8,16 @@ public class Model {
 
     @Id
     @GeneratedValue
-    @Column (name ="Id")
+    @Column(name = "Id")
     long id;
 
-    @Column (name = "name")
+    @Column(name = "name")
     private String name;
 
-    @Column (name = "surname")
+    @Column(name = "surname")
     private String surname;
 
-    @Column (name = "age")
+    @Column(name = "age")
     private int age;
 
 

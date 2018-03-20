@@ -5,22 +5,40 @@ import org.junit.Test;
 import java.io.IOException;
 
 public class task15Test {
-    Converter converter = new Converter();
-    Task15 task15 = new Task15();
+    Task15 task15 = new Task15("{  \n" +
+            "   \"users\":[  \n" +
+            "      {  \n" +
+            "         \"name\":\"Calllka\",\n" +
+            "         \"surname\":\"Novicov\",\n" +
+            "         \"age\":25\n" +
+            "      },\n" +
+            "      {  \n" +
+            "         \"name\":\"Petya\",\n" +
+            "         \"surname\":\"Kozak\",\n" +
+            "         \"age\":22\n" +
+            "      }\n" +
+            "   ]\n" +
+            "}");
 
     @Test
     public void testConverter() throws IOException {
-        System.out.println(converter.convertToObjeect());
+        System.out.println(task15.convertToObject());
 
     }
+
     @Test
-    public void test(){
+    public void test() {
         task15.insertToDB();
     }
 
     @Test
-    public void selectAllInDB(){
-      task15.select();
+    public void selectAllInDB() {
+        task15.select();
+    }
+
+    @Test
+    public void testConvertToJson() {
+        task15.convertToJson();
     }
 
 }

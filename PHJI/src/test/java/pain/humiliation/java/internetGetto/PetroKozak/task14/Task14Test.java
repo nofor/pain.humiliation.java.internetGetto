@@ -15,7 +15,7 @@ public class Task14Test {
     }
 
     @Test
-    public void testDeleteUser() {implementation.delete(1);
+    public void testDeleteUser() {implementation.delete(41);
     }
 
     @Test
