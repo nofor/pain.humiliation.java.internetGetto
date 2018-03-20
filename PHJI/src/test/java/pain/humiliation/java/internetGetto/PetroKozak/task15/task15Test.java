@@ -2,8 +2,6 @@ package pain.humiliation.java.internetGetto.PetroKozak.task15;
 
 import org.junit.Test;
 
-import java.io.IOException;
-
 public class task15Test {
     Task15 task15 = new Task15("{  \n" +
             "   \"users\":[  \n" +
@@ -21,7 +19,7 @@ public class task15Test {
             "}");
 
     @Test
-    public void testConverter() throws IOException {
+    public void testConverter(){
         System.out.println(task15.convertToObject());
 
     }
