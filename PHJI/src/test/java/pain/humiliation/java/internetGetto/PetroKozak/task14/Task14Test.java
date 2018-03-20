@@ -9,9 +9,9 @@ public class Task14Test {
 
     @Test
     public void testInsertToTheTable() {
-        implementation.insert(new Model("Calllka", "Al Capone", 25, "male"));
-        implementation.insert(new Model("Artem", "Zaycev", 27, "male"));
-        implementation.insert(new Model("Don Pedro", "Sanchez Rodriguez", 22, "mexican muchacho"));
+        implementation.insert(new Model("Calllka", "Al Capone", 25));
+        implementation.insert(new Model("Artem", "Zaycev", 27));
+        implementation.insert(new Model("Don Pedro", "Sanchez Rodriguez", 22));
     }
 
     @Test

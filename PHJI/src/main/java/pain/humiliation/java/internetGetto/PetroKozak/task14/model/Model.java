@@ -20,14 +20,11 @@ public class Model {
     @Column (name = "age")
     private int age;
 
-    @Column (name = "sex")
-    private String sex;
 
-    public Model(String name, String surname, int age, String sex) {
+    public Model(String name, String surname, int age) {
         this.name = name;
         this.surname = surname;
         this.age = age;
-        this.sex = sex;
     }
 
     public Model() {
@@ -57,14 +54,6 @@ public class Model {
         this.age = age;
     }
 
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
     @Override
     public String toString() {
         return "Model{" +
@@ -72,7 +61,6 @@ public class Model {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", age=" + age +
-                ", sex='" + sex + '\'' +
                 '}';
     }
 }
