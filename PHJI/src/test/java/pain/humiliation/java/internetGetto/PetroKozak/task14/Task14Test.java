@@ -1,8 +1,8 @@
 package pain.humiliation.java.internetGetto.PetroKozak.task14;
 
 import org.junit.Test;
-import pain.humiliation.java.internetGetto.PetroKozak.task14.modelOfTable.Model;
-import pain.humiliation.java.internetGetto.PetroKozak.task14.serviceImpl.ModelServiceImpl;
+import pain.humiliation.java.internetGetto.PetroKozak.task14.model.Model;
+import pain.humiliation.java.internetGetto.PetroKozak.task14.dao.imp.ModelServiceImpl;
 
 public class Task14Test {
     ModelServiceImpl implementation = new ModelServiceImpl();

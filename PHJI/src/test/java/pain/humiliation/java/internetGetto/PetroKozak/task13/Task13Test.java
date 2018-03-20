@@ -7,9 +7,9 @@ public class Task13Test {
     Task13 task13 = new Task13();
 
     @Test
-    public void testCreatingTable() {  //todo make your id as autoincrement
+    public void testCreatingTable() {  //todo make your id as autoincrement DONE
         task13.createTable("CREATE TABLE FIRSTTABLE " +
-                "(ID INT PRIMARY KEY     NOT NULL," +
+                "(ID INT PRIMARY KEY     AUTOINCREMENT," +
                 " NAME           TEXT    NOT NULL, " +
                 " SURNAME        TEXT    NOT NULL, " +
                 " AGE            INT     NOT NULL, " +
@@ -23,17 +23,17 @@ public class Task13Test {
 
     @Test
     public void testDatabaseInsertion() {
-        task13.doSomeOperationAccordingToTheInputQuery("INSERT INTO FIRSTTABLE (ID,NAME,SURNAME,AGE,SEX) " +
+        task13.executeQuery("INSERT INTO FIRSTTABLE (ID,NAME,SURNAME,AGE,SEX) " +
                 "VALUES (2, 'Petro', 'Kozak', 22, 'male' );");
     }
 
     @Test
     public void testDatabaseDeletion() {
-        task13.doSomeOperationAccordingToTheInputQuery("DELETE from FIRSTTABLE where ID=1;");
+        task13.executeQuery("DELETE from FIRSTTABLE where ID=1;");
     }
 
     @Test
     public void testDroppingTable() {
-        task13.doSomeOperationAccordingToTheInputQuery("DROP TABLE FIRSTTABLE");
+        task13.executeQuery("DROP TABLE FIRSTTABLE");
     }
 }
