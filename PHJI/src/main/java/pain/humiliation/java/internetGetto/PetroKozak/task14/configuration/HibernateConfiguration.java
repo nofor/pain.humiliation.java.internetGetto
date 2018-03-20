@@ -32,7 +32,7 @@ public class HibernateConfiguration {
                     .addAnnotatedClass(Model.class)
                     .getMetadataBuilder().build()
                     .getSessionFactoryBuilder().build()
-                    .openSession();  //todo move properties to separate line DONE
+                    .openSession();
         } catch (Exception e) {
             e.printStackTrace();
 

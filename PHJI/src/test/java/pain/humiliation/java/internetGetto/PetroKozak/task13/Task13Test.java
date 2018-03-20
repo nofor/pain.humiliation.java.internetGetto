@@ -9,11 +9,10 @@ public class Task13Test {
     @Test
     public void testCreatingTable() {  //todo make your id as autoincrement DONE
         task13.createTable("CREATE TABLE FIRSTTABLE " +
-                "(ID INT PRIMARY KEY     AUTOINCREMENT," +
+                "(ID INTEGER PRIMARY KEY     AUTOINCREMENT," +
                 " NAME           TEXT    NOT NULL, " +
                 " SURNAME        TEXT    NOT NULL, " +
-                " AGE            INT     NOT NULL, " +
-                " SEX            TEXT    NOT NULL)");
+                " AGE            INT     NOT NULL)");
     }
 
     @Test
