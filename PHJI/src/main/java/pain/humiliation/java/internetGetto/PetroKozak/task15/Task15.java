@@ -2,6 +2,8 @@ package pain.humiliation.java.internetGetto.PetroKozak.task15;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
+import org.json.JSONObject;
+import org.json.XML;
 import pain.humiliation.java.internetGetto.PetroKozak.task14.dao.imp.ModelServiceImpl;
 import pain.humiliation.java.internetGetto.PetroKozak.task14.model.Model;
 
@@ -19,7 +21,7 @@ public class Task15 extends ModelServiceImpl {
         this.json = json;
     }
 
-    public ArrayList<Model> convertToObject() {
+    public ArrayList<Model> convertJsonToObject() {
         try {
             Map<String, ArrayList<Model>> map = mapper.readValue(json, new TypeReference<Map<String, ArrayList<Model>>>() {
             });
@@ -31,7 +33,7 @@ public class Task15 extends ModelServiceImpl {
         return modelList;
     }
 
-    public void convertToJson() {
+    public void convertMapToJson() {
         Map<String, ArrayList<Model>> tempMap = new HashMap<>();
 
         tempMap.put("users", (ArrayList<Model>) getSession().createQuery("FROM Model").list());
@@ -44,8 +46,21 @@ public class Task15 extends ModelServiceImpl {
     }
 
     public void insertToDB() {
-        for (Model model : convertToObject()) {
+        for (Model model : convertJsonToObject()) {
             insert(model);
         }
+    }
+
+    public String convertJsonToXml() {
+        JSONObject jsonObject = new JSONObject(json);
+        String xml = XML.toString(jsonObject);
+
+        return xml;
+    }
+
+    public String convertXMLToJson(String xml) {
+        String resultJson = XML.toJSONObject(xml).toString();
+
+        return resultJson;
     }
 }

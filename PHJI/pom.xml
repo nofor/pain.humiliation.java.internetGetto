@@ -65,6 +65,11 @@
             <version>1.9.13</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20180130</version>
+        </dependency>
 
     </dependencies>
 

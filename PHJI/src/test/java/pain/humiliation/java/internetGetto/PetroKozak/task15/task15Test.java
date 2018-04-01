@@ -3,24 +3,12 @@ package pain.humiliation.java.internetGetto.PetroKozak.task15;
 import org.junit.Test;
 
 public class task15Test {
-    Task15 task15 = new Task15("{  \n" +
-            "   \"users\":[  \n" +
-            "      {  \n" +
-            "         \"name\":\"Calllka\",\n" +
-            "         \"surname\":\"Novicov\",\n" +
-            "         \"age\":25\n" +
-            "      },\n" +
-            "      {  \n" +
-            "         \"name\":\"Petya\",\n" +
-            "         \"surname\":\"Kozak\",\n" +
-            "         \"age\":22\n" +
-            "      }\n" +
-            "   ]\n" +
-            "}");
+
+    Task15 task15 = new Task15("{\"users\":[{\"surname\":\"Novicov\",\"name\":\"Calllka\",\"age\":25},{\"surname\":\"Kozak\",\"name\":\"Petya\",\"age\":22}]}");
 
     @Test
-    public void testConverter(){
-        System.out.println(task15.convertToObject());
+    public void testConvertToObject(){
+        System.out.println(task15.convertJsonToObject());
 
     }
 
@@ -36,7 +24,16 @@ public class task15Test {
 
     @Test
     public void testConvertToJson() {
-        task15.convertToJson();
+        task15.convertMapToJson();
     }
 
+    @Test
+    public void testConvertJsonToXml(){
+        System.out.println(task15.convertJsonToXml());
+    }
+
+    @Test
+    public void testConvertXMLToJson(){
+        System.out.println(task15.convertXMLToJson(task15.convertJsonToXml()));
+    }
 }
