@@ -21,7 +21,7 @@ public class IUserImpl extends HibernateConfigurationTask16 implements IUser {
 
     @Override
     public void select() {
-        List<User> userList = getSession().createQuery("FROM Model").list();
+        List<User> userList = getSession().createQuery("FROM User").list();
 
         for (User user : userList) {
             System.out.println(user);

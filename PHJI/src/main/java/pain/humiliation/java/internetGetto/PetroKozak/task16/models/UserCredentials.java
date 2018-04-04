@@ -2,25 +2,27 @@ package pain.humiliation.java.internetGetto.PetroKozak.task16.models;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "UserCredentials")
+@Entity(name = "UserCredentials")
 public class UserCredentials {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
     int id;
 
-    @Column(name = "User Nickname")
+    @Column(name = "User_Nickname")
     private String userNickname;
 
-    @Column(name = "UserPasswordID")
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     private UserPassword userPassword;
 
-    public UserCredentials(String userNickname, UserPassword userPassword) {
+    @OneToOne(fetch = FetchType.EAGER)
+    private User user;
+
+    public UserCredentials(String userNickname, UserPassword userPassword, User user) {
         this.userNickname = userNickname;
         this.userPassword = userPassword;
+        this.user = user;
     }
 
     public UserCredentials() {
@@ -42,12 +44,21 @@ public class UserCredentials {
         this.userPassword = userPassword;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "UserCredentials{" +
                 "id=" + id +
                 ", userNickname='" + userNickname + '\'' +
                 ", userPassword=" + userPassword +
+                ", user=" + user +
                 '}';
     }
 }

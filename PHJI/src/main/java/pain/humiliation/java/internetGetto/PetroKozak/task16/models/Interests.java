@@ -2,24 +2,27 @@ package pain.humiliation.java.internetGetto.PetroKozak.task16.models;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "Interests")
+@Entity(name = "Interests")
 public class Interests {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
     int id;
 
-    @Column(name = "Interests Name")
+    @Column(name = "Interests_Name")
     private String interestsName;
 
-    @Column(name = "Interests Period")
+    @Column(name = "Interests_Period")
     private String interestsPeriod;
 
-    public Interests(String interestsName, String interestsPeriod) {
+    @ManyToOne
+    private User user;
+
+    public Interests(String interestsName, String interestsPeriod, User user) {
         this.interestsName = interestsName;
         this.interestsPeriod = interestsPeriod;
+        this.user = user;
     }
 
     public Interests() {
@@ -41,12 +44,21 @@ public class Interests {
         this.interestsPeriod = interestsPeriod;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Interests{" +
                 "id=" + id +
                 ", interestsName='" + interestsName + '\'' +
                 ", interestsPeriod='" + interestsPeriod + '\'' +
+                ", user=" + user +
                 '}';
     }
 }

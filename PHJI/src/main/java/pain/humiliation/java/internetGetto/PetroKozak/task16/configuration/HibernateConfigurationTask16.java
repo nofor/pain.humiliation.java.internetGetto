@@ -24,13 +24,18 @@ public class HibernateConfigurationTask16 {
             settings.put(Environment.URL, "jdbc:postgresql://127.0.0.1:5433/PedroPostgresDB");
             settings.put(Environment.USER, "postgres");
             settings.put(Environment.PASS, "postgres");
-            settings.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQL94Dialect");
+            settings.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
+            settings.put(Environment.HBM2DDL_AUTO,"create-drop");
 
             registry = registryBuilder.applySettings(settings).build();
 
             sessionFactory = new MetadataSources(registry)
                     .addAnnotatedClass(User.class)
-
+                    .addAnnotatedClass(Work.class)
+                    .addAnnotatedClass(Interests.class)
+                    .addAnnotatedClass(SocialNetwork.class)
+                    .addAnnotatedClass(UserCredentials.class)
+                    .addAnnotatedClass(UserPassword.class)
                     .getMetadataBuilder().build()
                     .getSessionFactoryBuilder().build()
                     .openSession();

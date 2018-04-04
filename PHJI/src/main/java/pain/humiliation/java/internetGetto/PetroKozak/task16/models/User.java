@@ -2,13 +2,13 @@ package pain.humiliation.java.internetGetto.PetroKozak.task16.models;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
-@Entity
-@Table(name = "user")
+@Entity(name = "users")
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
     int id;
 
@@ -21,26 +21,26 @@ public class User {
     @Column(name = "age")
     private int age;
 
-    @Column(name = "WorkID")
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Work> work;
 
-    @Column(name = "InterestsID")
-    @OneToMany
-    private List <Interests> interests;
+    @OneToMany(fetch = FetchType.EAGER)
+    private Set<Interests> interests;
 
-    @Column(name = "SocialNetworkID")
-    @OneToMany
-    private List<SocialNetwork> socialNetworks;
+    @OneToMany(fetch = FetchType.EAGER)
+    private Set<SocialNetwork> socialNetworks;
 
-
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     private  UserCredentials userCredentials;
 
-    public User(String name, String surname, int age) {
+    public User(String name, String surname, int age, List<Work> work, Set<Interests> interests, Set<SocialNetwork> socialNetworks, UserCredentials userCredentials) {
         this.name = name;
         this.surname = surname;
         this.age = age;
+        this.work = work;
+        this.interests = interests;
+        this.socialNetworks = socialNetworks;
+        this.userCredentials = userCredentials;
     }
 
     public User() {
@@ -78,19 +78,19 @@ public class User {
         this.work = work;
     }
 
-    public List<Interests> getInterests() {
+    public Set<Interests> getInterests() {
         return interests;
     }
 
-    public void setInterests(List<Interests> interests) {
+    public void setInterests(Set<Interests> interests) {
         this.interests = interests;
     }
 
-    public List<SocialNetwork> getSocialNetworks() {
+    public Set<SocialNetwork> getSocialNetworks() {
         return socialNetworks;
     }
 
-    public void setSocialNetworks(List<SocialNetwork> socialNetworks) {
+    public void setSocialNetworks(Set<SocialNetwork> socialNetworks) {
         this.socialNetworks = socialNetworks;
     }
 
