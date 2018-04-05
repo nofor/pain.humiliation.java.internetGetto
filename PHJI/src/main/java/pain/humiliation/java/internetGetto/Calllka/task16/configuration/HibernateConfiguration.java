@@ -29,7 +29,7 @@ public class HibernateConfiguration {
             registry = registryBuilder.applySettings(settings).build();
 
             sessionFactory = new MetadataSources(registry)
-                    .addAnnotatedClass(User.class)
+                    .addAnnotatedClass(Users.class)
                     .addAnnotatedClass(Interests.class)
                     .addAnnotatedClass(SocialNetwork.class)
                     .addAnnotatedClass(UserCredentials.class)
@@ -37,7 +37,7 @@ public class HibernateConfiguration {
                     .addAnnotatedClass(Work.class)
                     .getMetadataBuilder().build()
                     .getSessionFactoryBuilder().build()
-                    .openSession();  //todo move properties to separate line DONE
+                    .openSession();
         } catch (Exception e) {
             e.printStackTrace();
 

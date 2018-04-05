@@ -8,9 +8,9 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class SocialNetwork {
 
     @Id
-    @Column(name = "Id")
+    @Column(name = "Social_Network_Id")
     @GeneratedValue(strategy = IDENTITY)
-    private int id;
+    private int socialNetworkId;
 
     @Column(name = "Network_Name")
     private String networkName;
@@ -18,24 +18,20 @@ public class SocialNetwork {
     @Column(name = "Network_Friends_Count")
     private String networkFriendsCount;
 
-    @ManyToOne
-    private User user;
-
     public SocialNetwork() {
     }
 
-    public SocialNetwork(String networkName, String networkFriendsCount, User user) {
+    public SocialNetwork(String networkName, String networkFriendsCount) {
         this.networkName = networkName;
         this.networkFriendsCount = networkFriendsCount;
-        this.user = user;
     }
 
-    public int getId() {
-        return id;
+    public int getSocialNetworkId() {
+        return socialNetworkId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setSocialNetworkId(int socialNetworkId) {
+        this.socialNetworkId = socialNetworkId;
     }
 
     public String getNetworkName() {
@@ -54,21 +50,12 @@ public class SocialNetwork {
         this.networkFriendsCount = networkFriendsCount;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     @Override
     public String toString() {
         return "SocialNetwork{" +
-                "id=" + id +
+                "socialNetworkId=" + socialNetworkId +
                 ", networkName='" + networkName + '\'' +
                 ", networkFriendsCount='" + networkFriendsCount + '\'' +
-                ", user=" + user +
                 '}';
     }
 }

@@ -8,9 +8,9 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class UserCredentials {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "User_Credentials_Id")
     @GeneratedValue(strategy = IDENTITY)
-    private int id;
+    private int userCredentialsId;
 
     @Column(name = "User_Nickname")
     private String userNickname;
@@ -18,7 +18,7 @@ public class UserCredentials {
     @Column(name = "User_Password")
     private String userPassword;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private UserPassword userPasswordClass;
 
     public UserCredentials() {
@@ -30,12 +30,12 @@ public class UserCredentials {
         this.userPasswordClass = userPasswordClass;
     }
 
-    public int getId() {
-        return id;
+    public int getUserCredentialsId() {
+        return userCredentialsId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserCredentialsId(int userCredentialsId) {
+        this.userCredentialsId = userCredentialsId;
     }
 
     public String getUserNickname() {
@@ -65,7 +65,7 @@ public class UserCredentials {
     @Override
     public String toString() {
         return "UserCredentials{" +
-                "id=" + id +
+                "userCredentialsId=" + userCredentialsId +
                 ", userNickname='" + userNickname + '\'' +
                 ", userPassword='" + userPassword + '\'' +
                 ", userPasswordClass=" + userPasswordClass +

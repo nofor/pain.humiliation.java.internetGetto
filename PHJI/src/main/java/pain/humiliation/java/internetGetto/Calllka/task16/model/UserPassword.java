@@ -6,9 +6,9 @@ import javax.persistence.*;
 public class UserPassword {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "User_Password_Id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int userPasswordId;
 
     @Column(name = "Encrypted_Password")
     private String encryptedPassword;
@@ -16,24 +16,20 @@ public class UserPassword {
     @Column(name = "DecryptedPassword")
     private String decryptedPassword;
 
-    @OneToOne
-    private UserCredentials userCredentials;
-
     public UserPassword() {
     }
 
-    public UserPassword(String encryptedPassword, String decryptedPassword, UserCredentials userCredentials) {
+    public UserPassword(String encryptedPassword, String decryptedPassword) {
         this.encryptedPassword = encryptedPassword;
         this.decryptedPassword = decryptedPassword;
-        this.userCredentials = userCredentials;
     }
 
-    public int getId() {
-        return id;
+    public int getUserPasswordId() {
+        return userPasswordId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserPasswordId(int userPasswordId) {
+        this.userPasswordId = userPasswordId;
     }
 
     public java.lang.String getEncryptedPassword() {
@@ -52,21 +48,12 @@ public class UserPassword {
         this.decryptedPassword = decryptedPassword;
     }
 
-    public UserCredentials getUserCredentials() {
-        return userCredentials;
-    }
-
-    public void setUserCredentials(UserCredentials userCredentials) {
-        this.userCredentials = userCredentials;
-    }
-
     @Override
     public String toString() {
         return "UserPassword{" +
-                "id=" + id +
+                "userPasswordId=" + userPasswordId +
                 ", encryptedPassword='" + encryptedPassword + '\'' +
                 ", decryptedPassword='" + decryptedPassword + '\'' +
-                ", userCredentials=" + userCredentials +
                 '}';
     }
 }

@@ -2,15 +2,17 @@ package pain.humiliation.java.internetGetto.Calllka.task16.model;
 
 import javax.persistence.*;
 
+import static javax.persistence.GenerationType.AUTO;
 import static javax.persistence.GenerationType.IDENTITY;
+import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity(name = "Interests")
 public class Interests {
 
     @Id
-    @Column(name = "Id")
+    @Column(name = "Interests_Id")
     @GeneratedValue(strategy = IDENTITY)
-    private int id;
+    private int interestsId;
 
     @Column(name = "Interests_Name")
     private String interestsName;
@@ -18,24 +20,20 @@ public class Interests {
     @Column(name = "Interests_Period")
     private String interestsPeriod;
 
-    @ManyToOne
-    private User user;
-
     public Interests() {
     }
 
-    public Interests(String interestsName, String interestsPeriod, User user) {
+    public Interests(String interestsName, String interestsPeriod) {
         this.interestsName = interestsName;
         this.interestsPeriod = interestsPeriod;
-        this.user = user;
     }
 
-    public int getId() {
-        return id;
+    public int getInterestsId() {
+        return interestsId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setInterestsId(int interestsId) {
+        this.interestsId = interestsId;
     }
 
     public String getInterestsName() {
@@ -54,21 +52,12 @@ public class Interests {
         this.interestsPeriod = interestsPeriod;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     @Override
     public String toString() {
         return "Interests{" +
-                "id=" + id +
+                "interestsId=" + interestsId +
                 ", interestsName='" + interestsName + '\'' +
                 ", interestsPeriod='" + interestsPeriod + '\'' +
-                ", user=" + user +
                 '}';
     }
 }

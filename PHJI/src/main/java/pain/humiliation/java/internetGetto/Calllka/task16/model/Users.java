@@ -7,12 +7,12 @@ import java.util.Set;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity(name = "Users")
-public class User {
+public class Users {
 
     @Id
-    @Column(name = "Id")
+    @Column(name = "User_Id")
     @GeneratedValue(strategy = IDENTITY)
-    private int id;
+    private int userId;
 
     @Column(name = "Name")
     private String name;
@@ -23,22 +23,22 @@ public class User {
     @Column(name = "Age")
     private int age;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Work> workID;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Interests> interestsId;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<SocialNetwork> socialNetworkId;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL)
     private UserCredentials userCredentialsId;
 
-    public User() {
+    public Users() {
     }
 
-    public User(String name, String surname, int age, Set<Work> workID, Set<Interests> interestsId, Set<SocialNetwork> socialNetworkId, UserCredentials userCredentialsId) {
+    public Users(String name, String surname, int age, Set<Work> workID, Set<Interests> interestsId, Set<SocialNetwork> socialNetworkId, UserCredentials userCredentialsId) {
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -48,12 +48,12 @@ public class User {
         this.userCredentialsId = userCredentialsId;
     }
 
-    public int getId() {
-        return id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getName() {
@@ -115,7 +115,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "userId=" + userId +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", age=" + age +
