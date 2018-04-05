@@ -25,7 +25,7 @@ public class HibernateConfigurationTask16 {
             settings.put(Environment.USER, "postgres");
             settings.put(Environment.PASS, "postgres");
             settings.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
-            settings.put(Environment.HBM2DDL_AUTO,"create-drop");
+            settings.put(Environment.HBM2DDL_AUTO,"update");
 
             registry = registryBuilder.applySettings(settings).build();
 

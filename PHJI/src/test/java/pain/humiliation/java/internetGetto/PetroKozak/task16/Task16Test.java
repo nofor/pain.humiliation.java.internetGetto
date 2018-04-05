@@ -20,6 +20,7 @@ public class Task16Test {
         work.add(new Work("SoftServe","Director",25000));
         interests.add(new Interests("Football", "Two years"));
         socialNetworks.add(new SocialNetwork("Facebook",2));
+
         implementation.insert(new User("Petro","Kozak",23,work,interests,socialNetworks,userCredentials));
     }
     @Test
