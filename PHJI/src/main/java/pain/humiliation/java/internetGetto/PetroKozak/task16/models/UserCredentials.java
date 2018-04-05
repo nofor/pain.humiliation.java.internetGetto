@@ -16,13 +16,9 @@ public class UserCredentials {
     @OneToOne(fetch = FetchType.EAGER)
     private UserPassword userPassword;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    private User user;
-
-    public UserCredentials(String userNickname, UserPassword userPassword, User user) {
+    public UserCredentials(String userNickname, UserPassword userPassword) {
         this.userNickname = userNickname;
         this.userPassword = userPassword;
-        this.user = user;
     }
 
     public UserCredentials() {
@@ -44,21 +40,12 @@ public class UserCredentials {
         this.userPassword = userPassword;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     @Override
     public String toString() {
         return "UserCredentials{" +
                 "id=" + id +
                 ", userNickname='" + userNickname + '\'' +
                 ", userPassword=" + userPassword +
-                ", user=" + user +
                 '}';
     }
 }

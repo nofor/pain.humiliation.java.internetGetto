@@ -16,13 +16,9 @@ public class SocialNetwork {
     @Column(name = "Network_Friends_Count")
     private int networkFriendsCount;
 
-    @ManyToOne
-    private User user;
-
-    public SocialNetwork(String networkName, int networkFriendsCount, User user) {
+    public SocialNetwork(String networkName, int networkFriendsCount) {
         this.networkName = networkName;
         this.networkFriendsCount = networkFriendsCount;
-        this.user = user;
     }
 
     public SocialNetwork() {
@@ -44,21 +40,12 @@ public class SocialNetwork {
         this.networkFriendsCount = networkFriendsCount;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     @Override
     public String toString() {
         return "SocialNetwork{" +
                 "id=" + id +
                 ", networkName='" + networkName + '\'' +
                 ", networkFriendsCount=" + networkFriendsCount +
-                ", user=" + user +
                 '}';
     }
 }

@@ -16,13 +16,9 @@ public class Interests {
     @Column(name = "Interests_Period")
     private String interestsPeriod;
 
-    @ManyToOne
-    private User user;
-
-    public Interests(String interestsName, String interestsPeriod, User user) {
+    public Interests(String interestsName, String interestsPeriod) {
         this.interestsName = interestsName;
         this.interestsPeriod = interestsPeriod;
-        this.user = user;
     }
 
     public Interests() {
@@ -44,21 +40,12 @@ public class Interests {
         this.interestsPeriod = interestsPeriod;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     @Override
     public String toString() {
         return "Interests{" +
                 "id=" + id +
                 ", interestsName='" + interestsName + '\'' +
                 ", interestsPeriod='" + interestsPeriod + '\'' +
-                ", user=" + user +
                 '}';
     }
 }

@@ -6,7 +6,7 @@ public interface IUser {
 
     void insert(User user);
 
-    void delete(long id);
+    void delete(int id);
 
     void select();
 

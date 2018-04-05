@@ -16,13 +16,9 @@ public class UserPassword {
     @Column(name = "decrypted_Password")
     private String decryptedPassword;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    private UserCredentials userCredentials;
-
-    public UserPassword(String ecryptedPassword, String decryptedPassword, UserCredentials userCredentials) {
+    public UserPassword(String ecryptedPassword, String decryptedPassword) {
         this.ecryptedPassword = ecryptedPassword;
         this.decryptedPassword = decryptedPassword;
-        this.userCredentials = userCredentials;
     }
 
     public UserPassword() {
@@ -44,21 +40,12 @@ public class UserPassword {
         this.decryptedPassword = decryptedPassword;
     }
 
-    public UserCredentials getUserCredentials() {
-        return userCredentials;
-    }
-
-    public void setUserCredentials(UserCredentials userCredentials) {
-        this.userCredentials = userCredentials;
-    }
-
     @Override
     public String toString() {
         return "UserPassword{" +
                 "id=" + id +
                 ", ecryptedPassword='" + ecryptedPassword + '\'' +
                 ", decryptedPassword='" + decryptedPassword + '\'' +
-                ", userCredentials=" + userCredentials +
                 '}';
     }
 }

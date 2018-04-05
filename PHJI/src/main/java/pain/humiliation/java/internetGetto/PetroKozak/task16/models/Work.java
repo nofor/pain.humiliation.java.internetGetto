@@ -19,14 +19,10 @@ public class Work {
     @Column(name = "Salary")
     private int salary;
 
-    @ManyToOne
-    private User user;
-
-    public Work(String companyName, String position, int salary, User user) {
+    public Work(String companyName, String position, int salary) {
         this.companyName = companyName;
         this.position = position;
         this.salary = salary;
-        this.user = user;
     }
 
     public Work() {
@@ -56,14 +52,6 @@ public class Work {
         this.salary = salary;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     @Override
     public String toString() {
         return "Work{" +
@@ -71,7 +59,6 @@ public class Work {
                 ", companyName='" + companyName + '\'' +
                 ", position='" + position + '\'' +
                 ", salary=" + salary +
-                ", user=" + user +
                 '}';
     }
 }
