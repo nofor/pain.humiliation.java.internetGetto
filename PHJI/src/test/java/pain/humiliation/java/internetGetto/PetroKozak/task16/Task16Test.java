@@ -17,7 +17,7 @@ public class Task16Test {
 
     @Test
     public void testInsert(){
-        work.add(new Work("SoftServe","Director",25000));
+        work.add(new Work("SoftServe","Director",25500));
         interests.add(new Interests("Football", "Two years"));
         socialNetworks.add(new SocialNetwork("Facebook",2));
 
