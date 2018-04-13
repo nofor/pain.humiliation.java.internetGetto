@@ -8,6 +8,8 @@ public interface ITask16 {
 
     void deleteUser(int id);
 
+    void deleteAllFields();
+
     void selectAllFromTable();
 
     void selectInsterest(int id, boolean isSelectAll);
