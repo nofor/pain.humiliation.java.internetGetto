@@ -10,6 +10,25 @@ import pain.humiliation.java.internetGetto.Calllka.task16.model.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Configuration class is used to describe the database connection settings.
+ * The class had the static method to configure the Hibernates work.
+ * <p>
+ * The method uses the Map to put all the settings together using
+ * the Environment provides access to configuration info passed in properties objects.
+ * The MetadataSource create a metadata sources using the specified service registry.
+ * (the MetadataSource tell Hibernate about sources)
+ * <p>
+ * If the field "registry" is not empty, the StandardServiceRegistryBuilder will be destroyed.
+ *
+ * @author calllka
+ * @version 1.0
+ * @see StandardServiceRegistryBuilder
+ * @see Environment
+ * @see MetadataSources
+ * @see Session
+ * @since 4.4.2018
+ */
 public class HibernateConfiguration {
     private static StandardServiceRegistry registry;
     private static Session sessionFactory;
@@ -47,6 +66,11 @@ public class HibernateConfiguration {
         }
     }
 
+    /**
+     * This is the method to get the opened Session
+     *
+     * @return Session if the Session was opened successfully.
+     */
     protected static Session getSessionFactory() {
         return sessionFactory;
     }

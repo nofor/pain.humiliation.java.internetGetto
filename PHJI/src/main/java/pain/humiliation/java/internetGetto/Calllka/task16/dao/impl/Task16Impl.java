@@ -11,11 +11,10 @@ import java.util.List;
  * This class serves to insert data in to DB, delete one or all fields from DB,
  * output of all users information or a specific linked table.
  *
- * @author  calllka
+ * @author calllka
  * @version 1.0
- * @since   4.4.2018
+ * @since 4.4.2018
  */
-
 public class Task16Impl extends HibernateConfiguration implements ITask16 {
 
     /**
@@ -77,7 +76,7 @@ public class Task16Impl extends HibernateConfiguration implements ITask16 {
      * To output information about User Interests, used this method.
      * To display information about one of users, used them identity number
      *
-     * @param id the identity number of user in main table
+     * @param id          the identity number of user in main table
      * @param isSelectAll the isSelectAll use to chose how to output information
      *                    (for output information about one of user, used 'false',
      *                    (for output information about all users, used 'true')
@@ -104,7 +103,7 @@ public class Task16Impl extends HibernateConfiguration implements ITask16 {
      * To output information about User Work, used this method.
      * To display information about one of users, used them identity number
      *
-     * @param id the identity number of user in main table
+     * @param id          the identity number of user in main table
      * @param isSelectAll the isSelectAll use to chose how to output information
      *                    (for output information about one of user, used 'false',
      *                    (for output information about all users, used 'true')
@@ -131,7 +130,7 @@ public class Task16Impl extends HibernateConfiguration implements ITask16 {
      * To output information about User Social Network, used this method.
      * To display information about one of users, used them identity number
      *
-     * @param id the identity number of user in main table
+     * @param id          the identity number of user in main table
      * @param isSelectAll the isSelectAll use to chose how to output information
      *                    (for output information about one of user, used 'false',
      *                    (for output information about all users, used 'true')
@@ -158,7 +157,7 @@ public class Task16Impl extends HibernateConfiguration implements ITask16 {
      * To output information about User Credentials, used this method.
      * To display information about one of users, used them identity number
      *
-     * @param id the identity number of user in main table
+     * @param id          the identity number of user in main table
      * @param isSelectAll the SelectAll use to chose how to output information
      *                    (for output information about one of user, used 'false',
      *                    (for output information about all users, used 'true')
