@@ -10,11 +10,35 @@ import pain.humiliation.java.internetGetto.PetroKozak.task16.models.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The following class contains the Hibernate Configuration which will be used only in the
+ * pain.humiliation.java.internetGetto.PetroKozak.task16 package.
+ *
+ * @author Petro Kozak
+ */
 public class HibernateConfigurationTask16 {
 
     private static StandardServiceRegistry registry;
     private static Session sessionFactory;
 
+    /**
+     * This is the static method to configure the Hibernates work.
+     *
+     * The method uses the Map to put all the settings together using
+     * the Environment class for adding the needed properties.
+     * The method builds the SessionFactory while creating the MetadataSources
+     * instance with field registry (which is created while applying the settings
+     * while calling applySettings() method in the StandardServiceRegistryBuilder instance) as parameter.
+     *
+     * The annotated classes are added for the table mapping and the Session gets opened.
+     *
+     * If the field "registry" is not empty, the StandardServiceRegistryBuilder will be destroyed.
+     *
+     * @see StandardServiceRegistryBuilder
+     * @see Environment
+     * @see MetadataSources
+     * @see Session
+     */
     static {
         try {
             StandardServiceRegistryBuilder registryBuilder = new StandardServiceRegistryBuilder();
@@ -48,6 +72,11 @@ public class HibernateConfigurationTask16 {
         }
     }
 
+    /**
+     * This is the method to get the opened Session
+     *
+     * @return <code>Session</code> if the Session was opened successfully.
+     */
     protected static Session getSession() {
         return sessionFactory;
     }
